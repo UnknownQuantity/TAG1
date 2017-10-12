@@ -40,7 +40,7 @@ public class Rooms {
         room.add(new RoomList("Freiheit2", false, false, false, false, false, false));
 
     }
-
+//..
     public String description() {
         String name = room.get(0).getName();
         switch (name) {

@@ -14,7 +14,7 @@ public RoomList(String name,boolean north, boolean east, boolean south, boolean 
     this.loot = loot;
     this.danger = danger;
 }
-
+//..
     public String getName() {
         return name;
     }
