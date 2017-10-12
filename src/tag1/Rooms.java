@@ -5,7 +5,7 @@ import java.util.*;
 public class Rooms {
 
     boolean roomVisited = false; //Tracks wether or not you have been in a room (boolean true false)
-    boolean roomInteraction = false; //Tracks the interactions in the room, if interaction is onetime use, set boolean true
+    boolean roomStorage1, roomBedroomm, roomLoom, roomLabratory, roomKitchen, roomRoomOfRiches = false; //Tracks the interactions in the room, if interaction is onetime use, set boolean true
     ArrayList<RoomList> room = new ArrayList<>();
     ArrayList rooms = new ArrayList();
     
