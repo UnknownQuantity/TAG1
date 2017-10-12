@@ -8,7 +8,11 @@ public class Player {
     private int gold = 0;
     private String name;
     private final static Scanner sc = new Scanner(System.in);
-    private boolean search = false;
+    private boolean search;
+    Rooms r1 = new Rooms();
+    
+    
+    
 
     public void Player() {
 
@@ -20,24 +24,15 @@ public class Player {
     }
 
     public String Movement() {
-
+        r1.Rooms();
+        r1.room.get(0);        
         String choice = "";
-        System.out.println("Which way do you want to go?");
-        sc.next();
-
-        switch (choice) {
-            case "North":
-                break;
-            case "South":
-                break;
-            case "West":
-                break;
-            case "East":
-                break;
-            default:
-                break;
+        
+        System.out.println("Which way do you want to go? north, east, west, south ");        
+        if ("".equals(choice)) {
+        choice = sc.next();
+        return choice;
         }
-
         return choice;
     }
 
