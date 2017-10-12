@@ -15,6 +15,8 @@ public class TAG1 {
         List choices = Arrays.asList(new String[]{"A", "B", "C"});
         int p = io.select("header", choices, "footer");
         System.out.println(p);
+        GameCtrl game = new GameCtrl();
+        game.GameCtrl();
     }
     
 }
