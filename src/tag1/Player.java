@@ -16,7 +16,7 @@ public class Player {
         name = sc.next();
         System.out.println("Hello there " + name);
 
-        System.out.println("At the start of you adventure your health is: " + health + "\nBeware of the dangers in the maze!");
+        System.out.println("At the start of you adventure your health is: " + health + "\nBeware of the dangers in the maze!\nYou're able to search every room you enter by simple typing 's'.");
     }
 
     public String Movement() {
@@ -86,21 +86,23 @@ public class Player {
         return health;
     }
 
-    public int Gold() {
-
-        String find = "";
+    public int Loot(String find) {        
 
         switch (find) {
             case "Treasure":
+                System.out.println("You've found the treasure!");
                 gold += 100;
                 break;
             case "Coin":
+                System.out.println("You've found one coin!");
                 gold += 1;
                 break;
             case "Coins":
+                System.out.println("You've found five coins!");
                 gold += 5;
                 break;
             case "Guards":
+                System.out.println("The guards steal all your gold!");
                 gold = 0;
                 break;
             default:
@@ -112,6 +114,10 @@ public class Player {
 
     public boolean isSearch() {
         return search;
+    }
+
+    public int getGold() {
+        return gold;
     }
 
 }
