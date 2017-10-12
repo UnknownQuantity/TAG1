@@ -42,8 +42,7 @@ public class Rooms {
     }
 
     public String description() {
-
-        String name = "";
+        String name = room.get(0).getName();
         switch (name) {
             case "Start":
                 System.out.println("Insert start description in here :)");
