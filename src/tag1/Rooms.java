@@ -14,7 +14,7 @@ public class Rooms {
     
     
     public void Rooms() {
-        //north, east, south, west, loot, danger
+        //north, east, south, west, loot, danger...
         room.add(new RoomList("Start", true, false, false, false, false, false));
         room.add(new RoomList("Passage", true, true, true, true, false, false));
         room.add(new RoomList("Death1", false, false, false, false, false, true));
