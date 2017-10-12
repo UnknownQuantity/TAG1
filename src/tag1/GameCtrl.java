@@ -12,6 +12,7 @@ public class GameCtrl {
         //r1.room.get(0); flyt ArrayList room ud af metoden (op under boolean roomInteraction)
         r1.description(); //r1.description("Start"); muliggør dette
         p1.Movement();
+        p1.Gold();
         
         
         
