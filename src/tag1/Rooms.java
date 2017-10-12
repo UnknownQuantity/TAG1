@@ -9,10 +9,6 @@ public class Rooms {
     ArrayList<RoomList> room = new ArrayList<>();
     ArrayList rooms = new ArrayList();
     
-    
-    
-    
-    
     public void Rooms() {
         //north, east, south, west, loot, danger...
         room.add(new RoomList("Start", true, false, false, false, false, false));

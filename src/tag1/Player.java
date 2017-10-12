@@ -1,6 +1,5 @@
 package tag1;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
@@ -42,9 +41,7 @@ public class Player {
         return choice;
     }
 
-    public int Health() {
-
-        String danger = "";
+    public int Health(String danger) {
 
         switch (danger) {
             case "Poison":
@@ -111,6 +108,10 @@ public class Player {
         }
 
         return gold;
+    }
+
+    public boolean isSearch() {
+        return search;
     }
 
 }
