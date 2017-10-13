@@ -37,81 +37,33 @@ public class Rooms {
 
     }
 
-    public String description() {
-        String name = room.get(0).getName();
-        switch (name) {
-            case "Start":
-                System.out.println("Insert start description in here :)");
-                break;
-            case "Passage":
-                System.out.println("Insert Passage description in here :)");
-                break;
-            case "Death":
-                System.out.println("Insert death description in here :)");
-                break;
-            case "Storage1":
-                System.out.println("Insert Storage1 description in here :)");
-                break;
-            case "Passage3":
-                System.out.println("Insert Passage3 description in here :)");
-                break;
-            case "Bedroom":
-                System.out.println("Insert bedroom description in here :)");
-                break;
-            case "Loo2":
-                System.out.println("Insert loo2 description in here :)");
-                break;
-            case "DeadEnd":
-                System.out.println("Insert deadend description in here :)");
-                break;
-            case "Corridor":
-                System.out.println("Insert Corridor description in here :)");
-                break;
-            case "Passage2":
-                System.out.println("Insert passage2 description in here :)");
-                break;
-            case "Loo":
-                System.out.println("Insert Loo description in here :)");
-                break;
-            case "Labratory":
-                System.out.println("Insert labratory description here");
-                break;
-            case "Kitchen":
-                System.out.println("Insert Kitchen description in here :)");
-                break;
-            case "Pantry":
-                System.out.println("Insert Pantry description in here :)");
-                break;
-            case "HiddenCorridor":
-                System.out.println("Insert HiddenCorridor description in here :)");
-                break;
-            case "RoomOfRiches":
-                System.out.println("Insert Roomofriches description in here :)");
-                break;
-            case "DiningHall":
-                System.out.println("Insert DiningHall description in here :)");
-                break;
-            case "Corridor2":
-                System.out.println("Insert Corridor2 description in here :)");
-                break;
-            case "CourtYard":
-                System.out.println("Insert CourtYard description in here :)");
-                break;
-            case "Hall":
-                System.out.println("Insert Hall description in here :)");
-                break;
-            case "GuardRoom":
-                System.out.println("Insert guardroom description in here :)");
-                break;
-            case "Freiheit":
-                System.out.println("Insert Freiheit description in here :)");
-                break;
-            case "Freiheit2":
-                System.out.println("Insert FreiHeit2 description in here :)");
-                break;
-        }
-
-        return name;
-    }
-
+    public String description(int spot) {
+        
+        ArrayList<String> descList = new ArrayList<>();
+        
+        descList.add("start"); //0
+        descList.add("Pass"); //1
+        descList.add("Dead"); //2
+        descList.add("storage1"); //3
+        descList.add("pass3"); //4
+        descList.add("bedr"); //5
+        descList.add("loo2"); //6
+        descList.add("deade"); //7
+        descList.add("corr"); //8
+        descList.add("pass2"); //9
+        descList.add("loo"); //10
+        descList.add("labra"); //11
+        descList.add("kitc"); //12
+        descList.add("pant"); //13
+        descList.add("hidd"); //14
+        descList.add("roomof"); //15
+        descList.add("dining"); //16
+        descList.add("corr2"); //17
+        descList.add("court"); //18
+        descList.add("hall"); //19
+        descList.add("guard"); //20
+        descList.add("frei"); //21       
+        
+    return descList.get(spot);
+    }    
 }

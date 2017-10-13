@@ -25,7 +25,7 @@ public class Player {
         r1.room.get(0);
         String choice = "";
 
-        System.out.println("Which way do you want to go? north, east, west, south ");
+        System.out.println("Which way do you want to go? n, e, w, s");
         if ("".equals(choice)) {
             choice = sc.next();
             return choice;
@@ -37,33 +37,52 @@ public class Player {
 
         switch (danger) {
             case "Poison":
-                System.out.println("The poison in the room suffercates you");
+                System.out.println("The poison in the room suffercates you and you lose 25 health");                
                 health -= 25;
+                System.out.println("Your current health is now " + health);
                 break;
             case "Rotten food":
+                System.out.println("You find some food in a bowl and proceeds to eat it, the food was rotten and you lose 5 health");
                 health -= 5;
+                System.out.println("Your current health is now " + health);                
                 break;
             case "Death":
                 health = 0;
                 break;
             case "Guards":
+                System.out.println("You've been beaten up, and is thrown from the room. You lose 50 health");
                 health -= 50;
+                System.out.println("Your current health is now " + health);
                 break;
             case "Explosion":
+                System.out.println("While searching the room, you accidentaly knock over a vial and a large explosion occurs. You lose 75 health");
                 health -= 75;
+                System.out.println("Your current health is now " + health);
                 break;
             case "Trap":
                 int rs = (int) (20 * Math.random()) + 1;
                 if (rs == 20) {
-                    System.out.println("The trap hits you straith in the face and knocks you off your feet");
+                    System.out.println("The trap hits you straight in the face and knocks you off your feet, you lose 20 health");
                 } else if (rs > 15) {
-                    System.out.println("You try to dodge the trap but is hit in the chest");
+                    System.out.println("You try to dodge the trap but is hit in the chest, you lose " + rs + " health");
                 } else if (rs > 10) {
-                    System.out.println("You dodge the trap but is hit in the legs");
+                    System.out.println("You dodge the trap but is hit in the legs, you lose " + rs + " health");
                 } else if (rs < 10) {
-                    System.out.println("You dodge the trap completely but is hurt as you hit the ground");
+                    System.out.println("You dodge the trap completely but is hurt as you hit the ground, you lose " + rs + " health");
                 }
                 health -= rs;
+                System.out.println("Your current health is now " + health);
+                break;
+            case "Flames":
+                System.out.println("You [Stood in the Fire]!, you lose 10 health");
+                health -= 10;
+                System.out.println("Your current health is now " + health);
+                break;
+            case "Hound":
+                System.out.println("The hound wakes up and jumps to attack you, it's teeth sinks into your arm and you lose 15 health");
+                System.out.println("The hound loses interest and leaves you alone");
+                health -= 15;
+                System.out.println("Your current health is now " + health);
                 break;
             default:
                 break;
@@ -71,10 +90,8 @@ public class Player {
 
         if (health < 1) {
             System.out.println("Your health has fallen below 1 and you draw your last breath");
-            //game.end();
+            System.exit(0); //ret fejl
         }
-
-        System.out.println(health);
         return health;
     }
 
@@ -82,15 +99,15 @@ public class Player {
 
         switch (find) {
             case "Treasure":
-                System.out.println("You've found the treasure!");
-                gold += 100;
+                System.out.println("You've found the treasure! It contains 100 gold");
+                gold += 100;                
                 break;
             case "Coin":
-                System.out.println("You've found one coin!");
+                System.out.println("You've found one gold coin!");
                 gold += 1;
                 break;
             case "Coins":
-                System.out.println("You've found five coins!");
+                System.out.println("You've found five gold coins!");
                 gold += 5;
                 break;
             case "Guards":
@@ -110,6 +127,10 @@ public class Player {
 
     public int getGold() {
         return gold;
+    }
+
+    public int getHealth() {
+        return health;
     }
 
 }
