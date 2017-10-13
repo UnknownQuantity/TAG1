@@ -4,36 +4,36 @@ import java.util.*;
 
 public class Rooms {
 
-    boolean roomVisited = false; //Tracks wether or not you have been in a room (boolean true false)
+    boolean[] roomVisited = new boolean[20]; //Tracks wether or not you have been in a room (boolean true false)
     boolean roomStorage1, roomBedroomm, roomLoom, roomLabratory, roomKitchen, roomRoomOfRiches = false; //Tracks the interactions in the room, if interaction is onetime use, set boolean true
     ArrayList<RoomList> room = new ArrayList<>();
     ArrayList rooms = new ArrayList();
 
     public void Rooms() {
         //north, east, south, west, loot, danger...
-        room.add(new RoomList("Start", true, false, false, false, false, false));
-        room.add(new RoomList("Passage", true, true, true, true, false, false));
-        room.add(new RoomList("Death1", false, false, false, false, false, true));
-        room.add(new RoomList("Storage1", true, false, true, false, true, false));
-        room.add(new RoomList("Passage3", true, true, true, true, false, false));
-        room.add(new RoomList("Bedroom", false, true, false, true, true, false));
-        room.add(new RoomList("Loo2", false, true, false, true, false, true));
-        room.add(new RoomList("DeadEnd", false, false, true, false, false, false));
-        room.add(new RoomList("Corridor", false, true, false, true, false, false));
-        room.add(new RoomList("Passage2", true, true, true, true, false, false));
-        room.add(new RoomList("Loo", true, false, false, false, true, false));
-        room.add(new RoomList("Labratory", false, false, true, false, true, true));
-        room.add(new RoomList("Kitchen", true, true, false, true, true, true));
-        room.add(new RoomList("Pantry", true, true, false, false, false, false));
-        room.add(new RoomList("HiddenCorridor", true, false, true, false, false, true)); //mathrandom 1 ud af 10 for at tage skade
-        room.add(new RoomList("RoomOfRiches", false, false, true, false, true, false));
-        room.add(new RoomList("DiningHall", true, false, true, false, false, true)); //If search room, danger activate
-        room.add(new RoomList("Corridor2", false, true, true, false, false, false));
-        room.add(new RoomList("CourtYard", true, true, false, true, false, false));
-        room.add(new RoomList("Hall", false, true, true, true, false, true)); // mathrandom i to 50 for a guard to walk out and beat ya
-        room.add(new RoomList("GuardRoom", true, false, false, false, false, true));
-        room.add(new RoomList("Freiheit", false, false, false, false, false, false));
-        room.add(new RoomList("Freiheit2", false, false, false, false, false, false));
+        room.add(new RoomList("Start", true, false, false, false, false, false)); //0
+        room.add(new RoomList("Passage", true, true, true, true, false, false)); //1
+        room.add(new RoomList("Death", false, false, false, false, false, true)); //2
+        room.add(new RoomList("Storage1", true, false, true, false, true, false)); //3
+        room.add(new RoomList("Passage3", true, true, true, true, false, false)); //4
+        room.add(new RoomList("Bedroom", false, true, false, true, true, false)); //5
+        room.add(new RoomList("Loo2", false, true, false, true, false, true)); //6
+        room.add(new RoomList("DeadEnd", false, false, true, false, false, false)); //7
+        room.add(new RoomList("Corridor", false, true, false, true, false, false)); //8
+        room.add(new RoomList("Passage2", true, true, true, true, false, false)); //9
+        room.add(new RoomList("Loo", true, false, false, false, true, false)); //10
+        room.add(new RoomList("Labratory", false, false, true, false, true, true)); //11
+        room.add(new RoomList("Kitchen", true, true, false, true, true, true)); //12
+        room.add(new RoomList("Pantry", true, true, false, false, false, false)); //13
+        room.add(new RoomList("HiddenCorridor", true, false, true, false, false, true)); //14 - mathrandom 1 ud af 10 for at tage skade
+        room.add(new RoomList("RoomOfRiches", false, false, true, false, true, false)); //15
+        room.add(new RoomList("DiningHall", true, false, true, false, false, true)); //16 - If search room, danger activate
+        room.add(new RoomList("Corridor2", false, true, true, false, false, false)); //17
+        room.add(new RoomList("CourtYard", true, true, false, true, false, false)); //18
+        room.add(new RoomList("Hall", false, true, true, true, false, true)); //19 - mathrandom i to 50 for a guard to walk out and beat ya
+        room.add(new RoomList("GuardRoom", true, false, false, false, false, true)); //20
+        room.add(new RoomList("Freiheit", false, false, false, false, false, false)); //21
+        room.add(new RoomList("Freiheit2", false, false, false, false, false, false)); //22
 
     }
 
@@ -46,7 +46,7 @@ public class Rooms {
             case "Passage":
                 System.out.println("Insert Passage description in here :)");
                 break;
-            case "Death1":
+            case "Death":
                 System.out.println("Insert death description in here :)");
                 break;
             case "Storage1":
