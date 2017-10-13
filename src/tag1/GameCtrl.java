@@ -514,5 +514,12 @@ public class GameCtrl {
         System.out.println("Your game has ended, please come again!");
         System.exit(0);
     }
+    
+    public void Help() {
+        
+    }
 
+    public void Quit() {
+        
+    }
 }
