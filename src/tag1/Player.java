@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Player {
 
+    //******************Player-Varibles.start******************\\
     private int health = 100;
     private int gold = 0;
     private String name;
@@ -11,6 +12,8 @@ public class Player {
     private boolean search;
     Rooms r1 = new Rooms();
 
+    //******************Player-Varibles.end******************\\
+    //******************Player-gamplay-methods.start******************\\
     public void Player() {
 
         System.out.println("Hello, please enter your name");
@@ -37,14 +40,14 @@ public class Player {
 
         switch (modi) {
             case "Poison":
-                System.out.println("The poison in the room suffercates you and you lose 25 health");                
+                System.out.println("The poison in the room suffercates you and you lose 25 health");
                 health -= 25;
                 System.out.println("Your current health is now " + health);
                 break;
             case "Rotten food":
                 System.out.println("You find some food in a bowl and proceeds to eat it, the food was rotten and you lose 5 health");
                 health -= 5;
-                System.out.println("Your current health is now " + health);                
+                System.out.println("Your current health is now " + health);
                 break;
             case "Death":
                 health = 0;
@@ -89,7 +92,7 @@ public class Player {
                 health += 10;
                 System.out.println("Your current health is now " + health);
                 break;
-                
+
             case "Greater_Healing_Potion":
                 System.out.println("You find a Healing potion and chug it down. Restored 25 health");
                 health += 25;
@@ -111,7 +114,7 @@ public class Player {
         switch (find) {
             case "Treasure":
                 System.out.println("You've found the treasure! It contains 100 gold");
-                gold += 100;                
+                gold += 100;
                 break;
             case "Coin":
                 System.out.println("You've found one gold coin!");
@@ -136,10 +139,8 @@ public class Player {
         return gold;
     }
 
-    public boolean isSearch() {
-        return search;
-    }
-
+    //******************Player-gamplay-methods.end******************\\
+    //******************Player-getters.start******************\\
     public int getGold() {
         return gold;
     }
@@ -148,4 +149,5 @@ public class Player {
         return health;
     }
 
+    //******************Player-getters.end******************\\
 }

@@ -4,10 +4,13 @@ import java.util.*;
 
 public class Rooms {
 
+    //******************Rooms-Variables.start******************\\
     boolean[] roomVisited = new boolean[20]; //Tracks wether or not you have been in a room (boolean true false)
     boolean roomStorage1, roomBedroomm, roomLoom, roomLabratory, roomKitchen, roomRoomOfRiches = false; //Tracks the interactions in the room, if interaction is onetime use, set boolean true
     ArrayList<RoomList> room = new ArrayList<>();
 
+    //******************Rooms-Variables.end******************\\
+    //******************Rooms-Methods.start******************\\
     public void Rooms() {
         //north, east, south, west, loot, danger...
         room.add(new RoomList("Start", true, false, false, false, false, false)); //0
@@ -37,9 +40,9 @@ public class Rooms {
     }
 
     public String description(int spot) {
-        
+
         ArrayList<String> descList = new ArrayList<>();
-        
+
         descList.add("start"); //0
         descList.add("Pass"); //1
         descList.add("Dead"); //2
@@ -61,7 +64,9 @@ public class Rooms {
         descList.add("court"); //18
         descList.add("hall"); //19
         descList.add("guard"); //20      
-        
-    return descList.get(spot);
-    }    
+
+        return descList.get(spot);
+    }
+
+    //******************Rooms-Methods.end******************\\
 }

@@ -2,9 +2,11 @@ package tag1;
 
 class RoomList {
 
+    //******************RoomList-Variables.start******************\\
     private final boolean north, east, south, west, loot, danger;
     private final String name;
 
+    //******************RoomList-Variables.end******************\\
     public RoomList(String name, boolean north, boolean east, boolean south, boolean west, boolean loot, boolean danger) {
         this.north = north;
         this.east = east;
@@ -15,6 +17,7 @@ class RoomList {
         this.danger = danger;
     }
 
+    //******************RoomList-getters.start******************\\
     public String getName() {
         return name;
     }
@@ -43,4 +46,5 @@ class RoomList {
         return west;
     }
 
+    //******************RoomList-getters.end******************\\
 }
