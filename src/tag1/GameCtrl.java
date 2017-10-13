@@ -12,7 +12,8 @@ public class GameCtrl {
     private String rerun = "";
     private final String[] args = {};
     private int ran;
-    private boolean hound = false;
+    private boolean hound = false;    
+    boolean areIn = false;
     TextIO io = new TextIO(new SysTextIO());
     Rooms r1 = new Rooms();
     Player p1 = new Player();
@@ -211,27 +212,29 @@ public class GameCtrl {
     } //6
 
     public void DeadEnd() {
-
+        
         r1.room.get(7);
         System.out.println(r1.description(7));
         r1.roomVisited[7] = true;
-
+        
+        if (areIn == false) {
         if (!hound) {
             ran = (int) (3 * Math.random()) + 1;
             System.out.println(ran);
             if (ran == 3) {
-                p1.Health("Hound");
+                p1.Health("Hound_Sleep");
             }
             hound = true;
         } else if (hound) {
-            p1.Health("Hound");
+            p1.Health("Hound_Wake");
         }
-
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
-            case "s":
+            case "s":                
+                areIn = false;
                 Passage3();
                 break;
             case "q":
@@ -241,6 +244,7 @@ public class GameCtrl {
                 DeadEnd();
             default:
                 System.out.println("Invalid answer!");
+                areIn = true;
                 DeadEnd();
         }
     } //7
@@ -603,7 +607,7 @@ public class GameCtrl {
         r1.roomVisited[20] = true;
 
         p1.Health("Guards");
-        p1.Loot("Guards");
+        p1.Loot("Guards");       
         Hall();
     } //20
 

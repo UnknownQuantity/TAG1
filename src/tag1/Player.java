@@ -80,8 +80,14 @@ public class Player {
                 health -= 10;
                 System.out.println("Your current health is now " + health);
                 break;
-            case "Hound":
+            case "Hound_Sleep":
                 System.out.println("The hound wakes up and jumps to attack you, it's teeth sinks into your arm and you lose 15 health");
+                System.out.println("The hound loses interest and leaves you alone");
+                health -= 15;
+                System.out.println("Your current health is now " + health);
+                break;
+            case "Hound_Wake":
+                System.out.println("The hound sees you immediately and once again jump to attack, you lose 15 health");
                 System.out.println("The hound loses interest and leaves you alone");
                 health -= 15;
                 System.out.println("Your current health is now " + health);
@@ -91,7 +97,6 @@ public class Player {
                 health += 10;
                 System.out.println("Your current health is now " + health);
                 break;
-
             case "Greater_Healing_Potion":
                 System.out.println("You find a Healing potion and chug it down. Restored 25 health");
                 health += 25;
