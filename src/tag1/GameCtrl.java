@@ -5,9 +5,8 @@ import textio.SysTextIO;
 import textio.TextIO;
 
 public class GameCtrl {
-    
-    //******************GameCtrl-Varibles.start******************\\
 
+    //******************GameCtrl-Varibles.start******************\\
     private String search;
     private final Scanner sc = new Scanner(System.in);
     private String rerun = "";
@@ -16,18 +15,16 @@ public class GameCtrl {
     private boolean hound = false;
     TextIO io = new TextIO(new SysTextIO());
     Rooms r1 = new Rooms();
-    Player p1 = new Player();  
-    
-    //******************GameCtrl-Varibles.end******************\\
-    
-    //******************Room-methods.start******************\\
+    Player p1 = new Player();
 
+    //******************GameCtrl-Varibles.end******************\\
+    //******************Room-methods.start******************\\
     public void Start() {
-        
-            r1.room.get(0);
-            System.out.println(r1.description(0));
-            r1.roomVisited[0] = true;
-        
+
+        r1.room.get(0);
+        System.out.println(r1.description(0));
+        r1.roomVisited[0] = true;
+
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -47,11 +44,11 @@ public class GameCtrl {
     } //0
 
     public void Passage() {
-        
-            r1.room.get(1);
-            System.out.println(r1.description(1));
-            r1.roomVisited[1] = true;
-        
+
+        r1.room.get(1);
+        System.out.println(r1.description(1));
+        r1.roomVisited[1] = true;
+
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -69,19 +66,18 @@ public class GameCtrl {
             case "h":
                 Help();
                 Passage();
-            default:                
+            default:
                 System.out.println("Invalid answer!");
                 Passage();
         }
     } //1
 
     public void Death() {
-        
-            r1.room.get(2);
-            System.out.println(r1.description(2));
-            r1.roomVisited[2] = true;
-            p1.Health("Death");
-        
+
+        r1.room.get(2);
+        System.out.println(r1.description(2));
+        r1.roomVisited[2] = true;
+        p1.Health("Death");
 
         System.out.println("Do you want to try again? y/n");  //respawn
         rerun = sc.next();
@@ -96,11 +92,10 @@ public class GameCtrl {
     } //2
 
     public void Storage1() {
-        
-            r1.room.get(3);
-            r1.roomVisited[3] = true;
-            System.out.println(r1.description(3));
-        
+
+        r1.room.get(3);
+        r1.roomVisited[3] = true;
+        System.out.println(r1.description(3));
 
         String dir;
         if (r1.roomStorage1 == false) {
@@ -131,13 +126,12 @@ public class GameCtrl {
                 Storage1();
         }
     } //3
-    
-      public void Passage3() {
-        
-            r1.room.get(4);
-            System.out.println(r1.description(4));
-            r1.roomVisited[4] = true;
-        
+
+    public void Passage3() {
+
+        r1.room.get(4);
+        System.out.println(r1.description(4));
+        r1.roomVisited[4] = true;
 
         String dir;
         System.out.println("What do you want to do?");
@@ -157,17 +151,16 @@ public class GameCtrl {
                 Help();
                 Passage3();
             default:
-                System.out.println("Invalid answer!");                
+                System.out.println("Invalid answer!");
                 Passage3();
         }
     } //4
-      
-      public void Bedroom() {
-        
-            r1.room.get(5);
-            System.out.println(r1.description(5));
-            r1.roomVisited[5] = true;
-        
+
+    public void Bedroom() {
+
+        r1.room.get(5);
+        System.out.println(r1.description(5));
+        r1.roomVisited[5] = true;
 
         String dir;
         System.out.println("What do you want to do?");
@@ -189,13 +182,12 @@ public class GameCtrl {
                 Bedroom();
         }
     } //5
-      
-      public void Loo2() {
-        
-            r1.room.get(6);
-            System.out.println(r1.description(6));
-            r1.roomVisited[6] = true;
-        
+
+    public void Loo2() {
+
+        r1.room.get(6);
+        System.out.println(r1.description(6));
+        r1.roomVisited[6] = true;
 
         String dir;
         System.out.println("What do you want to do?");
@@ -217,13 +209,12 @@ public class GameCtrl {
                 Loo2();
         }
     } //6
-      
-      public void DeadEnd() {
-        
-            r1.room.get(7);
-            System.out.println(r1.description(7));
-            r1.roomVisited[7] = true;
-        
+
+    public void DeadEnd() {
+
+        r1.room.get(7);
+        System.out.println(r1.description(7));
+        r1.roomVisited[7] = true;
 
         if (!hound) {
             ran = (int) (3 * Math.random()) + 1;
@@ -255,11 +246,11 @@ public class GameCtrl {
     } //7
 
     public void Corridor() {
-        
-            r1.room.get(8);
-            r1.roomVisited[8] = true;
-            System.out.println(r1.description(8));
-        
+
+        r1.room.get(8);
+        r1.roomVisited[8] = true;
+        System.out.println(r1.description(8));
+
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -271,20 +262,20 @@ public class GameCtrl {
             case "q":
                 Quit();
             case "h":
-                Help();                
+                Help();
                 Corridor();
             default:
-                System.out.println("Invalid answer!");                
+                System.out.println("Invalid answer!");
                 Corridor();
         }
     } //8
 
     public void Passage2() {
-        
-            r1.room.get(9);
-            System.out.println(r1.description(9));
-            r1.roomVisited[9] = true;
-        
+
+        r1.room.get(9);
+        System.out.println(r1.description(9));
+        r1.roomVisited[9] = true;
+
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -306,17 +297,16 @@ public class GameCtrl {
                 Help();
                 Passage2();
             default:
-                System.out.println("Invalid answer!");                
+                System.out.println("Invalid answer!");
                 Passage2();
         }
     } //9
 
     public void Loo() {
-        
-            r1.room.get(10);
-            System.out.println(r1.description(10));
-            r1.roomVisited[10] = true;
-        
+
+        r1.room.get(10);
+        System.out.println(r1.description(10));
+        r1.roomVisited[10] = true;
 
         String dir;
         System.out.println("What do you want to do?");
@@ -335,13 +325,12 @@ public class GameCtrl {
                 Loo();
         }
     } //10
-    
+
     public void Labratory() {
-        
-            r1.room.get(11);
-            System.out.println(r1.description(11));
-            r1.roomVisited[11] = true;
-        
+
+        r1.room.get(11);
+        System.out.println(r1.description(11));
+        r1.roomVisited[11] = true;
 
         String dir;
         if (r1.roomLabratory == false) {
@@ -370,13 +359,12 @@ public class GameCtrl {
                 Labratory();
         }
     } //11
-    
+
     public void Kitchen() {
-        
-            r1.room.get(12);
-            System.out.println(r1.description(12));
-            r1.roomVisited[12] = true;
-        
+
+        r1.room.get(12);
+        System.out.println(r1.description(12));
+        r1.roomVisited[12] = true;
 
         String dir;
         if (r1.roomKitchen == false) {
@@ -411,11 +399,10 @@ public class GameCtrl {
     } //12    
 
     public void Pantry() {
-        
-            r1.room.get(13);
-            System.out.println(r1.description(13));
-            r1.roomVisited[13] = true;
-        
+
+        r1.room.get(13);
+        System.out.println(r1.description(13));
+        r1.roomVisited[13] = true;
 
         String dir;
         System.out.println("What do you want to do?");
@@ -440,10 +427,9 @@ public class GameCtrl {
     } //13
 
     public void HiddenCorridor() {
-        
-            r1.room.get(14);
-            System.out.println(r1.description(14));
-        
+
+        r1.room.get(14);
+        System.out.println(r1.description(14));
 
         String dir;
         if (r1.roomVisited[14] == false) {
@@ -473,10 +459,9 @@ public class GameCtrl {
     } //14
 
     public void RoomOfRiches() {
-            r1.room.get(15);
-            System.out.println(r1.description(15));
-            r1.roomVisited[15] = true;
-        
+        r1.room.get(15);
+        System.out.println(r1.description(15));
+        r1.roomVisited[15] = true;
 
         String dir;
         p1.Loot("Treasure");
@@ -499,11 +484,10 @@ public class GameCtrl {
     } //15
 
     public void DiningHall() {
-        
-            r1.room.get(16);
-            System.out.println(r1.description(16));
-            r1.roomVisited[16] = true;
-        
+
+        r1.room.get(16);
+        System.out.println(r1.description(16));
+        r1.roomVisited[16] = true;
 
         String dir;
         System.out.println("What do you want to do?");
@@ -528,11 +512,10 @@ public class GameCtrl {
     } //16
 
     public void Corridor2() {
-        
-            r1.room.get(17);
-            System.out.println(r1.description(17));
-            r1.roomVisited[17] = true;
-        
+
+        r1.room.get(17);
+        System.out.println(r1.description(17));
+        r1.roomVisited[17] = true;
 
         String dir;
         System.out.println("What do you want to do?");
@@ -557,10 +540,9 @@ public class GameCtrl {
     } //17
 
     public void Courtyard() {
-            r1.room.get(18);
-            System.out.println(r1.description(18));
-            r1.roomVisited[18] = true;
-        
+        r1.room.get(18);
+        System.out.println(r1.description(18));
+        r1.roomVisited[18] = true;
 
         String dir;
         System.out.println("What do you want to do?");
@@ -585,13 +567,12 @@ public class GameCtrl {
                 Courtyard();
         }
     } //18
-    
+
     public void Hall() {
-        
-            r1.room.get(19);
-            System.out.println(r1.description(19));
-            r1.roomVisited[19] = true;
-        
+
+        r1.room.get(19);
+        System.out.println(r1.description(19));
+        r1.roomVisited[19] = true;
 
         String dir;
         System.out.println("What do you want to do?");
@@ -633,11 +614,9 @@ public class GameCtrl {
     public void Freiheit2() {
         win();
     } //22
-    
+
     //******************Room-methods.end******************\\
-    
     //******************Non-room-methods.start******************\\
-    
     public void GameCtrl() {
 
         p1.Player();
@@ -683,6 +662,6 @@ public class GameCtrl {
         System.out.println("We hope you had fun, please come again!");
         System.exit(0);
     }
-    
+
     //******************Non-room-methods.end******************\\
 }
