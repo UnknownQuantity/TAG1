@@ -40,6 +40,7 @@ public class GameCtrl {
             case "q":
                 Quit();
             default:
+                System.out.println("Invalid answer!");
                 Start();
 
         }
@@ -68,7 +69,8 @@ public class GameCtrl {
             case "h":
                 Help();
                 Passage();
-            default:
+            default:                
+                System.out.println("Invalid answer!");
                 Passage();
         }
     } //1
@@ -125,6 +127,7 @@ public class GameCtrl {
                 Help();
                 Storage1();
             default:
+                System.out.println("Invalid answer!");
                 Storage1();
         }
     } //3
@@ -153,7 +156,8 @@ public class GameCtrl {
             case "h":
                 Help();
                 Passage3();
-            default:                
+            default:
+                System.out.println("Invalid answer!");                
                 Passage3();
         }
     } //4
@@ -181,6 +185,7 @@ public class GameCtrl {
                 Help();
                 Bedroom();
             default:
+                System.out.println("Invalid answer!");
                 Bedroom();
         }
     } //5
@@ -208,6 +213,7 @@ public class GameCtrl {
                 Help();
                 Loo2();
             default:
+                System.out.println("Invalid answer!");
                 Loo2();
         }
     } //6
@@ -243,6 +249,7 @@ public class GameCtrl {
                 Help();
                 DeadEnd();
             default:
+                System.out.println("Invalid answer!");
                 DeadEnd();
         }
     } //7
@@ -266,7 +273,8 @@ public class GameCtrl {
             case "h":
                 Help();                
                 Corridor();
-            default:                
+            default:
+                System.out.println("Invalid answer!");                
                 Corridor();
         }
     } //8
@@ -297,7 +305,8 @@ public class GameCtrl {
             case "h":
                 Help();
                 Passage2();
-            default:                
+            default:
+                System.out.println("Invalid answer!");                
                 Passage2();
         }
     } //9
@@ -322,6 +331,7 @@ public class GameCtrl {
                 Help();
                 Loo();
             default:
+                System.out.println("Invalid answer!");
                 Loo();
         }
     } //10
@@ -356,6 +366,7 @@ public class GameCtrl {
                 Help();
                 Labratory();
             default:
+                System.out.println("Invalid answer!");
                 Labratory();
         }
     } //11
@@ -394,6 +405,7 @@ public class GameCtrl {
                 Help();
                 Kitchen();
             default:
+                System.out.println("Invalid answer!");
                 Kitchen();
         }
     } //12    
@@ -421,6 +433,7 @@ public class GameCtrl {
                 Help();
                 Pantry();
             default:
+                System.out.println("Invalid answer!");
                 Pantry();
         }
 
@@ -454,6 +467,7 @@ public class GameCtrl {
                 Help();
                 HiddenCorridor();
             default:
+                System.out.println("Invalid answer!");
                 HiddenCorridor();
         }
     } //14
@@ -478,6 +492,7 @@ public class GameCtrl {
                 Help();
                 RoomOfRiches();
             default:
+                System.out.println("Invalid answer!");
                 RoomOfRiches();
         }
 
@@ -506,6 +521,7 @@ public class GameCtrl {
                 Help();
                 DiningHall();
             default:
+                System.out.println("Invalid answer!");
                 DiningHall();
         }
 
@@ -534,6 +550,7 @@ public class GameCtrl {
                 Help();
                 Corridor2();
             default:
+                System.out.println("Invalid answer!");
                 Corridor2();
         }
 
@@ -564,6 +581,7 @@ public class GameCtrl {
                 Help();
                 Courtyard();
             default:
+                System.out.println("Invalid answer!");
                 Courtyard();
         }
     } //18
@@ -592,6 +610,7 @@ public class GameCtrl {
                 Help();
                 Hall();
             default:
+                System.out.println("Invalid answer!");
                 Hall();
         }
     } //19

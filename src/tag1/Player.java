@@ -9,7 +9,6 @@ public class Player {
     private int gold = 0;
     private String name;
     private final static Scanner sc = new Scanner(System.in);
-    private boolean search;
     Rooms r1 = new Rooms();
 
     //******************Player-Varibles.end******************\\
