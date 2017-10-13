@@ -7,7 +7,6 @@ public class Rooms {
     boolean[] roomVisited = new boolean[20]; //Tracks wether or not you have been in a room (boolean true false)
     boolean roomStorage1, roomBedroomm, roomLoom, roomLabratory, roomKitchen, roomRoomOfRiches = false; //Tracks the interactions in the room, if interaction is onetime use, set boolean true
     ArrayList<RoomList> room = new ArrayList<>();
-    ArrayList rooms = new ArrayList();
 
     public void Rooms() {
         //north, east, south, west, loot, danger...
@@ -61,8 +60,7 @@ public class Rooms {
         descList.add("corr2"); //17
         descList.add("court"); //18
         descList.add("hall"); //19
-        descList.add("guard"); //20
-        descList.add("frei"); //21       
+        descList.add("guard"); //20      
         
     return descList.get(spot);
     }    

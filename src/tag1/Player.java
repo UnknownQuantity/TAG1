@@ -33,9 +33,9 @@ public class Player {
         return choice;
     }
 
-    public int Health(String danger) {
+    public int Health(String modi) {
 
-        switch (danger) {
+        switch (modi) {
             case "Poison":
                 System.out.println("The poison in the room suffercates you and you lose 25 health");                
                 health -= 25;
@@ -84,6 +84,17 @@ public class Player {
                 health -= 15;
                 System.out.println("Your current health is now " + health);
                 break;
+            case "Healing_Potion":
+                System.out.println("You find a Healing potion and chug it down. Restored 10 health");
+                health += 10;
+                System.out.println("Your current health is now " + health);
+                break;
+                
+            case "Greater_Healing_Potion":
+                System.out.println("You find a Healing potion and chug it down. Restored 25 health");
+                health += 25;
+                System.out.println("Your current health is now " + health);
+                break;
             default:
                 break;
         }
@@ -113,6 +124,10 @@ public class Player {
             case "Guards":
                 System.out.println("The guards steal all your gold!");
                 gold = 0;
+                break;
+            case "Healing_Potion":
+                break;
+            case "Greater_Healing_Potion":
                 break;
             default:
                 break;

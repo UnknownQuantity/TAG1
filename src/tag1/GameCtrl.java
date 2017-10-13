@@ -1,7 +1,5 @@
 package tag1;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 import textio.SysTextIO;
 import textio.TextIO;
@@ -10,7 +8,6 @@ public class GameCtrl {
 
     private String search;
     private final Scanner sc = new Scanner(System.in);
-    private String move = "";
     private String rerun = "";
     private final String[] args = {};
     private int ran;
@@ -23,73 +20,97 @@ public class GameCtrl {
 
         p1.Player();
         r1.Rooms();
-
-        Start(); //står i start
-        move = p1.Movement();
-        Passage(); //står i passage
-        move = p1.Movement();
-        if (move.equals("n")) {
-            Storage1();
-        } else if (move.equals("s")) {
-            Start();
-        } else if (move.equals("w")) {
-            Corridor();
-        } else if (move.equals("e")) {
-            Death();
-        }
+        Start(); //står i start        
 
     }
 
     public void Start() {
-        r1.room.get(0);
-        System.out.println(r1.description(0));
-        r1.roomVisited[0] = true;
+        int wrong = 0;
+        if (wrong <= 1) {
+            r1.room.get(0);
+            System.out.println(r1.description(0));
+            r1.roomVisited[0] = true;
+        }
+        String dir;
+        System.out.println("What do you want to do?");
+        dir = sc.next();
+        switch (dir) {
+            case "n":
+                Passage();
+            case "h":
+                Help();
+                Start();
+                wrong++;
+            case "q":
+                Quit();
+            default:
+                wrong++;
+                Start();
+
+        }
     } //0
 
     public void Passage() {
-        r1.room.get(1);
-        System.out.println(r1.description(1));
-        r1.roomVisited[1] = true;
-        // p1.Health("Poison");
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(1);
+            System.out.println(r1.description(1));
+            r1.roomVisited[1] = true;
+        }
         String dir;
-        System.out.println("Which way do you wanna go? n, s, w, e");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
                 Storage1();
-                break;
             case "s":
                 Start();
-                break;
             case "w":
                 Corridor();
-                break;
             case "e":
                 Death();
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Passage();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Passage();
         }
     } //1
 
     public void Death() {
-        r1.room.get(2);
-        System.out.println(r1.description(2));
-        r1.roomVisited[2] = true;
-        p1.Health("Death");
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(2);
+            System.out.println(r1.description(2));
+            r1.roomVisited[2] = true;
+            p1.Health("Death");
+        }
+
         System.out.println("Do you want to try again? y/n");  //respawn
         rerun = sc.next();
         if ("y".equals(rerun)) {
             TAG1.main(args);
         } else if ("n".equals(rerun)) {
             GameEnd();
+        } else {
+            wrong++;
+            Death();
         }
+
     } //2
 
     public void Storage1() {
-        r1.room.get(3);
-        r1.roomVisited[3] = true;
-        System.out.println(r1.description(3));
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(3);
+            r1.roomVisited[3] = true;
+            System.out.println(r1.description(3));
+        }
+
         String dir;
         if (r1.roomStorage1 == false) {
             System.out.println("wanna search? y/n");
@@ -100,7 +121,7 @@ public class GameCtrl {
                 r1.roomStorage1 = true;
             }
         }
-        System.out.println("Which way do you wanna go? n, s");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
@@ -109,38 +130,57 @@ public class GameCtrl {
             case "s":
                 Passage();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Storage1();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Storage1();
         }
     } //3
 
     public void Corridor() {
-        r1.room.get(8);
-        r1.roomVisited[8] = true;
-        System.out.println(r1.description(8));
+        boolean wrong = true;
+
+        if (!wrong) {
+            r1.room.get(8);
+            r1.roomVisited[8] = true;
+            System.out.println(r1.description(8));
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? w, e");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "w":
                 Passage2();
-                break;
             case "e":
                 Passage();
-                break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong = true;
+                Corridor();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong = true;
+                Corridor();
         }
     } //8
 
     public void Passage2() {
-        r1.room.get(9);
-        System.out.println(r1.description(9));
-        r1.roomVisited[9] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(9);
+            System.out.println(r1.description(9));
+            r1.roomVisited[9] = true;
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? n, s, e, w");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
@@ -154,64 +194,89 @@ public class GameCtrl {
                 break;
             case "w":
                 Kitchen();
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Passage2();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Passage2();
         }
     } //9
 
     public void Passage3() {
-        r1.room.get(4);
-        System.out.println(r1.description(4));
-        r1.roomVisited[4] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(4);
+            System.out.println(r1.description(4));
+            r1.roomVisited[4] = true;
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? n, s, e, w");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
                 DeadEnd();
-                break;
             case "s":
                 Storage1();
-                break;
             case "e":
                 Bedroom();
-                break;
             case "w":
                 Hall();
-                break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Passage3();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Passage3();
         }
     } //4
 
     public void Hall() {
-        r1.room.get(19);
-        System.out.println(r1.description(19));
-        r1.roomVisited[19] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(19);
+            System.out.println(r1.description(19));
+            r1.roomVisited[19] = true;
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? s, e, w");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
                 GuardRoom();
-                break;
             case "e":
                 Passage3();
-                break;
             case "w":
                 Courtyard();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Hall();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Hall();
         }
     } //19
 
     public void DeadEnd() {
-        r1.room.get(7);
-        System.out.println(r1.description(7));
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(7);
+            System.out.println(r1.description(7));
+            r1.roomVisited[7] = true;
+        }
+
         if (!hound) {
             ran = (int) (3 * Math.random()) + 1;
             System.out.println(ran);
@@ -219,29 +284,39 @@ public class GameCtrl {
                 p1.Health("Hound");
             }
             hound = true;
-        }
-        else if (hound)
+        } else if (hound) {
             p1.Health("Hound");
-        r1.roomVisited[7] = true;
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? s");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
                 Passage3();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                DeadEnd();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                DeadEnd();
         }
     } //7
 
     public void Bedroom() {
-        r1.room.get(5);
-        System.out.println(r1.description(5));
-        r1.roomVisited[5] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(5);
+            System.out.println(r1.description(5));
+            r1.roomVisited[5] = true;
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? e, w");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "e":
@@ -250,33 +325,53 @@ public class GameCtrl {
             case "w":
                 Passage3();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Bedroom();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Bedroom();
         }
     } //5
 
     public void Loo() {
-        r1.room.get(10);
-        System.out.println(r1.description(10));
-        r1.roomVisited[10] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(10);
+            System.out.println(r1.description(10));
+            r1.roomVisited[10] = true;
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? n");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
                 Passage2();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Loo();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Loo();
         }
     } //10
 
     public void Kitchen() {
-        r1.room.get(12);
-        System.out.println(r1.description(12));
-        r1.roomVisited[12] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(12);
+            System.out.println(r1.description(12));
+            r1.roomVisited[12] = true;
+        }
+
         String dir;
         if (r1.roomKitchen == false) {
             System.out.println("wanna search? y/n");
@@ -286,7 +381,7 @@ public class GameCtrl {
                 r1.roomKitchen = true;
             }
         }
-        System.out.println("Which way do you wanna go? n, e, w");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
@@ -298,16 +393,26 @@ public class GameCtrl {
             case "w":
                 Pantry();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Kitchen();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Kitchen();
         }
     } //12
 
     public void Labratory() {
-        r1.room.get(11);
-        System.out.println(r1.description(11));
-        r1.roomVisited[11] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(11);
+            System.out.println(r1.description(11));
+            r1.roomVisited[11] = true;
+        }
+
         String dir;
         if (r1.roomLabratory == false) {
             System.out.println("wanna search? y/n");
@@ -319,24 +424,34 @@ public class GameCtrl {
         } else {
             p1.Health("Flames");
         }
-        System.out.println("Which way do you wanna go? s");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
                 Passage2();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Labratory();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Labratory();
         }
     } //11
 
     public void Loo2() {
-        r1.room.get(6);
-        System.out.println(r1.description(6));
-        r1.roomVisited[6] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(6);
+            System.out.println(r1.description(6));
+            r1.roomVisited[6] = true;
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? e, w");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "e":
@@ -345,18 +460,28 @@ public class GameCtrl {
             case "w":
                 Bedroom();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Loo2();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Loo2();
         }
     } //6
 
     public void Pantry() {
-        r1.room.get(13);
-        System.out.println(r1.description(13));
-        r1.roomVisited[13] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(13);
+            System.out.println(r1.description(13));
+            r1.roomVisited[13] = true;
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? n, e");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
@@ -365,16 +490,26 @@ public class GameCtrl {
             case "e":
                 Kitchen();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Pantry();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Pantry();
         }
 
     } //13
 
     public void HiddenCorridor() {
-        r1.room.get(14);
-        System.out.println(r1.description(14));
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(14);
+            System.out.println(r1.description(14));
+        }
+
         String dir;
         if (r1.roomVisited[14] == false) {
             p1.Health("Trap");
@@ -382,7 +517,7 @@ public class GameCtrl {
 
         r1.roomVisited[14] = true;
 
-        System.out.println("Which way do you wanna go? n, s");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
@@ -391,37 +526,57 @@ public class GameCtrl {
             case "s":
                 Pantry();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                HiddenCorridor();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                HiddenCorridor();
         }
     } //14
 
     public void RoomOfRiches() {
-        r1.room.get(15);
-        System.out.println(r1.description(15));
-        r1.roomVisited[15] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(15);
+            System.out.println(r1.description(15));
+            r1.roomVisited[15] = true;
+        }
+
         String dir;
         p1.Loot("Treasure");
-        System.out.println("Which way do you wanna go? s");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
                 HiddenCorridor();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                RoomOfRiches();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                RoomOfRiches();
         }
 
     } //15
 
     public void DiningHall() {
-        r1.room.get(16);
-        System.out.println(r1.description(16));
-        r1.roomVisited[16] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(16);
+            System.out.println(r1.description(16));
+            r1.roomVisited[16] = true;
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? n, s");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
@@ -430,19 +585,29 @@ public class GameCtrl {
             case "s":
                 Kitchen();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                DiningHall();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                DiningHall();
         }
 
     } //16
 
     public void Corridor2() {
-        r1.room.get(17);
-        System.out.println(r1.description(17));
-        r1.roomVisited[17] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(17);
+            System.out.println(r1.description(17));
+            r1.roomVisited[17] = true;
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? s, e");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
@@ -451,20 +616,29 @@ public class GameCtrl {
             case "e":
                 Courtyard();
                 break;
-
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Corridor2();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Corridor2();
         }
 
     } //17
 
     public void Courtyard() {
-        r1.room.get(18);
-        System.out.println(r1.description(18));
-        r1.roomVisited[18] = true;
+        int wrong = 0;
+        if (wrong == 0) {
+            r1.room.get(18);
+            System.out.println(r1.description(18));
+            r1.roomVisited[18] = true;
+        }
+
         String dir;
-        System.out.println("Which way do you wanna go? n, e, w");
+        System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
@@ -476,17 +650,24 @@ public class GameCtrl {
             case "w":
                 Corridor2();
                 break;
+            case "q":
+                Quit();
+            case "h":
+                Help();
+                wrong++;
+                Courtyard();
             default:
-                System.out.println("NOPE");
-                break;
+                wrong++;
+                Courtyard();
         }
     } //18
 
     public void GuardRoom() {
+
         r1.room.get(20);
         System.out.println(r1.description(20));
         r1.roomVisited[20] = true;
-        String dir;
+
         p1.Health("Guards");
         p1.Loot("Guards");
         Hall();
@@ -514,12 +695,27 @@ public class GameCtrl {
         System.out.println("Your game has ended, please come again!");
         System.exit(0);
     }
-    
+
     public void Help() {
-        
+        System.out.println("********HELP********");
+        System.out.println("When asked to perform an action the following codes is allowed");
+        System.out.println("for help type: h");
+        System.out.println("to go north type: n");
+        System.out.println("to go south type: s");
+        System.out.println("to go east type: e");
+        System.out.println("to go west type: w");
+        System.out.println("to quit type: q");
+        System.out.println("********HELP********");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     public void Quit() {
-        
+        System.out.println("Oh are you leaving? :( ");
+        System.out.println("We hope you had fun, please come again!");
+        System.exit(0);
     }
 }
