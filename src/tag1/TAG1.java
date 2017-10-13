@@ -7,5 +7,5 @@ public class TAG1 {
         GameCtrl game = new GameCtrl();
         game.GameCtrl();
     }
-    
+
 }

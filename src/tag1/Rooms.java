@@ -8,7 +8,7 @@ public class Rooms {
     boolean roomStorage1, roomBedroomm, roomLoom, roomLabratory, roomKitchen, roomRoomOfRiches = false; //Tracks the interactions in the room, if interaction is onetime use, set boolean true
     ArrayList<RoomList> room = new ArrayList<>();
     ArrayList rooms = new ArrayList();
-    
+
     public void Rooms() {
         //north, east, south, west, loot, danger...
         room.add(new RoomList("Start", true, false, false, false, false, false));
@@ -36,7 +36,7 @@ public class Rooms {
         room.add(new RoomList("Freiheit2", false, false, false, false, false, false));
 
     }
-//..
+
     public String description() {
         String name = room.get(0).getName();
         switch (name) {

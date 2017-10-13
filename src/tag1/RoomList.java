@@ -2,18 +2,19 @@ package tag1;
 
 class RoomList {
 
-private final boolean north, east, south, west, loot, danger;
-private final String name;
+    private final boolean north, east, south, west, loot, danger;
+    private final String name;
 
-public RoomList(String name, boolean north, boolean east, boolean south, boolean west, boolean loot, boolean danger){
-    this.north = north;
-    this.east = east;
-    this.south = south;
-    this.west = west;
-    this.name = name;
-    this.loot = loot;
-    this.danger = danger;
-}
+    public RoomList(String name, boolean north, boolean east, boolean south, boolean west, boolean loot, boolean danger) {
+        this.north = north;
+        this.east = east;
+        this.south = south;
+        this.west = west;
+        this.name = name;
+        this.loot = loot;
+        this.danger = danger;
+    }
+
     public String getName() {
         return name;
     }
@@ -41,5 +42,5 @@ public RoomList(String name, boolean north, boolean east, boolean south, boolean
     public boolean isWest() {
         return west;
     }
-    
+
 }

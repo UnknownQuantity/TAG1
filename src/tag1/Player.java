@@ -10,9 +10,6 @@ public class Player {
     private final static Scanner sc = new Scanner(System.in);
     private boolean search;
     Rooms r1 = new Rooms();
-    
-    
-    
 
     public void Player() {
 
@@ -25,13 +22,13 @@ public class Player {
 
     public String Movement() {
         r1.Rooms();
-        r1.room.get(0);        
+        r1.room.get(0);
         String choice = "";
-        
-        System.out.println("Which way do you want to go? north, east, west, south ");        
+
+        System.out.println("Which way do you want to go? north, east, west, south ");
         if ("".equals(choice)) {
-        choice = sc.next();
-        return choice;
+            choice = sc.next();
+            return choice;
         }
         return choice;
     }
@@ -81,7 +78,7 @@ public class Player {
         return health;
     }
 
-    public int Loot(String find) {        
+    public int Loot(String find) {
 
         switch (find) {
             case "Treasure":
