@@ -20,66 +20,67 @@ public class GameCtrl {
 
     //******************GameCtrl-Varibles.end******************\\
     //******************Room-methods.start******************\\
-    public void Start() {
+    public void Start(char es) {
 
+        if (es == '+') {
         r1.room.get(0);
         System.out.println(r1.description(0));
         r1.roomVisited[0] = true;
-
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Passage();
+                Passage('+');
             case "h":
                 Help();
-                Start();
+                Start('-');
             case "q":
                 Quit();
             default:
                 System.out.println("Invalid answer!");
-                Start();
+                Start('-');
 
         }
     } //0
 
-    public void Passage() {
-
+    public void Passage(char es) {
+        if (es == '+') {
         r1.room.get(1);
         System.out.println(r1.description(1));
         r1.roomVisited[1] = true;
-
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Storage1();
+                Storage1('+');
             case "s":
-                Start();
+                Start('+');
             case "w":
-                Corridor();
+                Corridor('+');
             case "e":
-                Death();
+                Death('+');
             case "q":
                 Quit();
             case "h":
                 Help();
-                Passage();
+                Passage('-');
             default:
                 System.out.println("Invalid answer!");
-                Passage();
+                Passage('-');
         }
     } //1
 
-    public void Death() {
-
+    public void Death(char es) {
+if (es == '+') {
         r1.room.get(2);
         System.out.println(r1.description(2));
         r1.roomVisited[2] = true;
         p1.Health("Death");
-
+}
         System.out.println("Do you want to try again? y/n");  //respawn
         rerun = sc.next();
         if ("y".equals(rerun)) {
@@ -87,17 +88,17 @@ public class GameCtrl {
         } else if ("n".equals(rerun)) {
             GameEnd();
         } else {
-            Death();
+            Death('-');
         }
 
     } //2
 
-    public void Storage1() {
-
+    public void Storage1(char es) {
+if (es == '+') {
         r1.room.get(3);
         r1.roomVisited[3] = true;
         System.out.println(r1.description(3));
-
+}
         String dir;
         if (r1.roomStorage1 == false) {
             System.out.println("wanna search? y/n");
@@ -112,111 +113,111 @@ public class GameCtrl {
         dir = sc.next();
         switch (dir) {
             case "n":
-                Passage3();
+                Passage3('+');
                 break;
             case "s":
-                Passage();
+                Passage('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                Storage1();
+                Storage1('-');
             default:
                 System.out.println("Invalid answer!");
-                Storage1();
+                Storage1('-');
         }
     } //3
 
-    public void Passage3() {
-
+    public void Passage3(char es) {
+if (es == '+') {
         r1.room.get(4);
         System.out.println(r1.description(4));
         r1.roomVisited[4] = true;
-
+}
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                DeadEnd();
+                DeadEnd('+');
             case "s":
-                Storage1();
+                Storage1('+');
             case "e":
-                Bedroom();
+                Bedroom('+');
             case "w":
-                Hall();
+                Hall('+');
             case "q":
                 Quit();
             case "h":
                 Help();
-                Passage3();
+                Passage3('-');
             default:
                 System.out.println("Invalid answer!");
-                Passage3();
+                Passage3('-');
         }
     } //4
 
-    public void Bedroom() {
-
+    public void Bedroom(char es) {
+if (es == '+') {
         r1.room.get(5);
         System.out.println(r1.description(5));
         r1.roomVisited[5] = true;
-
+}
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "e":
-                Loo2();
+                Loo2('+');
                 break;
             case "w":
-                Passage3();
+                Passage3('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                Bedroom();
+                Bedroom('-');
             default:
                 System.out.println("Invalid answer!");
-                Bedroom();
+                Bedroom('-');
         }
     } //5
 
-    public void Loo2() {
-
+    public void Loo2(char es) {
+if (es == '+') {
         r1.room.get(6);
         System.out.println(r1.description(6));
         r1.roomVisited[6] = true;
-
+}
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "e":
-                Freiheit2();
+                Freiheit2('+');
                 break;
             case "w":
-                Bedroom();
+                Bedroom('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                Loo2();
+                Loo2('-');
             default:
                 System.out.println("Invalid answer!");
-                Loo2();
+                Loo2('-');
         }
     } //6
 
-    public void DeadEnd() {
-        
+    public void DeadEnd(char es) {
+        if (es == '+') {
         r1.room.get(7);
         System.out.println(r1.description(7));
         r1.roomVisited[7] = true;
-        
+        }
         if (areIn == false) {
         if (!hound) {
             ran = (int) (3 * Math.random()) + 1;
@@ -235,107 +236,107 @@ public class GameCtrl {
         switch (dir) {
             case "s":                
                 areIn = false;
-                Passage3();
+                Passage3('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                DeadEnd();
+                DeadEnd('-');
             default:
                 System.out.println("Invalid answer!");
                 areIn = true;
-                DeadEnd();
+                DeadEnd('-');
         }
     } //7
 
-    public void Corridor() {
-
+    public void Corridor(char es) {
+if (es == '+') {
         r1.room.get(8);
         r1.roomVisited[8] = true;
         System.out.println(r1.description(8));
-
+}
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "w":
-                Passage2();
+                Passage2('+');
             case "e":
-                Passage();
+                Passage('+');
             case "q":
                 Quit();
             case "h":
                 Help();
-                Corridor();
+                Corridor('-');
             default:
                 System.out.println("Invalid answer!");
-                Corridor();
+                Corridor('-');
         }
     } //8
 
-    public void Passage2() {
-
+    public void Passage2(char es) {
+if (es == '+') {
         r1.room.get(9);
         System.out.println(r1.description(9));
         r1.roomVisited[9] = true;
-
+}
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Labratory();
+                Labratory('+');
                 break;
             case "s":
-                Loo();
+                Loo('+');
                 break;
             case "e":
-                Corridor();
+                Corridor('+');
                 break;
             case "w":
-                Kitchen();
+                Kitchen('+');
             case "q":
                 Quit();
             case "h":
                 Help();
-                Passage2();
+                Passage2('-');
             default:
                 System.out.println("Invalid answer!");
-                Passage2();
+                Passage2('-');
         }
     } //9
 
-    public void Loo() {
-
+    public void Loo(char es) {
+if (es == '+') {
         r1.room.get(10);
         System.out.println(r1.description(10));
         r1.roomVisited[10] = true;
-
+}
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Passage2();
+                Passage2('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                Loo();
+                Loo('-');
             default:
                 System.out.println("Invalid answer!");
-                Loo();
+                Loo('-');
         }
     } //10
 
-    public void Labratory() {
-
+    public void Labratory(char es) {
+if (es == '+') {
         r1.room.get(11);
         System.out.println(r1.description(11));
         r1.roomVisited[11] = true;
-
+}
         String dir;
         if (r1.roomLabratory == false) {
             System.out.println("wanna search? y/n");
@@ -351,25 +352,25 @@ public class GameCtrl {
         dir = sc.next();
         switch (dir) {
             case "s":
-                Passage2();
+                Passage2('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                Labratory();
+                Labratory('-');
             default:
                 System.out.println("Invalid answer!");
-                Labratory();
+                Labratory('-');
         }
     } //11
 
-    public void Kitchen() {
-
+    public void Kitchen(char es) {
+if (es == '+') {
         r1.room.get(12);
         System.out.println(r1.description(12));
         r1.roomVisited[12] = true;
-
+}
         String dir;
         if (r1.roomKitchen == false) {
             System.out.println("wanna search? y/n");
@@ -383,58 +384,58 @@ public class GameCtrl {
         dir = sc.next();
         switch (dir) {
             case "n":
-                DiningHall();
+                DiningHall('+');
                 break;
             case "e":
-                Passage2();
+                Passage2('+');
                 break;
             case "w":
-                Pantry();
+                Pantry('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                Kitchen();
+                Kitchen('-');
             default:
                 System.out.println("Invalid answer!");
-                Kitchen();
+                Kitchen('-');
         }
     } //12    
 
-    public void Pantry() {
-
+    public void Pantry(char es) {
+if (es == '+') {
         r1.room.get(13);
         System.out.println(r1.description(13));
         r1.roomVisited[13] = true;
-
+}
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                HiddenCorridor();
+                HiddenCorridor('+');
                 break;
             case "e":
-                Kitchen();
+                Kitchen('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                Pantry();
+                Pantry('-');
             default:
                 System.out.println("Invalid answer!");
-                Pantry();
+                Pantry('-');
         }
 
     } //13
 
-    public void HiddenCorridor() {
-
+    public void HiddenCorridor(char es) {
+if (es == '+') {
         r1.room.get(14);
         System.out.println(r1.description(14));
-
+}
         String dir;
         if (r1.roomVisited[14] == false) {
             p1.Health("Trap");
@@ -446,176 +447,178 @@ public class GameCtrl {
         dir = sc.next();
         switch (dir) {
             case "n":
-                RoomOfRiches();
+                RoomOfRiches('+');
                 break;
             case "s":
-                Pantry();
+                Pantry('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                HiddenCorridor();
+                HiddenCorridor('-');
             default:
                 System.out.println("Invalid answer!");
-                HiddenCorridor();
+                HiddenCorridor('-');
         }
     } //14
 
-    public void RoomOfRiches() {
+    public void RoomOfRiches(char es) {
+        if (es == '+') {
         r1.room.get(15);
         System.out.println(r1.description(15));
         r1.roomVisited[15] = true;
-
+        }
         String dir;
         p1.Loot("Treasure");
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
-                HiddenCorridor();
+                HiddenCorridor('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                RoomOfRiches();
+                RoomOfRiches('-');
             default:
                 System.out.println("Invalid answer!");
-                RoomOfRiches();
+                RoomOfRiches('-');
         }
 
     } //15
 
-    public void DiningHall() {
-
+    public void DiningHall(char es) {
+if (es == '+') {
         r1.room.get(16);
         System.out.println(r1.description(16));
         r1.roomVisited[16] = true;
-
+}
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Corridor2();
+                Corridor2('+');
                 break;
             case "s":
-                Kitchen();
+                Kitchen('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                DiningHall();
+                DiningHall('-');
             default:
                 System.out.println("Invalid answer!");
-                DiningHall();
+                DiningHall('-');
         }
 
     } //16
 
-    public void Corridor2() {
-
+    public void Corridor2(char es) {
+if (es == '+') {
         r1.room.get(17);
         System.out.println(r1.description(17));
         r1.roomVisited[17] = true;
-
+}
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
-                DiningHall();
+                DiningHall('+');
                 break;
             case "e":
-                Courtyard();
+                Courtyard('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                Corridor2();
+                Corridor2('-');
             default:
                 System.out.println("Invalid answer!");
-                Corridor2();
+                Corridor2('-');
         }
 
     } //17
 
-    public void Courtyard() {
+    public void Courtyard(char es) {
+        if (es == '+') {
         r1.room.get(18);
         System.out.println(r1.description(18));
         r1.roomVisited[18] = true;
-
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Freiheit();
+                Freiheit('+');
                 break;
             case "e":
-                Hall();
+                Hall('+');
                 break;
             case "w":
-                Corridor2();
+                Corridor2('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                Courtyard();
+                Courtyard('-');
             default:
                 System.out.println("Invalid answer!");
-                Courtyard();
+                Courtyard('-');
         }
     } //18
 
-    public void Hall() {
-
+    public void Hall(char es) {
+if (es == '+') {
         r1.room.get(19);
         System.out.println(r1.description(19));
         r1.roomVisited[19] = true;
-
+}
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
-                GuardRoom();
+                GuardRoom('+');
             case "e":
-                Passage3();
+                Passage3('+');
             case "w":
-                Courtyard();
+                Courtyard('+');
                 break;
             case "q":
                 Quit();
             case "h":
                 Help();
-                Hall();
+                Hall('-');
             default:
                 System.out.println("Invalid answer!");
-                Hall();
+                Hall('-');
         }
     } //19
 
-    public void GuardRoom() {
-
+    public void GuardRoom(char es) {
+if (es == '+') {
         r1.room.get(20);
         System.out.println(r1.description(20));
         r1.roomVisited[20] = true;
-
+}
         p1.Health("Guards");
         p1.Loot("Guards");       
-        Hall();
+        Hall('+');
     } //20
 
-    public void Freiheit() {
+    public void Freiheit(char es) {
         win();
     } //21
 
-    public void Freiheit2() {
+    public void Freiheit2(char es) {
         win();
     } //22
 
@@ -625,7 +628,7 @@ public class GameCtrl {
 
         p1.Player();
         r1.Rooms();
-        Start(); //står i start        
+        Start('+'); //står i start        
 
     }
 
