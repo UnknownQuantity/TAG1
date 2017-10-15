@@ -1,5 +1,5 @@
 package tag1;
-
+//prøve 16:19
 import java.util.Scanner;
 import textio.SysTextIO;
 import textio.TextIO;
@@ -12,7 +12,7 @@ public class GameCtrl {
     private String rerun = "";
     private final String[] args = {};
     private int ran;
-    private boolean hound = false;    
+    private boolean hound = false;
     boolean areIn = false;
     TextIO io = new TextIO(new SysTextIO());
     Rooms r1 = new Rooms();
@@ -23,9 +23,9 @@ public class GameCtrl {
     public void Start(char es) {
 
         if (es == '+') {
-        r1.room.get(0);
-        System.out.println(r1.description(0));
-        r1.roomVisited[0] = true;
+            r1.room.get(0);
+            System.out.println(r1.description(0));
+            r1.roomVisited[0] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
@@ -47,9 +47,9 @@ public class GameCtrl {
 
     public void Passage(char es) {
         if (es == '+') {
-        r1.room.get(1);
-        System.out.println(r1.description(1));
-        r1.roomVisited[1] = true;
+            r1.room.get(1);
+            System.out.println(r1.description(1));
+            r1.roomVisited[1] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
@@ -75,12 +75,12 @@ public class GameCtrl {
     } //1
 
     public void Death(char es) {
-if (es == '+') {
-        r1.room.get(2);
-        System.out.println(r1.description(2));
-        r1.roomVisited[2] = true;
-        p1.Health("Death");
-}
+        if (es == '+') {
+            r1.room.get(2);
+            System.out.println(r1.description(2));
+            r1.roomVisited[2] = true;
+            p1.Health("Death");
+        }
         System.out.println("Do you want to try again? y/n");  //respawn
         rerun = sc.next();
         if ("y".equals(rerun)) {
@@ -94,11 +94,11 @@ if (es == '+') {
     } //2
 
     public void Storage1(char es) {
-if (es == '+') {
-        r1.room.get(3);
-        r1.roomVisited[3] = true;
-        System.out.println(r1.description(3));
-}
+        if (es == '+') {
+            r1.room.get(3);
+            r1.roomVisited[3] = true;
+            System.out.println(r1.description(3));
+        }
         String dir;
         if (r1.roomStorage1 == false) {
             System.out.println("wanna search? y/n");
@@ -130,11 +130,11 @@ if (es == '+') {
     } //3
 
     public void Passage3(char es) {
-if (es == '+') {
-        r1.room.get(4);
-        System.out.println(r1.description(4));
-        r1.roomVisited[4] = true;
-}
+        if (es == '+') {
+            r1.room.get(4);
+            System.out.println(r1.description(4));
+            r1.roomVisited[4] = true;
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -159,11 +159,11 @@ if (es == '+') {
     } //4
 
     public void Bedroom(char es) {
-if (es == '+') {
-        r1.room.get(5);
-        System.out.println(r1.description(5));
-        r1.roomVisited[5] = true;
-}
+        if (es == '+') {
+            r1.room.get(5);
+            System.out.println(r1.description(5));
+            r1.roomVisited[5] = true;
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -186,11 +186,11 @@ if (es == '+') {
     } //5
 
     public void Loo2(char es) {
-if (es == '+') {
-        r1.room.get(6);
-        System.out.println(r1.description(6));
-        r1.roomVisited[6] = true;
-}
+        if (es == '+') {
+            r1.room.get(6);
+            System.out.println(r1.description(6));
+            r1.roomVisited[6] = true;
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -214,27 +214,27 @@ if (es == '+') {
 
     public void DeadEnd(char es) {
         if (es == '+') {
-        r1.room.get(7);
-        System.out.println(r1.description(7));
-        r1.roomVisited[7] = true;
+            r1.room.get(7);
+            System.out.println(r1.description(7));
+            r1.roomVisited[7] = true;
         }
         if (areIn == false) {
-        if (!hound) {
-            ran = (int) (3 * Math.random()) + 1;
-            System.out.println(ran);
-            if (ran == 3) {
-                p1.Health("Hound_Sleep");
+            if (!hound) {
+                ran = (int) (3 * Math.random()) + 1;
+                System.out.println(ran);
+                if (ran == 3) {
+                    p1.Health("Hound_Sleep");
+                }
+                hound = true;
+            } else if (hound) {
+                p1.Health("Hound_Wake");
             }
-            hound = true;
-        } else if (hound) {
-            p1.Health("Hound_Wake");
-        }
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
-            case "s":                
+            case "s":
                 areIn = false;
                 Passage3('+');
                 break;
@@ -251,11 +251,11 @@ if (es == '+') {
     } //7
 
     public void Corridor(char es) {
-if (es == '+') {
-        r1.room.get(8);
-        r1.roomVisited[8] = true;
-        System.out.println(r1.description(8));
-}
+        if (es == '+') {
+            r1.room.get(8);
+            r1.roomVisited[8] = true;
+            System.out.println(r1.description(8));
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -276,11 +276,11 @@ if (es == '+') {
     } //8
 
     public void Passage2(char es) {
-if (es == '+') {
-        r1.room.get(9);
-        System.out.println(r1.description(9));
-        r1.roomVisited[9] = true;
-}
+        if (es == '+') {
+            r1.room.get(9);
+            System.out.println(r1.description(9));
+            r1.roomVisited[9] = true;
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -308,11 +308,11 @@ if (es == '+') {
     } //9
 
     public void Loo(char es) {
-if (es == '+') {
-        r1.room.get(10);
-        System.out.println(r1.description(10));
-        r1.roomVisited[10] = true;
-}
+        if (es == '+') {
+            r1.room.get(10);
+            System.out.println(r1.description(10));
+            r1.roomVisited[10] = true;
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -332,11 +332,11 @@ if (es == '+') {
     } //10
 
     public void Labratory(char es) {
-if (es == '+') {
-        r1.room.get(11);
-        System.out.println(r1.description(11));
-        r1.roomVisited[11] = true;
-}
+        if (es == '+') {
+            r1.room.get(11);
+            System.out.println(r1.description(11));
+            r1.roomVisited[11] = true;
+        }
         String dir;
         if (r1.roomLabratory == false) {
             System.out.println("wanna search? y/n");
@@ -366,11 +366,11 @@ if (es == '+') {
     } //11
 
     public void Kitchen(char es) {
-if (es == '+') {
-        r1.room.get(12);
-        System.out.println(r1.description(12));
-        r1.roomVisited[12] = true;
-}
+        if (es == '+') {
+            r1.room.get(12);
+            System.out.println(r1.description(12));
+            r1.roomVisited[12] = true;
+        }
         String dir;
         if (r1.roomKitchen == false) {
             System.out.println("wanna search? y/n");
@@ -404,11 +404,11 @@ if (es == '+') {
     } //12    
 
     public void Pantry(char es) {
-if (es == '+') {
-        r1.room.get(13);
-        System.out.println(r1.description(13));
-        r1.roomVisited[13] = true;
-}
+        if (es == '+') {
+            r1.room.get(13);
+            System.out.println(r1.description(13));
+            r1.roomVisited[13] = true;
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -432,10 +432,10 @@ if (es == '+') {
     } //13
 
     public void HiddenCorridor(char es) {
-if (es == '+') {
-        r1.room.get(14);
-        System.out.println(r1.description(14));
-}
+        if (es == '+') {
+            r1.room.get(14);
+            System.out.println(r1.description(14));
+        }
         String dir;
         if (r1.roomVisited[14] == false) {
             p1.Health("Trap");
@@ -465,9 +465,9 @@ if (es == '+') {
 
     public void RoomOfRiches(char es) {
         if (es == '+') {
-        r1.room.get(15);
-        System.out.println(r1.description(15));
-        r1.roomVisited[15] = true;
+            r1.room.get(15);
+            System.out.println(r1.description(15));
+            r1.roomVisited[15] = true;
         }
         String dir;
         p1.Loot("Treasure");
@@ -490,11 +490,11 @@ if (es == '+') {
     } //15
 
     public void DiningHall(char es) {
-if (es == '+') {
-        r1.room.get(16);
-        System.out.println(r1.description(16));
-        r1.roomVisited[16] = true;
-}
+        if (es == '+') {
+            r1.room.get(16);
+            System.out.println(r1.description(16));
+            r1.roomVisited[16] = true;
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -518,11 +518,11 @@ if (es == '+') {
     } //16
 
     public void Corridor2(char es) {
-if (es == '+') {
-        r1.room.get(17);
-        System.out.println(r1.description(17));
-        r1.roomVisited[17] = true;
-}
+        if (es == '+') {
+            r1.room.get(17);
+            System.out.println(r1.description(17));
+            r1.roomVisited[17] = true;
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -547,9 +547,9 @@ if (es == '+') {
 
     public void Courtyard(char es) {
         if (es == '+') {
-        r1.room.get(18);
-        System.out.println(r1.description(18));
-        r1.roomVisited[18] = true;
+            r1.room.get(18);
+            System.out.println(r1.description(18));
+            r1.roomVisited[18] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
@@ -576,11 +576,11 @@ if (es == '+') {
     } //18
 
     public void Hall(char es) {
-if (es == '+') {
-        r1.room.get(19);
-        System.out.println(r1.description(19));
-        r1.roomVisited[19] = true;
-}
+        if (es == '+') {
+            r1.room.get(19);
+            System.out.println(r1.description(19));
+            r1.roomVisited[19] = true;
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
@@ -604,13 +604,13 @@ if (es == '+') {
     } //19
 
     public void GuardRoom(char es) {
-if (es == '+') {
-        r1.room.get(20);
-        System.out.println(r1.description(20));
-        r1.roomVisited[20] = true;
-}
+        if (es == '+') {
+            r1.room.get(20);
+            System.out.println(r1.description(20));
+            r1.roomVisited[20] = true;
+        }
         p1.Health("Guards");
-        p1.Loot("Guards");       
+        p1.Loot("Guards");
         Hall('+');
     } //20
 
