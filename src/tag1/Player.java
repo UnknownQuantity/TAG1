@@ -1,14 +1,21 @@
 package tag1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player {
 
     //******************Player-Varibles.start******************\\
-    private int health = 100;
+    private int health = 100;    
     private int gold = 0;
+    private int armor = 0; //WIP
+    private int strength = 5;
+    private int damage = 15;
+    private int inventory_space = 10;
+    private String bag = "start bag"; //WIP end
     private String name;
     private final static Scanner sc = new Scanner(System.in);
+    Items it = new Items();
     Rooms r1 = new Rooms();
 
     //******************Player-Varibles.end******************\\
@@ -23,7 +30,6 @@ public class Player {
     }
 
     public String Movement() {
-        r1.Rooms();
         r1.room.get(0);
         String choice = "";
 
@@ -141,6 +147,20 @@ public class Player {
         }
 
         return gold;
+    }
+    
+    public void Inventory() {
+        
+            ArrayList inventory_1 = new ArrayList(inventory_space);
+        
+        if (bag.equals("small bag")) {
+            inventory_space = 15;
+            ArrayList inventory_2 = new ArrayList(inventory_space);
+        }
+        else if (bag.equals("large bag")) {
+            inventory_space = 20;
+            ArrayList inventory_2 = new ArrayList(inventory_space);
+                }
     }
 
     //******************Player-gamplay-methods.end******************\\

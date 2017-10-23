@@ -1,5 +1,5 @@
 package tag1;
-
+// implement get/set til rooms
 import java.util.*;
 
 public class Rooms {
@@ -11,35 +11,8 @@ public class Rooms {
 
     //******************Rooms-Variables.end******************\\
     //******************Rooms-Methods.start******************\\
-    public void Rooms() {
-        //north, east, south, west, loot, danger...
-        room.add(new RoomList("Start", true, false, false, false, false, false)); //0
-        room.add(new RoomList("Passage", true, true, true, true, false, false)); //1
-        room.add(new RoomList("Death", false, false, false, false, false, true)); //2
-        room.add(new RoomList("Storage1", true, false, true, false, true, false)); //3
-        room.add(new RoomList("Passage3", true, true, true, true, false, false)); //4
-        room.add(new RoomList("Bedroom", false, true, false, true, true, false)); //5
-        room.add(new RoomList("Loo2", false, true, false, true, false, true)); //6
-        room.add(new RoomList("DeadEnd", false, false, true, false, false, false)); //7
-        room.add(new RoomList("Corridor", false, true, false, true, false, false)); //8
-        room.add(new RoomList("Passage2", true, true, true, true, false, false)); //9
-        room.add(new RoomList("Loo", true, false, false, false, true, false)); //10
-        room.add(new RoomList("Labratory", false, false, true, false, true, true)); //11
-        room.add(new RoomList("Kitchen", true, true, false, true, true, true)); //12
-        room.add(new RoomList("Pantry", true, true, false, false, false, false)); //13
-        room.add(new RoomList("HiddenCorridor", true, false, true, false, false, true)); //14 - mathrandom 1 ud af 10 for at tage skade
-        room.add(new RoomList("RoomOfRiches", false, false, true, false, true, false)); //15
-        room.add(new RoomList("DiningHall", true, false, true, false, false, true)); //16 - If search room, danger activate
-        room.add(new RoomList("Corridor2", false, true, true, false, false, false)); //17
-        room.add(new RoomList("CourtYard", true, true, false, true, false, false)); //18
-        room.add(new RoomList("Hall", false, true, true, true, false, true)); //19 - mathrandom i to 50 for a guard to walk out and beat ya
-        room.add(new RoomList("GuardRoom", true, false, false, false, false, true)); //20
-        room.add(new RoomList("Freiheit", false, false, false, false, false, false)); //21
-        room.add(new RoomList("Freiheit2", false, false, false, false, false, false)); //22
 
-    }
-
-    public String description(int spot) {
+    public String Description(int spot) {
 
         ArrayList<String> descList = new ArrayList<>();
         //0, start with introduction and how to
