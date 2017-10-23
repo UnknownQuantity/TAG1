@@ -6,7 +6,7 @@ import textio.TextIO;
 
 public class GameCtrl {
 
-    //******************GameCtrl-Varibles.start******************\\
+    //******************gameCtrl-Varibles.start******************\\
     private final Scanner sc = new Scanner(System.in);
     private String search;
     private String rerun = "";
@@ -15,228 +15,253 @@ public class GameCtrl {
     private boolean hound = false;
     private boolean areIn = false;
     TextIO io = new TextIO(new SysTextIO());
-    Rooms r1 = new Rooms();
-    Player p1 = new Player();
-    Items it = new Items();
+    Rooms room = new Rooms();
+    Player player = new Player();
+    Items item = new Items();
 
-    //******************GameCtrl-Varibles.end******************\\
+    //******************gameCtrl-Varibles.end******************\\
     //******************Room-methods.start******************\\
-    public void Start(char es) {
+    public void start(char es) {
 
         System.out.println("Start");
-        if (es == '+' && r1.roomVisited[0] == false) {
-//            r1.room.get(0);
-            System.out.println(r1.Description(0));
-            r1.roomVisited[0] = true;
+        if (es == '+' && room.roomVisited[0] == false) {
+//            room.player.get(0);
+            System.out.println(room.Description(0));
+            room.roomVisited[0] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Passage('+');
+                passage('+');
+                break;
             case "h":
-                Help();
-                Start('-');
+                help();
+                start('-');
+                break;
             case "q":
-                Quit();
+                quit();
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Start('-');
+                start('-');
+                break;
 
         }
     } //0
 
-    public void Passage(char es) {
+    public void passage(char es) {
 
         System.out.println("Passage");
-        if (es == '+' && r1.roomVisited[1] == false) {
-            System.out.println(r1.Description(1));
-            r1.roomVisited[1] = true;
+        if (es == '+' && room.roomVisited[1] == false) {
+            System.out.println(room.Description(1));
+            room.roomVisited[1] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Storage1('+');
+                storage1('+');
+                break;
             case "s":
-                Start('+');
+                start('+');
+                break;
             case "w":
-                Corridor('+');
+                corridor('+');
+                break;
             case "e":
-                Death('+');
+                death('+');
+                break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Passage('-');
+                help();
+                passage('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Passage('-');
+                passage('-');
+                break;
         }
     } //1
 
-    public void Death(char es) {
+    public void death(char es) {
 
         System.out.println("Death");
-        if (es == '+' && r1.roomVisited[2] == false) {
-            System.out.println(r1.Description(2));
-            r1.roomVisited[2] = true;
-            p1.Health("Death");
+        if (es == '+' && room.roomVisited[2] == false) {
+            System.out.println(room.Description(2));
+            room.roomVisited[2] = true;
+            player.Health("Death");
         }
         System.out.println("Do you want to try again? y/n");  //respawn
         rerun = sc.next();
         if ("y".equals(rerun)) {
             TAG1.main(args);
         } else if ("n".equals(rerun)) {
-            GameEnd();
+            gameEnd();
         } else {
-            Death('-');
+            death('-');
         }
 
     } //2
 
-    public void Storage1(char es) {
+    public void storage1(char es) {
 
         System.out.println("Storage1");
-        if (es == '+' && r1.roomVisited[3] == false) {
-            r1.roomVisited[3] = true;
-            System.out.println(r1.Description(3));
+        if (es == '+' && room.roomVisited[3] == false) {
+            room.roomVisited[3] = true;
+            System.out.println(room.Description(3));
         }
         String dir;
-        if (r1.roomStorage1 == false) {
+        if (room.roomStorage1 == false) {
             System.out.println("wanna search the room? y/n");
             search = sc.next();
             if (search.equals("y")) {
-                p1.Loot("Coins");
-                System.out.println("You now have: " + p1.getGold() + " Gold");
-                r1.roomStorage1 = true;
+                player.Loot("Coins");
+                System.out.println("You now have: " + player.getGold() + " Gold");
+                room.roomStorage1 = true;
             }
         }
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Passage3('+');
+                passage3('+');
                 break;
             case "s":
-                Passage('+');
+                passage('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Storage1('-');
+                help();
+                storage1('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Storage1('-');
+                storage1('-');
+                break;
         }
     } //3
 
-    public void Passage3(char es) {
+    public void passage3(char es) {
 
         System.out.println("Passage3");
-        if (es == '+' && r1.roomVisited[4] == false) {
-            System.out.println(r1.Description(4));
-            r1.roomVisited[4] = true;
+        if (es == '+' && room.roomVisited[4] == false) {
+            System.out.println(room.Description(4));
+            room.roomVisited[4] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                DeadEnd('+');
+                deadEnd('+');
+                break;
             case "s":
-                Storage1('+');
+                storage1('+');
+                break;
             case "e":
-                Bedroom('+');
+                bedroom('+');
+                break;
             case "w":
-                Hall('+');
+                hall('+');
+                break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Passage3('-');
+                help();
+                passage3('-');
             default:
                 System.out.println("Invalid answer!");
-                Passage3('-');
+                passage3('-');
+                break;
         }
     } //4
 
-    public void Bedroom(char es) {
+    public void bedroom(char es) {
 
         System.out.println("Bedroom");
-        if (es == '+' && r1.roomVisited[5] == false) {
-            System.out.println(r1.Description(5));
-            r1.roomVisited[5] = true;
+        if (es == '+' && room.roomVisited[5] == false) {
+            System.out.println(room.Description(5));
+            room.roomVisited[5] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "e":
-                Loo2('+');
+                loo2('+');
                 break;
             case "w":
-                Passage3('+');
+                passage3('+');
                 break;
             case "q":
-                Quit();
+                quit();
             case "h":
-                Help();
-                Bedroom('-');
+                help();
+                bedroom('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Bedroom('-');
+                bedroom('-');
+                break;
         }
     } //5
 
-    public void Loo2(char es) {
+    public void loo2(char es) {
 
         System.out.println("Loo2");
-        if (es == '+' && r1.roomVisited[6] == false) {
-            System.out.println(r1.Description(6));
-            r1.roomVisited[6] = true;
+        if (es == '+' && room.roomVisited[6] == false) {
+            System.out.println(room.Description(6));
+            room.roomVisited[6] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "e":
-                Freiheit2('+');
+                freiheit2('+');
                 break;
             case "w":
-                Bedroom('+');
+                bedroom('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Loo2('-');
+                help();
+                loo2('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Loo2('-');
+                loo2('-');
+                break;
         }
     } //6
 
-    public void DeadEnd(char es) {
+    public void deadEnd(char es) {
 
         System.out.println("DeadEnd");
-        if (es == '+' && r1.roomVisited[7] == false) {
-            System.out.println(r1.Description(7));
-            r1.roomVisited[7] = true;
+        if (es == '+' && room.roomVisited[7] == false) {
+            System.out.println(room.Description(7));
+            room.roomVisited[7] = true;
         }
         if (areIn == false) {
             if (!hound) {
                 ran = (int) (3 * Math.random()) + 1;
                 System.out.println(ran);
                 if (ran == 3) {
-                    p1.Health("Hound_Sleep");
+                    player.Health("Hound_Sleep");
                 }
                 hound = true;
             } else if (hound) {
-                p1.Health("Hound_Wake");
+                player.Health("Hound_Wake");
             }
         }
         String dir;
@@ -245,427 +270,471 @@ public class GameCtrl {
         switch (dir) {
             case "s":
                 areIn = false;
-                Passage3('+');
+                passage3('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                DeadEnd('-');
+                help();
+                deadEnd('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 areIn = true;
-                DeadEnd('-');
+                deadEnd('-');
+                break;
         }
     } //7
 
-    public void Corridor(char es) {
+    public void corridor(char es) {
 
         System.out.println("Corridor");
-        if (es == '+' && r1.roomVisited[8] == false) {
-            r1.roomVisited[8] = true;
-            System.out.println(r1.Description(8));
+        if (es == '+' && room.roomVisited[8] == false) {
+            room.roomVisited[8] = true;
+            System.out.println(room.Description(8));
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "w":
-                Passage2('+');
+                passage2('+');
+                break;
             case "e":
-                Passage('+');
+                passage('+');
+                break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Corridor('-');
+                help();
+                corridor('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Corridor('-');
+                corridor('-');
+                break;
         }
     } //8
 
-    public void Passage2(char es) {
+    public void passage2(char es) {
 
         System.out.println("Passage2");
-        if (es == '+' && r1.roomVisited[9] == false) {
-            System.out.println(r1.Description(9));
-            r1.roomVisited[9] = true;
+        if (es == '+' && room.roomVisited[9] == false) {
+            System.out.println(room.Description(9));
+            room.roomVisited[9] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Labratory('+');
+                labratory('+');
                 break;
             case "s":
-                Loo('+');
+                loo('+');
                 break;
             case "e":
-                Corridor('+');
+                corridor('+');
                 break;
             case "w":
-                Kitchen('+');
+                kitchen('+');
+                break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Passage2('-');
+                help();
+                passage2('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Passage2('-');
+                passage2('-');
+                break;
         }
     } //9
 
-    public void Loo(char es) {
+    public void loo(char es) {
 
         System.out.println("Loo");
-        if (es == '+' && r1.roomVisited[10] == false) {
-            System.out.println(r1.Description(10));
-            r1.roomVisited[10] = true;
+        if (es == '+' && room.roomVisited[10] == false) {
+            System.out.println(room.Description(10));
+            room.roomVisited[10] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Passage2('+');
+                passage2('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Loo('-');
+                help();
+                loo('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Loo('-');
+                loo('-');
+                break;
         }
     } //10
 
-    public void Labratory(char es) {
+    public void labratory(char es) {
 
         System.out.println("Labratory");
-        if (es == '+' && r1.roomVisited[11] == false) {
-            System.out.println(r1.Description(11));
-            r1.roomVisited[11] = true;
+        if (es == '+' && room.roomVisited[11] == false) {
+            System.out.println(room.Description(11));
+            room.roomVisited[11] = true;
         }
         String dir;
-        if (r1.roomLabratory == false) {
+        if (room.roomLabratory == false) {
             System.out.println("wanna search the room? y/n");
             search = sc.next();
             if (search.equals("y")) {
-                p1.Health("Explosion");
-                r1.roomLabratory = true;
+                player.Health("Explosion");
+                room.roomLabratory = true;
             }
         } else {
-            p1.Health("Flames");
+            player.Health("Flames");
         }
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
-                Passage2('+');
+                passage2('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Labratory('-');
+                help();
+                labratory('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Labratory('-');
+                labratory('-');
+                break;
         }
     } //11
 
-    public void Kitchen(char es) {
+    public void kitchen(char es) {
 
         System.out.println("Kitchen");
-        if (es == '+' && r1.roomVisited[12] == false) {
-            System.out.println(r1.Description(12));
-            r1.roomVisited[12] = true;
+        if (es == '+' && room.roomVisited[12] == false) {
+            System.out.println(room.Description(12));
+            room.roomVisited[12] = true;
         }
         String dir;
-        if (r1.roomKitchen == false) {
+        if (room.roomKitchen == false) {
             System.out.println("wanna search the room? y/n");
             search = sc.next();
             if (search.equals("y")) {
-                p1.Health("Rotten food");
-                r1.roomKitchen = true;
+                player.Health("Rotten food");
+                room.roomKitchen = true;
             }
         }
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                DiningHall('+');
+                diningHall('+');
                 break;
             case "e":
-                Passage2('+');
+                passage2('+');
                 break;
             case "w":
-                Pantry('+');
+                pantry('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Kitchen('-');
+                help();
+                kitchen('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Kitchen('-');
+                kitchen('-');
+                break;
         }
     } //12    
 
-    public void Pantry(char es) {
+    public void pantry(char es) {
 
         System.out.println("Pantry");
-        if (es == '+' && r1.roomVisited[13] == false) {
-            System.out.println(r1.Description(13));
-            r1.roomVisited[13] = true;
+        if (es == '+' && room.roomVisited[13] == false) {
+            System.out.println(room.Description(13));
+            room.roomVisited[13] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                HiddenCorridor('+');
+                hiddenCorridor('+');
                 break;
             case "e":
-                Kitchen('+');
+                kitchen('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Pantry('-');
+                help();
+                pantry('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Pantry('-');
+                pantry('-');
+                break;
         }
 
     } //13
 
-    public void HiddenCorridor(char es) {
+    public void hiddenCorridor(char es) {
 
         System.out.println("HiddenCorridor");
-        if (es == '+' && r1.roomVisited[14] == false) {
-            System.out.println(r1.Description(14));
+        if (es == '+' && room.roomVisited[14] == false) {
+            System.out.println(room.Description(14));
         }
         String dir;
-        if (r1.roomVisited[14] == false) {
-            p1.Health("Trap");
+        if (room.roomVisited[14] == false) {
+            player.Health("Trap");
         }
 
-        r1.roomVisited[14] = true;
+        room.roomVisited[14] = true;
 
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                RoomOfRiches('+');
+                roomOfRiches('+');
                 break;
             case "s":
-                Pantry('+');
+                pantry('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                HiddenCorridor('-');
+                help();
+                hiddenCorridor('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                HiddenCorridor('-');
+                hiddenCorridor('-');
+                break;
         }
     } //14
 
-    public void RoomOfRiches(char es) {
+    public void roomOfRiches(char es) {
 
         System.out.println("RoomOfRiches");
-        if (es == '+' && r1.roomVisited[15] == false) {
-            System.out.println(r1.Description(15));
-            r1.roomVisited[15] = true;
+        if (es == '+' && room.roomVisited[15] == false) {
+            System.out.println(room.Description(15));
+            room.roomVisited[15] = true;
         }
         String dir;
-        p1.Loot("Treasure");
+        player.Loot("Treasure");
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
-                HiddenCorridor('+');
+                hiddenCorridor('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                RoomOfRiches('-');
+                help();
+                roomOfRiches('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                RoomOfRiches('-');
+                roomOfRiches('-');
+                break;
         }
 
     } //15
 
-    public void DiningHall(char es) {
+    public void diningHall(char es) {
 
         System.out.println("DiningHall");
-        if (es == '+' && r1.roomVisited[16] == false) {
-            System.out.println(r1.Description(16));
-            r1.roomVisited[16] = true;
+        if (es == '+' && room.roomVisited[16] == false) {
+            System.out.println(room.Description(16));
+            room.roomVisited[16] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Corridor2('+');
+                corridor2('+');
                 break;
             case "s":
-                Kitchen('+');
+                kitchen('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                DiningHall('-');
+                help();
+                diningHall('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                DiningHall('-');
+                diningHall('-');
+                break;
         }
 
     } //16
 
-    public void Corridor2(char es) {
+    public void corridor2(char es) {
 
         System.out.println("Corridor2");
-        if (es == '+' && r1.roomVisited[17] == false) {
-            System.out.println(r1.Description(17));
-            r1.roomVisited[17] = true;
+        if (es == '+' && room.roomVisited[17] == false) {
+            System.out.println(room.Description(17));
+            room.roomVisited[17] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
-                DiningHall('+');
+                diningHall('+');
                 break;
             case "e":
-                Courtyard('+');
+                courtyard('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Corridor2('-');
+                help();
+                corridor2('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Corridor2('-');
+                corridor2('-');
+                break;
         }
 
     } //17
 
-    public void Courtyard(char es) {
+    public void courtyard(char es) {
 
         System.out.println("Courtyard");
-        if (es == '+' && r1.roomVisited[18] == false) {
-            System.out.println(r1.Description(18));
-            r1.roomVisited[18] = true;
+        if (es == '+' && room.roomVisited[18] == false) {
+            System.out.println(room.Description(18));
+            room.roomVisited[18] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "n":
-                Freiheit('+');
+                freiheit('+');
                 break;
             case "e":
-                Hall('+');
+                hall('+');
                 break;
             case "w":
-                Corridor2('+');
+                corridor2('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Courtyard('-');
+                help();
+                courtyard('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Courtyard('-');
+                courtyard('-');
+                break;
         }
     } //18
 
-    public void Hall(char es) {
+    public void hall(char es) {
 
         System.out.println("Hall");
-        if (es == '+' && r1.roomVisited[19] == false) {
-            System.out.println(r1.Description(19));
-            r1.roomVisited[19] = true;
+        if (es == '+' && room.roomVisited[19] == false) {
+            System.out.println(room.Description(19));
+            room.roomVisited[19] = true;
         }
         String dir;
         System.out.println("What do you want to do?");
         dir = sc.next();
         switch (dir) {
             case "s":
-                GuardRoom('+');
+                guardRoom('+');
             case "e":
-                Passage3('+');
+                passage3('+');
             case "w":
-                Courtyard('+');
+                courtyard('+');
                 break;
             case "q":
-                Quit();
+                quit();
+                break;
             case "h":
-                Help();
-                Hall('-');
+                help();
+                hall('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
-                Hall('-');
+                hall('-');
+                break;
         }
     } //19
 
-    public void GuardRoom(char es) {
+    public void guardRoom(char es) {
 
         System.out.println("GuardRoom");
-        if (es == '+' && r1.roomVisited[20] == false) {
-            System.out.println(r1.Description(20));
-            r1.roomVisited[20] = true;
+        if (es == '+' && room.roomVisited[20] == false) {
+            System.out.println(room.Description(20));
+            room.roomVisited[20] = true;
         }
-        p1.Health("Guards");
-        p1.Loot("Guards");
-        Hall('+');
+        player.Health("Guards");
+        player.Loot("Guards");
+        hall('+');
     } //20
 
-    public void Freiheit(char es) {
-        Win();
+    public void freiheit(char es) {
+        win();
     } //21
 
-    public void Freiheit2(char es) {
-        Win();
+    public void freiheit2(char es) {
+        win();
     } //22
 
     //******************Room-methods.end******************\\
-    //******************Non-room-methods.start******************\\
-    public void GameCtrl() {
-
-        p1.Player();
-        Start('+'); //står i start        
+    //******************Non-player-methods.start******************\\
+    public void gameCtrl() {
+        
+        System.out.println("Hello, please enter your name");
+        String name = sc.next();
+        player.Player(name);
+        start('+');        
 
     }
     
-    public void Search() {
+    public void search() { //WIP
         
     }
 
-    public void GameEnd() {
-//        for (int i = 0; i < r1.roomVisited.length; i++) {
-//            System.out.println(r1.roomVisited[i]);
+    public void gameEnd() {
+//        for (int i = 0; i < room.roomVisited.length; i++) {
+//            System.out.println(room.roomVisited[i]);
 //        }
         System.out.println("Your game has ended, please come again!");
         System.exit(0);
     }
 
-    public void Help() {
+    public void help() {
         System.out.println("********HELP********");
         System.out.println("When asked to perform an action the following codes is allowed");
         System.out.println("for help type: h");
@@ -682,18 +751,18 @@ public class GameCtrl {
         }
     }
     
-    public void Win() {
+    public void win() {
         System.out.println("Congratulations you have won the game!");
-        System.out.println("You ended with " + p1.getGold() + " gold, and " + p1.getHealth() + " health");
+        System.out.println("You ended with " + player.getGold() + " gold, and " + player.getHealth() + " health");
         System.out.println("Hope you enjoyed this interactive experience, please come again!");
         System.exit(0);
     }
 
-    public void Quit() {
+    public void quit() {
         System.out.println("Oh are you leaving? :( ");
         System.out.println("We hope you had fun, please come again!");
         System.exit(0);
     }
 
-    //******************Non-room-methods.end******************\\
+    //******************Non-player-methods.end******************\\
 }

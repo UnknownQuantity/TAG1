@@ -13,24 +13,19 @@ public class Player {
     private int damage = 15;
     private int inventory_space = 10;
     private String bag = "start bag"; //WIP end
-    private String name;
     private final static Scanner sc = new Scanner(System.in);
     Items it = new Items();
-    Rooms r1 = new Rooms();
 
     //******************Player-Varibles.end******************\\
     //******************Player-gamplay-methods.start******************\\
-    public void Player() {
-
-        System.out.println("Hello, please enter your name");
-        name = sc.next();
+    public void Player(String name) {
+        
         System.out.println("Hello there " + name);
 
         System.out.println("At the start of you adventure your health is: " + health + "\nBeware of the dangers in the maze!\nYou're able to search every room you enter by simple typing 's'.");
     }
 
     public String Movement() {
-        r1.room.get(0);
         String choice = "";
 
         System.out.println("Which way do you want to go? n, e, w, s");
