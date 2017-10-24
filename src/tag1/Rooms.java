@@ -9,6 +9,7 @@ public class Rooms {
     boolean roomStorage1, roomBedroomm, roomLoom, roomLabratory, roomKitchen, roomRoomOfRiches = false; //Tracks the interactions in the room, if interaction is onetime use, set boolean true
     ArrayList<RoomList> room = new ArrayList<>();
     ArrayList<String> descList = new ArrayList<>();
+    String desc = "";
 
     //******************Rooms-Variables.end******************\\
     //******************Rooms-Methods.start******************\\
@@ -60,7 +61,15 @@ public class Rooms {
         descList.add("You find yourself in the guardroom.\nA dozen bullheads turn towards you the second you step in.\nThen they get up..."); //20      
 
         return descList.get(spot);
-    }
+    }   
 
     //******************Rooms-Methods.end******************\\
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 }

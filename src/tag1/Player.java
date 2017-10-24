@@ -5,27 +5,28 @@ import java.util.Scanner;
 
 public class Player {
 
-    //******************Player-Varibles.start******************\\
-    private int health = 100;    
+    //******************player-Varibles.start******************\\
+    private int health = 100;
     private int gold = 0;
     private int armor = 0; //WIP
     private int strength = 5;
-    private int damage = 15;
+    private int damage = 15; //WIP end
     private int inventory_space = 10;
-    private String bag = "start bag"; //WIP end
     private final static Scanner sc = new Scanner(System.in);
-    Items it = new Items();
+    ArrayList small_Inventory = new ArrayList(inventory_space);
+    ArrayList current_Inventory = new ArrayList(small_Inventory);
 
-    //******************Player-Varibles.end******************\\
-    //******************Player-gamplay-methods.start******************\\
-    public void Player(String name) {
-        
+
+    //******************player-Varibles.end******************\\
+    //******************player-gamplay-methods.start******************\\
+    public void player(String name) {
+
         System.out.println("Hello there " + name);
 
         System.out.println("At the start of you adventure your health is: " + health + "\nBeware of the dangers in the maze!\nYou're able to search every room you enter by simple typing 's'.");
     }
 
-    public String Movement() {
+    public String movement() {
         String choice = "";
 
         System.out.println("Which way do you want to go? n, e, w, s");
@@ -36,7 +37,7 @@ public class Player {
         return choice;
     }
 
-    public int Health(String modi) {
+    public int health(String modi) {
 
         switch (modi) {
             case "Poison":
@@ -55,7 +56,9 @@ public class Player {
             case "Guards":
                 System.out.println("You've been beaten up, and is thrown from the room. You lose 50 health");
                 health -= 50;
+                System.out.println("The guards also steal all your gold!");
                 System.out.println("Your current health is now " + health);
+                gold = 0;
                 break;
             case "Explosion":
                 System.out.println("While searching the room, you accidentaly knock over a vial and a large explosion occurs. You lose 75 health");
@@ -114,59 +117,93 @@ public class Player {
         return health;
     }
 
-    public int Loot(String find) {
+    public void inventory_Expand(String bag) {       
 
-        switch (find) {
-            case "Treasure":
-                System.out.println("You've found the treasure! It contains 100 gold");
-                gold += 100;
-                break;
-            case "Coin":
-                System.out.println("You've found one gold coin!");
-                gold += 1;
-                break;
-            case "Coins":
-                System.out.println("You've found five gold coins!");
-                gold += 5;
-                break;
-            case "Guards":
-                System.out.println("The guards steal all your gold!");
-                gold = 0;
-                break;
-            case "Healing_Potion":
-                break;
-            case "Greater_Healing_Potion":
-                break;
-            default:
-                break;
-        }
-
-        return gold;
-    }
-    
-    public void Inventory() {
-        
-            ArrayList inventory_1 = new ArrayList(inventory_space);
-        
         if (bag.equals("small bag")) {
             inventory_space = 15;
-            ArrayList inventory_2 = new ArrayList(inventory_space);
-        }
-        else if (bag.equals("large bag")) {
+            ArrayList medium_Inventory = new ArrayList(inventory_space);
+            ArrayList tmp = new ArrayList(current_Inventory);
+            tmp = current_Inventory;
+            current_Inventory = medium_Inventory;
+            current_Inventory = tmp;
+        } else if (bag.equals("large bag")) {
             inventory_space = 20;
-            ArrayList inventory_2 = new ArrayList(inventory_space);
-                }
+            ArrayList large_Inventory = new ArrayList(inventory_space);
+            ArrayList tmp = new ArrayList(current_Inventory);
+            tmp = current_Inventory;
+            current_Inventory = large_Inventory;
+            current_Inventory = tmp;
+        }
+
     }
 
-    //******************Player-gamplay-methods.end******************\\
-    //******************Player-getters.start******************\\
+    public void checkInventory() {
+        System.out.println(current_Inventory);
+    }
+    
+    public void inventoryAdd(String item) {
+        current_Inventory.add(item);
+        
+        System.out.println("do you want to check your inventory?");
+        String choice = sc.next();
+        if (choice.equals('y')) {
+            System.out.println(current_Inventory);            
+        }        
+    }
+
+    //******************player-gamplay-methods.end******************\\
+    //******************player-getters.start******************\\
     public int getGold() {
         return gold;
     }
 
     public int getHealth() {
         return health;
+    }            
+
+    public int getArmor() {
+        return armor;
     }
 
-    //******************Player-getters.end******************\\
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+    
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+   
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setArmor(int armor) {
+        this.armor = armor;
+    }    
+   
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+    
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+    
+
+    //******************player-getters.end******************\\
+
+
+
+
+
+
+
+
+
+
+
 }
