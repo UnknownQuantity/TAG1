@@ -1,6 +1,5 @@
 package tag1;
 //WIP
-//derp derp derp
 public class Enemy extends TAG1 {
 
     private int health;
@@ -9,11 +8,8 @@ public class Enemy extends TAG1 {
     private int ran;
     private String westMove, eastMove, northMove, southMove;
 
-    public void monster() {
-        System.out.println("You meet a giant monster and is instantly killed");
-        health = game.player.getHealth();
-        game.player.setHealth(health = 0);
-        ran = ((int) Math.random() * 4) + 1;
+    public void monster(RoomList room) {
+        ran = (int) ((Math.random() * 4) + 1);
         switch (ran) {
             case 1:
                 eastMove = "east";
@@ -28,7 +24,9 @@ public class Enemy extends TAG1 {
                 break;
             default:
                 break;
+                
         }
+        kill();
     }
 
     public void movement() {
@@ -36,7 +34,12 @@ public class Enemy extends TAG1 {
     }
 
     public void monster_Start() {
-
+        game.deadEnd('+');
+        
+    }
+    
+    public void kill() {        
+        game.player.health("Monster");
     }
 
     public void hound() {

@@ -1,8 +1,9 @@
 package tag1;
 
 import java.util.ArrayList;
+import static tag1.TAG1.game;
 
-    class RoomList extends TAG1 {
+    class MonsterRoomList extends TAG1 {
 
     Utility util = new Utility();
     Rooms room;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
     private final String[] args = {};
     ArrayList<RoomList> rooms;
 
-    public RoomList() {
+    public MonsterRoomList() {
         this.rooms = new ArrayList<>();
         this.room = new Rooms();
         this.item = new Items();

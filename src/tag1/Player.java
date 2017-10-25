@@ -106,13 +106,17 @@ public class Player {
                 health += 25;
                 System.out.println("Your current health is now " + health);
                 break;
+            case "Monster":
+                System.out.println("You meet a giant monster and is instantly killed");
+                health = 0;
+                break;
             default:
                 break;
         }
 
         if (health < 1) {
             System.out.println("Your health has fallen below 1 and you draw your last breath");
-            System.exit(0); //ret fejl
+            System.exit(0);
         }
         return health;
     }
