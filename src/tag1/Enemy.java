@@ -1,8 +1,6 @@
 package tag1;
 //WIP
-
-import java.util.Random;
-
+//derp derp derp
 public class Enemy extends TAG1 {
 
     private int health;
@@ -15,7 +13,7 @@ public class Enemy extends TAG1 {
         System.out.println("You meet a giant monster and is instantly killed");
         health = game.player.getHealth();
         game.player.setHealth(health = 0);
-        ran = (int) Math.random() * 4 + 1;
+        ran = ((int) Math.random() * 4) + 1;
         switch (ran) {
             case 1:
                 eastMove = "east";
@@ -31,10 +29,6 @@ public class Enemy extends TAG1 {
             default:
                 break;
         }
-    }
-
-    private Object Random() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void movement() {
