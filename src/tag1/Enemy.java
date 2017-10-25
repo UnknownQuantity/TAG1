@@ -11,6 +11,14 @@ public void monster() {
     game.player.setHealth(health = 0);
 } 
 
+public void movement() {
+    
+}
+
+public void monster_Start() {
+    
+}
+
 public void hound() {
     
     if (!hound) {

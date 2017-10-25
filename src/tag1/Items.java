@@ -91,7 +91,7 @@ public class Items extends TAG1 implements Item {
     }
     
     @Override
-    public void pickUpGold(String item) {
+    public void pickUpGold(String item, char es) {
         System.out.println("You've found: " + item);
         System.out.println("Do you want to pick it up?");
         choice = game.scan.next();
@@ -101,7 +101,7 @@ public class Items extends TAG1 implements Item {
     }
     
     @Override
-    public void pickUpItem(String item) {
+    public void pickUpItem(String item, char es) {
         System.out.println("You've found: " + item);
         System.out.println("Do you want to pick it up?");
         choice = game.scan.next();
@@ -109,9 +109,15 @@ public class Items extends TAG1 implements Item {
             System.out.println("You've picked up " + item);
             game.player.inventoryAdd(item);
         }
+        else if (choice.equals('n'))
+            System.out.println("You leave the " + item + " on the groud");
+        else
+            System.out.println("invalid choice!");
+            pickUpItem(item, '-');
     }
     
-    public void pickUpPotion(String item) {
+    @Override
+    public void pickUpPotion(String item, char es) {
         System.out.println("You've found: " + item);
         System.out.println("Do you want to pick it up?");
         choice = game.scan.next();
