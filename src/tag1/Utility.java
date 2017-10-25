@@ -1,6 +1,6 @@
 package tag1;
 
-public class Utility extends GameCtrl {
+public class Utility extends TAG1 {
     
     public void gameEnd() {
 //        for (int i = 0; i < room.roomVisited.length; i++) {
@@ -29,7 +29,7 @@ public class Utility extends GameCtrl {
     
     public void win() {
         System.out.println("Congratulations you have won the game!");
-        System.out.println("You ended with " + player.getGold() + " gold, and " + player.getHealth() + " health");
+        System.out.println("You ended with " + game.player.getGold() + " gold, and " + game.player.getHealth() + " health");
         System.out.println("Hope you enjoyed this interactive experience, please come again!");
         System.exit(0);
     }

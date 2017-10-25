@@ -2,19 +2,25 @@ package tag1;
 
 import java.util.Scanner;
 
-public class GameCtrl {
+public class GameCtrl extends RoomList {
 
     //******************gameCtrl-Varibles.start******************\\
-    private final Scanner sc = new Scanner(System.in);
-    Player player = new Player();
-    RoomList list = new RoomList();    
+    Scanner scan;
+    public final Player player;
+    private final RoomList list;    
+
+    public GameCtrl() {
+        this.player = new Player();
+        this.list = new RoomList();
+        this.scan = new Scanner(System.in);
+    }
 
     //******************gameCtrl-Varibles.end******************\\
     
        public void gameCtrl() {
         
         System.out.println("Hello, please enter your name");
-        String name = sc.next();  
+        String name = scan.next();  
         player.player(name);        
         list.start('+');
 

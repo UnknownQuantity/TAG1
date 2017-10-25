@@ -12,7 +12,7 @@ public class Player {
     private int strength = 5;
     private int damage = 15; //WIP end
     private int inventory_space = 10;
-    private final static Scanner sc = new Scanner(System.in);
+    private final static Scanner scan = new Scanner(System.in);
     ArrayList small_Inventory = new ArrayList(inventory_space);
     ArrayList current_Inventory = new ArrayList(small_Inventory);
 
@@ -31,7 +31,7 @@ public class Player {
 
         System.out.println("Which way do you want to go? n, e, w, s");
         if ("".equals(choice)) {
-            choice = sc.next();
+            choice = scan.next();
             return choice;
         }
         return choice;
@@ -145,7 +145,7 @@ public class Player {
         current_Inventory.add(item);
         
         System.out.println("do you want to check your inventory?");
-        String choice = sc.next();
+        String choice = scan.next();
         if (choice.equals('y')) {
             System.out.println(current_Inventory);            
         }        

@@ -1,20 +1,23 @@
 package tag1;
 
-import java.util.Scanner;
-
-class RoomList extends GameCtrl {
+class RoomList extends TAG1 {
 
     Utility util = new Utility();
-    Scanner sc = new Scanner(System.in);
-    Rooms room = new Rooms();
-    Items item = new Items();
-    Enemy evil = new Enemy();
-    private boolean hound = false;
-    private boolean areIn = false;
+    Rooms room;
+    Items item;
+    Enemy evil;
+    private final boolean hound = false;
+    private boolean areIn = false;;
     private String search;
     private String rerun = "";
-    private String desc = "";
+    private final String desc = "";
     private final String[] args = {};
+
+    public RoomList() {
+        this.room = new Rooms();
+        this.item = new Items();
+        this.evil = new Enemy();
+    }
     //private int ran;
     //******************Room-methods.start******************\\
     public void start(char es) {
@@ -27,7 +30,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "n":
                 passage('+');
@@ -56,7 +59,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "n":
                 storage1('+');
@@ -90,10 +93,10 @@ class RoomList extends GameCtrl {
         if (es == '+' && room.roomVisited[2] == false) {
             System.out.println(room.Description(2));
             room.roomVisited[2] = true;
-            player.health("Death");
+            game.player.health("Death");
         }
         System.out.println("Do you want to try again? y/n");  //respawn
-        rerun = sc.next();
+        rerun = game.scan.next();
         if ("y".equals(rerun)) {
             TAG1.main(args);
         } else if ("n".equals(rerun)) {
@@ -114,15 +117,15 @@ class RoomList extends GameCtrl {
         String dir;
         if (room.roomStorage1 == false) {
             System.out.println("wanna search the room? y/n");
-            search = sc.next();
+            search = game.scan.next();
             if (search.equals("y")) {
                 item.coins();
-                System.out.println("You now have: " + player.getGold() + " Gold");
+                System.out.println("You now have: " + game.player.getGold() + " Gold");
                 room.roomStorage1 = true;
             }
         }
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "n":
                 passage3('+');
@@ -153,7 +156,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "n":
                 deadEnd('+');
@@ -189,15 +192,15 @@ class RoomList extends GameCtrl {
         }
         if (room.roomStorage1 == false) {
             System.out.println("wanna search the room? y/n");
-            search = sc.next();
+            search = game.scan.next();
             if (search.equals("y")) {
-                System.out.println("You now have: " + player.getGold() + " Gold");
+                System.out.println("You now have: " + game.player.getGold() + " Gold");
                 room.roomStorage1 = true;
             }
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "e":
                 loo2('+');
@@ -227,7 +230,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "e":
                 freiheit2('+');
@@ -261,7 +264,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "s":
                 areIn = false;
@@ -291,7 +294,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "w":
                 passage2('+');
@@ -322,7 +325,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "n":
                 laboratory('+');
@@ -359,7 +362,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "n":
                 passage2('+');
@@ -388,16 +391,16 @@ class RoomList extends GameCtrl {
         String dir;
         if (room.roomLabratory == false) {
             System.out.println("wanna search the room? y/n");
-            search = sc.next();
+            search = game.scan.next();
             if (search.equals("y")) {
-                player.health("Explosion");
+                game.player.health("Explosion");
                 room.roomLabratory = true;
             }
         } else {
-            player.health("Flames");
+            game.player.health("Flames");
         }
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "s":
                 passage2('+');
@@ -426,14 +429,14 @@ class RoomList extends GameCtrl {
         String dir;
         if (room.roomKitchen == false) {
             System.out.println("wanna search the room? y/n");
-            search = sc.next();
+            search = game.scan.next();
             if (search.equals("y")) {
-                player.health("Rotten food");
+                game.player.health("Rotten food");
                 room.roomKitchen = true;
             }
         }
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "n":
                 diningHall('+');
@@ -467,7 +470,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "n":
                 hiddenCorridor('+');
@@ -498,13 +501,13 @@ class RoomList extends GameCtrl {
         }
         String dir;
         if (room.roomVisited[14] == false) {
-            player.health("Trap");
+            game.player.health("Trap");
         }
 
         room.roomVisited[14] = true;
 
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "n":
                 roomOfRiches('+');
@@ -536,7 +539,7 @@ class RoomList extends GameCtrl {
         String dir;
         item.treasure();
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "s":
                 hiddenCorridor('+');
@@ -565,7 +568,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "n":
                 corridor2('+');
@@ -597,7 +600,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "s":
                 diningHall('+');
@@ -629,7 +632,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "n":
                 freiheit('+');
@@ -663,7 +666,7 @@ class RoomList extends GameCtrl {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = sc.next();
+        dir = game.scan.next();
         switch (dir) {
             case "s":
                 guardRoom('+');
@@ -693,7 +696,7 @@ class RoomList extends GameCtrl {
             System.out.println(room.Description(20));
             room.roomVisited[20] = true;
         }
-        player.health("Guards");
+        game.player.health("Guards");
 
         hall('+');
     } //20
