@@ -1,5 +1,5 @@
 package tag1;
-
+//weird 9:05
 import java.util.Scanner;
 
 public class GameCtrl extends RoomList {
@@ -7,15 +7,13 @@ public class GameCtrl extends RoomList {
     //******************gameCtrl-Varibles.start******************\\
     Scanner scan;
     public final Player player;
-    private final RoomList list;
-    private final Enemy evil;    
+    private final RoomList list;   
    //private RoomList monnStart = new RoomList();
 
     public GameCtrl() {
         this.player = new Player();
         this.list = new RoomList();
         this.scan = new Scanner(System.in);
-        this.evil = new Enemy();
         //this.monnStart.deadEnd('+');
     }
 
@@ -25,7 +23,6 @@ public class GameCtrl extends RoomList {
         System.out.println("Hello, please enter your name");
         String name = scan.next();
         player.player(name);
-        evil.monster_Start();
         list.start('+');
 
     }
