@@ -1,5 +1,5 @@
 package tag1;
-//weird 9:05
+//ændret 15:30
 import java.util.Scanner;
 
 public class GameCtrl extends RoomList {

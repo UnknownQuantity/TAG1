@@ -1,4 +1,5 @@
 package tag1;
+//ændret 15:30
 // implement get/set til rooms
 import java.util.*;
 

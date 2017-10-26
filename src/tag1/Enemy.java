@@ -1,5 +1,5 @@
 package tag1;
-//WIP
+//WIP ændret 15:30
 public class Enemy extends TAG1 {
 
     private int health;

@@ -1,5 +1,5 @@
 package tag1;
-
+//ændret 15:30
 import java.util.ArrayList;
 import static tag1.TAG1.game;
 
