@@ -1,15 +1,17 @@
 package tag1;
-//ændret 15:30
+
+
 import java.util.ArrayList;
 
-    class RoomList extends TAG1 {
+class RoomList extends TAG1 {
 
     Utility util = new Utility();
     Rooms room;
-    Items item;    
+    Items item;
     public final Enemy evil;
     private final boolean hound = false;
-    private boolean areIn = false;;
+    private boolean areIn = false;
+    ;
     private String search;
     private String rerun = "";
     private final String desc = "";
@@ -21,17 +23,21 @@ import java.util.ArrayList;
         this.room = new Rooms();
         this.item = new Items();
         this.evil = new Enemy();
-     //   rooms.add(start('+'));
     }
+
     //private int ran;
     //******************Room-methods.start******************\\
     public void start(char es) {
-
+        
+        room.start = true;
+        room.passage = false;
+        
         System.out.println("\u001B[31mStart");
         if (es == '+' && room.roomVisited[0] == false) {
             room.setDesc(room.Description(0));
             System.out.println(room.getDesc());
             room.roomVisited[0] = true;
+            //       evil.monster_Start();
         }
         String dir;
         System.out.println("What do you want to do?");
@@ -56,7 +62,12 @@ import java.util.ArrayList;
     } //0
 
     public void passage(char es) {
-
+        
+        room.passage = true;
+        room.start = false;
+        room.corridor = false;
+        room.storage1 = false;
+        
         System.out.println("\u001B[31mPassage");
         if (es == '+' && room.roomVisited[1] == false) {
             System.out.println(room.Description(1));
@@ -112,8 +123,12 @@ import java.util.ArrayList;
 
     } //2
 
-    public void storage1(char es) {
-
+    public void storage1(char es) { 
+        
+        room.storage1 = true;
+        room.passage3 = false;
+        room.passage = false;
+        
         System.out.println("\u001B[31mStorage1");
         if (es == '+' && room.roomVisited[3] == false) {
             room.roomVisited[3] = true;
@@ -124,9 +139,14 @@ import java.util.ArrayList;
             System.out.println("wanna search the room? y/n");
             search = game.scan.next();
             if (search.equals("y")) {
-                item.coins();
-                System.out.println("You now have: " + game.player.getGold() + " Gold");
-                room.roomStorage1 = true;
+                int pick = item.coins();
+                if (pick == 1) {
+                    System.out.println("You now have: " + game.player.getGold() + " Gold");
+                    room.roomStorage1 = true;
+                }
+            } else if (!"n".equals(search) && !"y".equals(search)) {
+                System.out.println("Invalid Answer!");
+                storage1('-');
             }
         }
         System.out.println("What do you want to do?");
@@ -153,6 +173,12 @@ import java.util.ArrayList;
     } //3
 
     public void passage3(char es) {
+        
+        room.passage3 = true;
+        room.bedroom = false;
+        room.deadEnd = false;
+        room.storage1 = false;
+        room.hall = false;
 
         System.out.println("\u001B[31mPassage3");
         if (es == '+' && room.roomVisited[4] == false) {
@@ -189,18 +215,29 @@ import java.util.ArrayList;
     } //4
 
     public void bedroom(char es) {
-
+        
+        room.bedroom = true;
+        room.loo2 = false;
+        room.passage3 = false;
+        
+        int derp = 0;
         System.out.println("\u001B[31mBedroom");
         if (es == '+' && room.roomVisited[5] == false) {
             System.out.println(room.Description(5));
             room.roomVisited[5] = true;
         }
-        if (room.roomStorage1 == false) {
+        if (room.roomBedroom == false) {
             System.out.println("wanna search the room? y/n");
             search = game.scan.next();
             if (search.equals("y")) {
-                System.out.println("You now have: " + game.player.getGold() + " Gold");
-                room.roomStorage1 = true;
+                int pick = item.coin();
+                if (pick == 1) {
+                    System.out.println("You now have: " + game.player.getGold() + " Gold");
+                    room.roomBedroom = true;
+                } else if (!"n".equals(search) && !"y".equals(search)) {
+                    System.out.println("Invalid Answer!");
+                    storage1('-');
+                }
             }
         }
         String dir;
@@ -226,7 +263,11 @@ import java.util.ArrayList;
         }
     } //5
 
-    public void loo2(char es) {
+    public void loo2(char es) {       
+        
+        room.loo2 = true;
+        room.bedroom = false;
+        
 
         System.out.println("\u001B[31mLoo2");
         if (es == '+' && room.roomVisited[6] == false) {
@@ -258,6 +299,9 @@ import java.util.ArrayList;
     } //6
 
     public void deadEnd(char es) {
+        
+        room.deadEnd = true;
+        room.passage3 = false;
 
         System.out.println("\u001B[31mDeadEnd");
         if (es == '+' && room.roomVisited[7] == false) {
@@ -290,12 +334,29 @@ import java.util.ArrayList;
         }
     } //7
 
-    public void corridor(char es) {
+    public void corridor(char es) {        
+        
+        room.corridor = true;
+        room.passage = false;
+        room.passage2 = false;        
 
         System.out.println("\u001B[31mCorridor");
         if (es == '+' && room.roomVisited[8] == false) {
             room.roomVisited[8] = true;
             System.out.println(room.Description(8));
+        }
+        if (room.roomCorridor == false) {
+            System.out.println("wanna search the room? y/n");
+            search = game.scan.next();
+            if (search.equals("y")) {
+                int pick = item.minor_Potion();
+                if (pick == 1) {
+                    room.roomCorridor = true;
+                } else if (!"n".equals(search) && !"y".equals(search)) {
+                    System.out.println("Invalid Answer!");
+                    corridor('-');
+                }
+            }
         }
         String dir;
         System.out.println("What do you want to do?");
@@ -322,6 +383,13 @@ import java.util.ArrayList;
     } //8
 
     public void passage2(char es) {
+        
+        
+        room.passage2 = true;
+        room.laboratory = false;
+        room.loo = false;
+        room.kitchen = false;
+        room.corridor = false;
 
         System.out.println("\u001B[31mPassage2");
         if (es == '+' && room.roomVisited[9] == false) {
@@ -359,12 +427,30 @@ import java.util.ArrayList;
     } //9
 
     public void loo(char es) {
+        
+        room.loo = true;
+        room.passage2 = false;
 
         System.out.println("\u001B[31mLoo");
         if (es == '+' && room.roomVisited[10] == false) {
             System.out.println(room.Description(10));
             room.roomVisited[10] = true;
         }
+        if (room.roomLoo == false) {
+            System.out.println("wanna search the room? y/n");
+            search = game.scan.next();
+            if (search.equals("y")) {
+                int pick = item.club();
+                if (pick == 1) {
+                    System.out.println("You now have: " + game.player.getGold() + " Gold");
+                    room.roomLoo = true;
+                }
+            } else if (!"n".equals(search) && !"y".equals(search)) {
+                System.out.println("Invalid Answer!");
+                loo('-');
+            }
+        }
+
         String dir;
         System.out.println("What do you want to do?");
         dir = game.scan.next();
@@ -384,9 +470,12 @@ import java.util.ArrayList;
                 loo('-');
                 break;
         }
-    } //10
+    }//10
 
-    public void laboratory(char es) {
+    public void laboratory(char es) {        
+        
+        room.laboratory = true;
+        room.passage2 = false;
 
         System.out.println("\u001B[31mLaboratory");
         if (es == '+' && room.roomVisited[11] == false) {
@@ -400,6 +489,9 @@ import java.util.ArrayList;
             if (search.equals("y")) {
                 game.player.health("Explosion");
                 room.roomLabratory = true;
+            } else if (!"n".equals(search) && !"y".equals(search)) {
+                System.out.println("Invalid Answer!");
+                storage1('-');
             }
         } else {
             game.player.health("Flames");
@@ -425,6 +517,11 @@ import java.util.ArrayList;
     } //11
 
     public void kitchen(char es) {
+        
+        room.kitchen = true;
+        room.passage2 = false;
+        room.pantry = false;
+        room.diningHall = false;
 
         System.out.println("\u001B[31mKitchen");
         if (es == '+' && room.roomVisited[12] == false) {
@@ -438,6 +535,9 @@ import java.util.ArrayList;
             if (search.equals("y")) {
                 game.player.health("Rotten food");
                 room.roomKitchen = true;
+            } else if (!"n".equals(search) && !"y".equals(search)) {
+                System.out.println("Invalid Answer!");
+                kitchen('-');
             }
         }
         System.out.println("What do you want to do?");
@@ -467,11 +567,29 @@ import java.util.ArrayList;
     } //12    
 
     public void pantry(char es) {
+        
+        room.pantry = true;
+        room.hiddenCorridor = false;
+        room.kitchen = false;
 
         System.out.println("\u001B[31mPantry");
         if (es == '+' && room.roomVisited[13] == false) {
             System.out.println(room.Description(13));
             room.roomVisited[13] = true;
+        }
+        if (room.roomPantry == false) {
+            System.out.println("wanna search the room? y/n");
+            search = game.scan.next();
+            if (search.equals("y")) {
+                int pick = item.sword();
+                if (pick == 1) {
+                    System.out.println("You now have: " + game.player.getGold() + " Gold");
+                    room.roomPantry = true;
+                }
+            } else if (!"n".equals(search) && !"y".equals(search)) {
+                System.out.println("Invalid Answer!");
+                pantry('-');
+            }
         }
         String dir;
         System.out.println("What do you want to do?");
@@ -498,7 +616,11 @@ import java.util.ArrayList;
 
     } //13
 
-    public void hiddenCorridor(char es) {
+    public void hiddenCorridor(char es) {        
+        
+        room.hiddenCorridor = true;
+        room.roomOfRiches = false;
+        room.pantry = false;
 
         System.out.println("\u001B[31mHiddenCorridor");
         if (es == '+' && room.roomVisited[14] == false) {
@@ -535,6 +657,9 @@ import java.util.ArrayList;
     } //14
 
     public void roomOfRiches(char es) {
+        
+        room.roomOfRiches = true;
+        room.hiddenCorridor = false;
 
         System.out.println("\u001B[31mRoomOfRiches");
         if (es == '+' && room.roomVisited[15] == false) {
@@ -566,6 +691,10 @@ import java.util.ArrayList;
 
     public void diningHall(char es) {
 
+        room.diningHall = true;
+        room.kitchen = false;
+        room.corridor2 = false;
+        
         System.out.println("\u001B[31mDiningHall");
         if (es == '+' && room.roomVisited[16] == false) {
             System.out.println(room.Description(16));
@@ -597,6 +726,10 @@ import java.util.ArrayList;
     } //16
 
     public void corridor2(char es) {
+        
+        room.corridor2 = true;
+        room.courtyard = false;
+        room.diningHall = false;
 
         System.out.println("\u001B[31mCorridor2");
         if (es == '+' && room.roomVisited[17] == false) {
@@ -629,6 +762,10 @@ import java.util.ArrayList;
     } //17
 
     public void courtyard(char es) {
+        
+        room.courtyard = true;
+        room.hall = false;
+        room.corridor2 = false;
 
         System.out.println("\u001B[31mCourtyard");
         if (es == '+' && room.roomVisited[18] == false) {
@@ -663,7 +800,12 @@ import java.util.ArrayList;
     } //18
 
     public void hall(char es) {
-
+        
+        room.hall = true;
+        room.courtyard = false;
+        room.guardRoom = false;
+        room.passage3 = false;
+        
         System.out.println("\u001B[31mHall");
         if (es == '+' && room.roomVisited[19] == false) {
             System.out.println(room.Description(19));
@@ -695,6 +837,9 @@ import java.util.ArrayList;
     } //19
 
     public void guardRoom(char es) {
+        
+        room.guardRoom = true;
+        room.hall = false;
 
         System.out.println("\u001B[31mGuardRoom");
         if (es == '+' && room.roomVisited[20] == false) {
@@ -707,10 +852,12 @@ import java.util.ArrayList;
     } //20
 
     public void freiheit(char es) {
+        hs.Highscore();
         util.win();
     } //21
 
     public void freiheit2(char es) {
+        hs.Highscore();
         util.win();
     } //22
 

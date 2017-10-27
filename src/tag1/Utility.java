@@ -1,5 +1,5 @@
 package tag1;
-//ændret 15:30
+//ændret papir
 public class Utility extends TAG1 {
     
     public void gameEnd() {

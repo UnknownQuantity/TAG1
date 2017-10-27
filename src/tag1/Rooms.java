@@ -1,5 +1,5 @@
 package tag1;
-//ændret 15:30
+
 // implement get/set til rooms
 import java.util.*;
 
@@ -7,7 +7,8 @@ public class Rooms {
 
     //******************Rooms-Variables.start******************\\
     boolean[] roomVisited = new boolean[21]; //Tracks wether or not you have been in a room (boolean true false)
-    boolean roomStorage1, roomBedroomm, roomLoom, roomLabratory, roomKitchen, roomRoomOfRiches = false; //Tracks the interactions in the room, if interaction is onetime use, set boolean true
+    boolean roomStorage1, roomBedroom, roomCorridor, roomLoom, roomLabratory, roomKitchen, roomRoomOfRiches, roomPantry, roomLoo = false; //Tracks the interactions in the room, if interaction is onetime use, set boolean true
+    public boolean start, passage, storage1, passage3, bedroom, loo2, deadEnd, corridor, passage2, loo, laboratory, kitchen, pantry, hiddenCorridor, roomOfRiches, diningHall, corridor2, courtyard, hall, guardRoom = false;
     ArrayList<RoomList> room = new ArrayList<>();
     ArrayList<String> descList = new ArrayList<>();
     String desc = "";

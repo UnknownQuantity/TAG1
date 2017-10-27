@@ -7,32 +7,69 @@ public class Items extends TAG1 implements Item {
     private int gold;
     private int armor;
     private int damage;
+    private int coin;
+    private int potion;
+    private int item;
 
-    public void minor_Potion() {
-        pickUpItem("a Minor Potion", '+');
+    public int minor_Potion() {
+        int pick = 0;
+        potion = pickUpPotion("a Minor Potion", '+');
+        if (potion == 1 && game.player.getHealth() <= 75) {
+            health = game.player.getHealth();
+            game.player.setHealth(health + 25);
+            pick = 1;
+        }
+        else if (potion == 1 && game.player.getHealth() > 75)
+            health = game.player.getHealth();
+        game.player.setHealth(health = 100);
+
+        return pick;
     }
 
-    public void greater_Potion() {
-        pickUpItem("a Greater Potion", '+');
+    public int greater_Potion() {
+        int pick = 0;
+        potion = pickUpPotion("a Greater Potion", '+');
+        if (potion == 1 && game.player.getHealth() <= 50) {
+            health = game.player.getHealth();
+            game.player.setHealth(health + 50);
+            pick = 1;
+        }
+        return pick;
     }
 
-    public void coin() {
-        pickUpGold("a Coin", '+');
-        gold = game.player.getGold();
-        game.player.setGold(gold += 1);
+    public int coin() {
+        int pick = 0;
+        coin = pickUpGold("a Coin", '+');
+        if (coin == 1) {
+            gold = game.player.getGold();
+            game.player.setGold(gold += 1);
+            pick = 1;
+        }
+        return pick;
     }
 
-    public void coins() {
-        pickUpGold("Five Coins", '+');
-        gold = game.player.getGold();
-        game.player.setGold(gold += 5);
+    public int coins() {
+        int pick = 0;
+        coin = pickUpGold("Five Coins", '+');
+        if (coin == 1) {
+            gold = game.player.getGold();
+            game.player.setGold(gold += 5);
+            pick = 1;
+        }
+        
+        return pick;
     }
 
-    public void treasure() {
-        pickUpGold("a Treasure", '+');
-        System.out.println("The treasure holds 100 coins");
-        gold = game.player.getGold();
-        game.player.setGold(gold += 100);
+    public int treasure() {
+        int pick = 0;
+        coin = pickUpGold("a Treasure", '+');
+        if (coin == 1) {
+            System.out.println("The treasure holds 100 coins");
+            gold = game.player.getGold();
+            game.player.setGold(gold += 100);
+            pick = 1;
+        }
+        return pick;
     }
 
     public void cloth_Armor() {
@@ -50,13 +87,23 @@ public class Items extends TAG1 implements Item {
         //armor 0+50
     }
 
-    public void sword() {
-        pickUpItem("Sword", '+');
+    public int sword() {
+        int pick = 0;
+        item = pickUpItem("Sword", '+');
+        if (item == 1) {
+            pick = 1;
+        }
+        return pick;
         //damage + 15
     }
 
-    public void club() {
-        pickUpItem("Club", '+');
+    public int club() {
+        int pick = 0;
+        item = pickUpItem("Club", '+');
+        if (item == 1) {
+            pick = 1;
+        }
+        return pick;
         //damage + 10
     }
 
@@ -91,66 +138,72 @@ public class Items extends TAG1 implements Item {
     }
 
     @Override
-    public void pickUpGold(String item, char es) {
+    public int pickUpGold(String item, char es) {
+        int pick = 0;
         if (es == '+') {
             System.out.println("You've found: " + item);
         }
         if (es == '+' || es == '-') {
             System.out.println("Do you want to pick it up?");
             choice = game.scan.next();
-            if (choice.equals('y')) {
+            if (choice.equals("y")) {
                 System.out.println("You've picked up " + item);
-            } else if (choice.equals('n')) {
-                System.out.println("You leave the " + item + " on the groud");
+                return pick = 1;
+            } else if (choice.equals("n")) {
+                System.out.println("You leave " + item + " on the groud");
+                return pick = 0;
             } else {
                 System.out.println("Invalid choice!");
-                pickUpItem(item, '-');
+                pickUpGold(item, '-');
             }
         }
+        return pick;
     }
 
     @Override
-    public void pickUpItem(String item, char es) {
+    public int pickUpItem(String item, char es) {
+        int pick = 0;
         if (es == '+') {
             System.out.println("You've found: " + item);
         }
         if (es == '+' || es == '-') {
             System.out.println("Do you want to pick up the item?");
             choice = game.scan.next();
-            if (choice.equals('y')) {
+            if (choice.equals("y")) {
                 System.out.println("You've picked up " + item);
                 game.player.inventoryAdd(item);
-            } else if (choice.equals('n')) {
-                System.out.println("You leave the " + item + " on the groud");
+                return pick = 1;
+            } else if (choice.equals("n")) {
+                System.out.println("You leave " + item + " on the groud");
+                return pick = 0;
             } else {
                 System.out.println("Invalid choice!");
                 pickUpItem(item, '-');
             }
         }
+        return pick;
     }
 
     @Override
-    public void pickUpPotion(String item, char es) {
+    public int pickUpPotion(String item, char es) {
+        int pick = 0;
         if (es == '+') {
             System.out.println("You've found: " + item);
         }
         if (es == '+' || es == '-') {
             System.out.println("Do you want to pick it up?");
             choice = game.scan.next();
-            if (choice.equals('y')) {
+            if (choice.equals("y")) {
                 System.out.println("You've picked up " + item);
-                health = game.player.getHealth();
-                if (item.equals("a Minor Potion")) {
-                    game.player.setHealth(health += 25);
-                } else if (item.equals("a Greater Potion")) {
-                    game.player.setHealth(health += 50);
-                }
-            } else if (choice.equals('n')) {
-                System.out.println("You leave the " + item + " on the gound");
+                return pick = 1;
+            } else if (choice.equals("n")) {
+                System.out.println("You leave " + item + " on the gound");
+                return pick;
             } else {
                 System.out.println("Invalid choice!");
                 pickUpItem(item, '-');
             }
         }
+        return pick;
     }
 }

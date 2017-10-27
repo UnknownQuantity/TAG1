@@ -13,14 +13,14 @@ public class Player {
     private int damage = 15; //WIP end
     private int inventory_space = 10;
     private final static Scanner scan = new Scanner(System.in);
+    private String name;
     ArrayList small_Inventory = new ArrayList(inventory_space);
     ArrayList current_Inventory = new ArrayList(small_Inventory);
-
 
     //******************player-Varibles.end******************\\
     //******************player-gamplay-methods.start******************\\
     public void player(String name) {
-
+        this.name = name;
         System.out.println("Hello there " + name);
 
         System.out.println("At the start of you adventure your health is: " + health + "\nBeware of the dangers in the maze!\nYou're able to search every room you enter by simple typing 's'.");
@@ -121,7 +121,7 @@ public class Player {
         return health;
     }
 
-    public void inventory_Expand(String bag) {       
+    public void inventory_Expand(String bag) {
 
         if (bag.equals("small bag")) {
             inventory_space = 15;
@@ -144,15 +144,15 @@ public class Player {
     public void checkInventory() {
         System.out.println(current_Inventory);
     }
-    
+
     public void inventoryAdd(String item) {
         current_Inventory.add(item);
-        
-        System.out.println("do you want to check your inventory?");
+
+        System.out.println("do you want to check your inventory? y/n");
         String choice = scan.next();
-        if (choice.equals('y')) {
-            System.out.println(current_Inventory);            
-        }        
+        if (choice.equals("y")) {
+            System.out.println(current_Inventory);
+        }
     }
 
     //******************player-gamplay-methods.end******************\\
@@ -163,7 +163,7 @@ public class Player {
 
     public int getHealth() {
         return health;
-    }            
+    }
 
     public int getArmor() {
         return armor;
@@ -177,37 +177,29 @@ public class Player {
         return damage;
     }
     
+    public String getName() {
+        return name;
+    }
+
     public void setGold(int gold) {
         this.gold = gold;
     }
-   
+
     public void setHealth(int health) {
         this.health = health;
     }
 
     public void setArmor(int armor) {
         this.armor = armor;
-    }    
-   
+    }
+
     public void setStrength(int strength) {
         this.strength = strength;
     }
-    
+
     public void setDamage(int damage) {
         this.damage = damage;
     }
-    
 
     //******************player-getters.end******************\\
-
-
-
-
-
-
-
-
-
-
-
 }

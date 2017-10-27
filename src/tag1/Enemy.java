@@ -1,44 +1,43 @@
 package tag1;
-//WIP ændret 15:30
+
+// not yet implemented
 public class Enemy extends TAG1 {
 
     private int health;
     private boolean hound = false;
     private long lastTurn = System.currentTimeMillis();
-    private int ran;
-    private String westMove, eastMove, northMove, southMove;
+    private static int ran;
+    private static String movement;
 
     public void monster(RoomList room) {
+    }
+
+    public static String monMovement() {
+
         ran = (int) ((Math.random() * 4) + 1);
         switch (ran) {
             case 1:
-                eastMove = "east";
+                movement = "n";
                 break;
             case 2:
-                westMove = "west";
+                movement = "s";
                 break;
             case 3:
-                northMove = "north";
+                movement = "w";
+                break;
             case 4:
-                southMove = "south";
+                movement = "e";
                 break;
             default:
                 break;
-                
         }
-        kill();
-    }
-
-    public void movement() {
-
+        return movement;
     }
 
     public void monster_Start() {
-        game.deadEnd('+');
-        
     }
-    
-    public void kill() {        
+
+    public static void kill() {
         game.player.health("Monster");
     }
 
