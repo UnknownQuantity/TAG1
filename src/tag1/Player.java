@@ -1,5 +1,6 @@
 package tag1;
 //ændret 15:30
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,17 +27,17 @@ public class Player {
         System.out.println("At the start of you adventure your health is: " + health + "\nBeware of the dangers in the maze!\nYou're able to search every room you enter by simple typing 's'.");
     }
 
-    public String movement() {
-        String choice = "";
-
-        System.out.println("Which way do you want to go? n, e, w, s");
-        if ("".equals(choice)) {
-            choice = scan.next();
-            return choice;
-        }
-        return choice;
-    }
-
+//    public String movement() {
+//        String choice = "";
+//
+//        System.out.println("Which way do you want to go? n, e, w, s");
+//        if ("".equals(choice)) {
+//            choice = scan.next();
+//            choice.toLowerCase();
+//            return choice;
+//        }
+//        return choice;
+//    }
     public int health(String modi) {
 
         switch (modi) {
@@ -155,6 +156,21 @@ public class Player {
         }
     }
 
+    public boolean playerCombat() {
+
+        int hitChance = (int) (10 * Math.random()) + 1;
+        boolean attack = true;
+
+        if (hitChance >= 2) {
+            attack = true;
+        } else {
+            attack = false;
+        }
+
+        return attack;
+
+    }
+
     //******************player-gamplay-methods.end******************\\
     //******************player-getters.start******************\\
     public int getGold() {
@@ -176,7 +192,7 @@ public class Player {
     public int getDamage() {
         return damage;
     }
-    
+
     public String getName() {
         return name;
     }

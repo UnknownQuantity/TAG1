@@ -1,11 +1,9 @@
 package tag1;
 
 public class Utility extends TAG1 {
-    
+
     public void gameEnd() {
-//        for (int i = 0; i < room.roomVisited.length; i++) {
-//            System.out.println(room.roomVisited[i]);
-//        }
+
         System.out.println("Your game has ended, please come again!");
         System.exit(0);
     }
@@ -26,7 +24,7 @@ public class Utility extends TAG1 {
             Thread.currentThread().interrupt();
         }
     }
-    
+
     public void win() {
         System.out.println("Congratulations you have won the game!");
         System.out.println("You ended with " + game.player.getGold() + " gold, and " + game.player.getHealth() + " health");
@@ -39,5 +37,5 @@ public class Utility extends TAG1 {
         System.out.println("We hope you had fun, please come again!");
         System.exit(0);
     }
-    
+
 }

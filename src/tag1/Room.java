@@ -1,8 +1,9 @@
 package tag1;
 
 public class Room {
+
     private String desc;
-    private boolean visited = false;
+    private boolean visited, looted = false;
     private Room north, south, east, west;
 
     public Room(String desc) {
@@ -52,7 +53,7 @@ public class Room {
     public void setWest(Room west) {
         this.west = west;
     }
-    
+
 //    public void enterRoom(Player p){
 //        if(north == null)
 //            if((south == null))

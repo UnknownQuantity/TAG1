@@ -1,6 +1,5 @@
 package tag1;
 
-
 import java.util.ArrayList;
 
 class RoomList extends TAG1 {
@@ -28,10 +27,10 @@ class RoomList extends TAG1 {
     //private int ran;
     //******************Room-methods.start******************\\
     public void start(char es) {
-        
+
         room.start = true;
         room.passage = false;
-        
+
         System.out.println("\u001B[31mStart");
         if (es == '+' && room.roomVisited[0] == false) {
             room.setDesc(room.Description(0));
@@ -41,7 +40,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
                 passage('+');
@@ -62,12 +61,12 @@ class RoomList extends TAG1 {
     } //0
 
     public void passage(char es) {
-        
+
         room.passage = true;
         room.start = false;
         room.corridor = false;
         room.storage1 = false;
-        
+
         System.out.println("\u001B[31mPassage");
         if (es == '+' && room.roomVisited[1] == false) {
             System.out.println(room.Description(1));
@@ -75,7 +74,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
                 storage1('+');
@@ -123,12 +122,12 @@ class RoomList extends TAG1 {
 
     } //2
 
-    public void storage1(char es) { 
-        
+    public void storage1(char es) {
+
         room.storage1 = true;
         room.passage3 = false;
         room.passage = false;
-        
+
         System.out.println("\u001B[31mStorage1");
         if (es == '+' && room.roomVisited[3] == false) {
             room.roomVisited[3] = true;
@@ -137,7 +136,7 @@ class RoomList extends TAG1 {
         String dir;
         if (room.roomStorage1 == false) {
             System.out.println("wanna search the room? y/n");
-            search = game.scan.next();
+            search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 int pick = item.coins();
                 if (pick == 1) {
@@ -150,7 +149,7 @@ class RoomList extends TAG1 {
             }
         }
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
                 passage3('+');
@@ -173,7 +172,7 @@ class RoomList extends TAG1 {
     } //3
 
     public void passage3(char es) {
-        
+
         room.passage3 = true;
         room.bedroom = false;
         room.deadEnd = false;
@@ -187,7 +186,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
                 deadEnd('+');
@@ -215,11 +214,11 @@ class RoomList extends TAG1 {
     } //4
 
     public void bedroom(char es) {
-        
+
         room.bedroom = true;
         room.loo2 = false;
         room.passage3 = false;
-        
+
         int derp = 0;
         System.out.println("\u001B[31mBedroom");
         if (es == '+' && room.roomVisited[5] == false) {
@@ -228,7 +227,7 @@ class RoomList extends TAG1 {
         }
         if (room.roomBedroom == false) {
             System.out.println("wanna search the room? y/n");
-            search = game.scan.next();
+            search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 int pick = item.coin();
                 if (pick == 1) {
@@ -242,7 +241,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "e":
                 loo2('+');
@@ -263,11 +262,10 @@ class RoomList extends TAG1 {
         }
     } //5
 
-    public void loo2(char es) {       
-        
+    public void loo2(char es) {
+
         room.loo2 = true;
         room.bedroom = false;
-        
 
         System.out.println("\u001B[31mLoo2");
         if (es == '+' && room.roomVisited[6] == false) {
@@ -276,7 +274,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "e":
                 freiheit2('+');
@@ -299,7 +297,7 @@ class RoomList extends TAG1 {
     } //6
 
     public void deadEnd(char es) {
-        
+
         room.deadEnd = true;
         room.passage3 = false;
 
@@ -313,7 +311,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "s":
                 areIn = false;
@@ -334,11 +332,11 @@ class RoomList extends TAG1 {
         }
     } //7
 
-    public void corridor(char es) {        
-        
+    public void corridor(char es) {
+
         room.corridor = true;
         room.passage = false;
-        room.passage2 = false;        
+        room.passage2 = false;
 
         System.out.println("\u001B[31mCorridor");
         if (es == '+' && room.roomVisited[8] == false) {
@@ -347,7 +345,7 @@ class RoomList extends TAG1 {
         }
         if (room.roomCorridor == false) {
             System.out.println("wanna search the room? y/n");
-            search = game.scan.next();
+            search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 int pick = item.minor_Potion();
                 if (pick == 1) {
@@ -360,7 +358,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "w":
                 passage2('+');
@@ -383,8 +381,7 @@ class RoomList extends TAG1 {
     } //8
 
     public void passage2(char es) {
-        
-        
+
         room.passage2 = true;
         room.laboratory = false;
         room.loo = false;
@@ -398,7 +395,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
                 laboratory('+');
@@ -427,7 +424,7 @@ class RoomList extends TAG1 {
     } //9
 
     public void loo(char es) {
-        
+
         room.loo = true;
         room.passage2 = false;
 
@@ -438,7 +435,7 @@ class RoomList extends TAG1 {
         }
         if (room.roomLoo == false) {
             System.out.println("wanna search the room? y/n");
-            search = game.scan.next();
+            search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 int pick = item.club();
                 if (pick == 1) {
@@ -453,7 +450,7 @@ class RoomList extends TAG1 {
 
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
                 passage2('+');
@@ -472,8 +469,8 @@ class RoomList extends TAG1 {
         }
     }//10
 
-    public void laboratory(char es) {        
-        
+    public void laboratory(char es) {
+
         room.laboratory = true;
         room.passage2 = false;
 
@@ -485,7 +482,7 @@ class RoomList extends TAG1 {
         String dir;
         if (room.roomLabratory == false) {
             System.out.println("wanna search the room? y/n");
-            search = game.scan.next();
+            search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 game.player.health("Explosion");
                 room.roomLabratory = true;
@@ -497,7 +494,7 @@ class RoomList extends TAG1 {
             game.player.health("Flames");
         }
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "s":
                 passage2('+');
@@ -517,7 +514,7 @@ class RoomList extends TAG1 {
     } //11
 
     public void kitchen(char es) {
-        
+
         room.kitchen = true;
         room.passage2 = false;
         room.pantry = false;
@@ -531,7 +528,7 @@ class RoomList extends TAG1 {
         String dir;
         if (room.roomKitchen == false) {
             System.out.println("wanna search the room? y/n");
-            search = game.scan.next();
+            search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 game.player.health("Rotten food");
                 room.roomKitchen = true;
@@ -541,7 +538,7 @@ class RoomList extends TAG1 {
             }
         }
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
                 diningHall('+');
@@ -567,7 +564,7 @@ class RoomList extends TAG1 {
     } //12    
 
     public void pantry(char es) {
-        
+
         room.pantry = true;
         room.hiddenCorridor = false;
         room.kitchen = false;
@@ -579,7 +576,7 @@ class RoomList extends TAG1 {
         }
         if (room.roomPantry == false) {
             System.out.println("wanna search the room? y/n");
-            search = game.scan.next();
+            search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 int pick = item.sword();
                 if (pick == 1) {
@@ -593,7 +590,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
                 hiddenCorridor('+');
@@ -616,8 +613,8 @@ class RoomList extends TAG1 {
 
     } //13
 
-    public void hiddenCorridor(char es) {        
-        
+    public void hiddenCorridor(char es) {
+
         room.hiddenCorridor = true;
         room.roomOfRiches = false;
         room.pantry = false;
@@ -634,7 +631,7 @@ class RoomList extends TAG1 {
         room.roomVisited[14] = true;
 
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
                 roomOfRiches('+');
@@ -657,7 +654,7 @@ class RoomList extends TAG1 {
     } //14
 
     public void roomOfRiches(char es) {
-        
+
         room.roomOfRiches = true;
         room.hiddenCorridor = false;
 
@@ -669,7 +666,7 @@ class RoomList extends TAG1 {
         String dir;
         item.treasure();
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "s":
                 hiddenCorridor('+');
@@ -694,7 +691,7 @@ class RoomList extends TAG1 {
         room.diningHall = true;
         room.kitchen = false;
         room.corridor2 = false;
-        
+
         System.out.println("\u001B[31mDiningHall");
         if (es == '+' && room.roomVisited[16] == false) {
             System.out.println(room.Description(16));
@@ -702,7 +699,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
                 corridor2('+');
@@ -726,7 +723,7 @@ class RoomList extends TAG1 {
     } //16
 
     public void corridor2(char es) {
-        
+
         room.corridor2 = true;
         room.courtyard = false;
         room.diningHall = false;
@@ -738,7 +735,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "s":
                 diningHall('+');
@@ -762,7 +759,7 @@ class RoomList extends TAG1 {
     } //17
 
     public void courtyard(char es) {
-        
+
         room.courtyard = true;
         room.hall = false;
         room.corridor2 = false;
@@ -774,7 +771,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
                 freiheit('+');
@@ -800,12 +797,12 @@ class RoomList extends TAG1 {
     } //18
 
     public void hall(char es) {
-        
+
         room.hall = true;
         room.courtyard = false;
         room.guardRoom = false;
         room.passage3 = false;
-        
+
         System.out.println("\u001B[31mHall");
         if (es == '+' && room.roomVisited[19] == false) {
             System.out.println(room.Description(19));
@@ -813,7 +810,7 @@ class RoomList extends TAG1 {
         }
         String dir;
         System.out.println("What do you want to do?");
-        dir = game.scan.next();
+        dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "s":
                 guardRoom('+');
@@ -837,7 +834,7 @@ class RoomList extends TAG1 {
     } //19
 
     public void guardRoom(char es) {
-        
+
         room.guardRoom = true;
         room.hall = false;
 
@@ -847,6 +844,11 @@ class RoomList extends TAG1 {
             room.roomVisited[20] = true;
         }
         game.player.health("Guards");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
 
         hall('+');
     } //20
