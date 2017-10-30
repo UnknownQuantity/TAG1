@@ -6,7 +6,6 @@ public class TAG1 {
     public static Highscore hs = new Highscore();
 
     public static void main(String[] args) {
-
         game.gameCtrl();
     }
 

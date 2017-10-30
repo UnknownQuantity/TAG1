@@ -38,14 +38,11 @@ public class Highscore extends TAG1 {
 
             bw.write(content);
             bw.newLine();
-
             bw.close();
 
         } catch (IOException e) {
             System.out.println(e);
         }
-        //content = content.replace("Potato", "Hej");
-        //Potato = Highscore;
     }
 
     public static void reader() {

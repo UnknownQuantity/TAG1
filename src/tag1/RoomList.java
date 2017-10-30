@@ -9,8 +9,7 @@ class RoomList extends TAG1 {
     Items item;
     public final Enemy evil;
     private final boolean hound = false;
-    private boolean areIn = false;
-    ;
+    private boolean areIn = false;    
     private String search;
     private String rerun = "";
     private final String desc = "";
@@ -23,8 +22,6 @@ class RoomList extends TAG1 {
         this.item = new Items();
         this.evil = new Enemy();
     }
-
-    //private int ran;
     //******************Room-methods.start******************\\
     public void start(char es) {
 
@@ -51,7 +48,11 @@ class RoomList extends TAG1 {
                 break;
             case "q":
                 util.quit();
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                start('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 start('-');
@@ -94,7 +95,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 passage('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                passage('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 passage('-');
@@ -163,7 +168,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 storage1('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                storage1('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 storage1('-');
@@ -205,7 +214,12 @@ class RoomList extends TAG1 {
                 break;
             case "h":
                 util.help();
+                passage3('-'); 
+                break;
+            case "i":
+                util.currentInventory();
                 passage3('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 passage3('-');
@@ -254,7 +268,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 bedroom('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                bedroom('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 bedroom('-');
@@ -288,7 +306,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 loo2('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                loo2('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 loo2('-');
@@ -323,7 +345,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 deadEnd('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                deadEnd('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 areIn = true;
@@ -372,7 +398,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 corridor('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                corridor('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 corridor('-');
@@ -415,7 +445,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 passage2('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                passage2('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 passage2('-');
@@ -461,7 +495,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 loo('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                loo('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 loo('-');
@@ -505,7 +543,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 laboratory('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                laboratory('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 laboratory('-');
@@ -555,7 +597,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 kitchen('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                kitchen('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 kitchen('-');
@@ -604,7 +650,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 pantry('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                pantry('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 pantry('-');
@@ -645,7 +695,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 hiddenCorridor('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                hiddenCorridor('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 hiddenCorridor('-');
@@ -677,7 +731,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 roomOfRiches('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                roomOfRiches('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 roomOfRiches('-');
@@ -713,7 +771,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 diningHall('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                diningHall('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 diningHall('-');
@@ -749,7 +811,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 corridor2('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                corridor2('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 corridor2('-');
@@ -788,7 +854,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 courtyard('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                courtyard('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 courtyard('-');
@@ -825,7 +895,11 @@ class RoomList extends TAG1 {
             case "h":
                 util.help();
                 hall('-');
-                break;
+                break;                
+            case "i":
+                util.currentInventory();
+                hall('-');
+		break;
             default:
                 System.out.println("Invalid answer!");
                 hall('-');

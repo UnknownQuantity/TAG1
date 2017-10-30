@@ -1,5 +1,4 @@
 package tag1;
-//ændret 15:30
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,27 +16,16 @@ public class Player {
     private String name;
     ArrayList small_Inventory = new ArrayList(inventory_space);
     ArrayList current_Inventory = new ArrayList(small_Inventory);
+    ArrayList worm_Items = new ArrayList(3);
 
     //******************player-Varibles.end******************\\
     //******************player-gamplay-methods.start******************\\
     public void player(String name) {
         this.name = name;
         System.out.println("Hello there " + name);
-
         System.out.println("At the start of you adventure your health is: " + health + "\nBeware of the dangers in the maze!\nYou're able to search every room you enter by simple typing 's'.");
     }
-
-//    public String movement() {
-//        String choice = "";
-//
-//        System.out.println("Which way do you want to go? n, e, w, s");
-//        if ("".equals(choice)) {
-//            choice = scan.next();
-//            choice.toLowerCase();
-//            return choice;
-//        }
-//        return choice;
-//    }
+    
     public int health(String modi) {
 
         switch (modi) {
@@ -142,18 +130,9 @@ public class Player {
 
     }
 
-    public void checkInventory() {
-        System.out.println(current_Inventory);
-    }
-
     public void inventoryAdd(String item) {
         current_Inventory.add(item);
-
-        System.out.println("do you want to check your inventory? y/n");
-        String choice = scan.next();
-        if (choice.equals("y")) {
-            System.out.println(current_Inventory);
-        }
+        
     }
 
     public boolean playerCombat() {

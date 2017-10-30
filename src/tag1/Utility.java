@@ -38,4 +38,8 @@ public class Utility extends TAG1 {
         System.exit(0);
     }
 
+    public void currentInventory() {
+
+        System.out.println(game.player.current_Inventory);
+    }
 }
