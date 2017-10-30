@@ -4,6 +4,9 @@ package tag1;
 public class Enemy extends TAG1 {
 
     private int playerHealth, monsterHealth, damage, hitChance;
+    private int weakMHealth = 30;
+    private int weakMDamage = 5;
+
     private boolean hound, attack = false;
     private long lastTurn = System.currentTimeMillis();
 
@@ -31,17 +34,11 @@ public class Enemy extends TAG1 {
 
     }
 
-    public void weakMinotaur() {
+    public boolean weakMinotaurAttack() {
 
-        monsterHealth = 30;
-        damage = 5;
-        hitChance = (int) (10 * Math.random()) + 1;
-
-        if (hitChance >= 6) {
-            attack = true;
-        } else {
-            attack = false;
-        }
+        hitChance = (int) (10 * Math.random()) + 1; 
+        
+        return hitChance >= 7;        
     }
 
     public void strongMinotaur() {
@@ -49,12 +46,15 @@ public class Enemy extends TAG1 {
         monsterHealth = 50;
         damage = 15;
         hitChance = (int) (10 * Math.random()) + 1;
-
+        while(monsterHealth > 0) {
         if (hitChance >= 4) {
             attack = true;
         } else {
             attack = false;
         }
+        }
+        if (monsterHealth <= 0)
+            loot();
     }
 
     public void mightyMinotaur() {
@@ -62,24 +62,66 @@ public class Enemy extends TAG1 {
         monsterHealth = 100;
         damage = 25;
         hitChance = (int) (10 * Math.random()) + 1;
-
+        while (monsterHealth > 0) {
         if (hitChance >= 2) {
             attack = true;
         } else {
             attack = false;
         }
+        }
+        if (monsterHealth <= 0)
+            loot();
     }
 
     public int loot() {
-
+        
+        System.out.println("Do you want to loot the corpse?");
+        String choice = game.scan.next().toLowerCase();        
+        if (choice.equals("y"));
         int drop = (int) (10 * Math.random()) + 1;
-
-        //1 = sword
-        //3 = club
-        //5 = micor potion
-        //7 = greater potion
-        //9 = coins
-        //lige tal = intet drop
+        
+        switch(drop) {
+            case 1:
+                System.out.println("You've found a Sword!");
+                game.player.inventoryAdd("Sword");
+                break;
+            case 3:
+                System.out.println("You've found a Club!");
+                game.player.inventoryAdd("club");
+                break;
+            case 5:
+                System.out.println("You've found a Minor Potion!");
+                game.item.loot_Minor_Potion();
+                break;
+            case 7:
+                System.out.println("You've found a Greater Potion!");
+                game.item.loot_Greater_Potion();
+                break;
+            case 9:
+                System.out.println("You've found five Coins!");
+                game.item.loot_Coins();
+                break;
+            default:
+                System.out.println("The corpse was empty");
+                break;
+        }
+        
         return drop;
+    }
+    
+    public int getWeakMHealth() {
+        return weakMHealth;
+    }
+
+    public void setWeakMHealth(int weakMHealth) {
+        this.weakMHealth = weakMHealth;
+    }
+
+    public int getWeakMDamage() {
+        return weakMDamage;
+    }
+
+    public void setWeakMDamage(int weakMDamage) {
+        this.weakMDamage = weakMDamage;
     }
 }
