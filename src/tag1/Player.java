@@ -10,7 +10,8 @@ public class Player {
     private int gold = 0;
     private int armor = 0; //WIP
     private int strength = 5;
-    private int damage = 15; //WIP end
+    private int baseDamage = 15;
+    private int currentDamage = 15;//WIP end
     private int inventory_space = 10;
     private final static Scanner scan = new Scanner(System.in);
     private String name;
@@ -138,13 +139,9 @@ public class Player {
     public boolean playerCombat() {
 
         int hitChance = (int) (10 * Math.random()) + 1;
-        boolean attack = true;
+        boolean attack;
 
-        if (hitChance >= 2) {
-            attack = true;
-        } else {
-            attack = false;
-        }
+        attack = hitChance >= 2;
 
         return attack;
 
@@ -169,7 +166,7 @@ public class Player {
     }
 
     public int getDamage() {
-        return damage;
+        return currentDamage;
     }
 
     public String getName() {
@@ -193,7 +190,7 @@ public class Player {
     }
 
     public void setDamage(int damage) {
-        this.damage = damage;
+        this.currentDamage = damage;
     }
 
     //******************player-getters.end******************\\

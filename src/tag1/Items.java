@@ -19,11 +19,35 @@ public class Items extends TAG1 implements Item {
             game.player.setHealth(health + 25);
             pick = 1;
         }
-        else if (potion == 1 && game.player.getHealth() > 75)
+        else if (potion == 1 && game.player.getHealth() > 75) {
             health = game.player.getHealth();
         game.player.setHealth(health = 100);
-
+        }
         return pick;
+    }
+    
+    public void loot_Minor_Potion() {
+        
+        if(game.player.getHealth() <= 75) {
+            health = game.player.getHealth();
+            game.player.setHealth(health + 25);
+        }
+        else if (game.player.getHealth() > 75) {
+            health = game.player.getHealth();
+        game.player.setHealth(health = 100);
+        }
+    }
+    
+    public void loot_Greater_Potion() {
+        
+        if(game.player.getHealth() <= 50) {
+            health = game.player.getHealth();
+            game.player.setHealth(health + 25);
+        }
+        else if (game.player.getHealth() > 50) {
+            health = game.player.getHealth();
+        game.player.setHealth(health = 100);
+        }
     }
 
     public int greater_Potion() {
@@ -33,6 +57,10 @@ public class Items extends TAG1 implements Item {
             health = game.player.getHealth();
             game.player.setHealth(health + 50);
             pick = 1;
+        }
+        else if (potion == 1 && game.player.getHealth() >= 50) {
+            health = game.player.getHealth();
+        game.player.setHealth(health = 100);
         }
         return pick;
     }
@@ -59,7 +87,18 @@ public class Items extends TAG1 implements Item {
         
         return pick;
     }
-
+    
+    public void loot_Coin() {
+        gold = game.player.getGold();
+        game.player.setGold(gold += 1);        
+    }
+    
+    public void loot_Coins() {
+        gold = game.player.getGold();
+        game.player.setGold(gold += 5);
+        
+    }
+    
     public int treasure() {
         int pick = 0;
         coin = pickUpGold("a Treasure", '+');

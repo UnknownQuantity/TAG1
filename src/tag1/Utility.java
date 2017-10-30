@@ -12,11 +12,13 @@ public class Utility extends TAG1 {
         System.out.println("********HELP********");
         System.out.println("When asked to perform an action the following codes is allowed");
         System.out.println("for help type: h");
-        System.out.println("to go north type: n");
+        System.out.println("to go north type: n");        
+        System.out.println("to check inventory type: i");
         System.out.println("to go south type: s");
         System.out.println("to go east type: e");
         System.out.println("to go west type: w");
         System.out.println("to quit type: q");
+        System.out.println("to check inventory type: i");
         System.out.println("********HELP********");
         try {
             Thread.sleep(5000);
@@ -41,5 +43,6 @@ public class Utility extends TAG1 {
     public void currentInventory() {
 
         System.out.println(game.player.current_Inventory);
+        System.out.println("Current gold: " + game.player.getGold());
     }
 }
