@@ -100,6 +100,10 @@ public class Player {
                 System.out.println("You meet a giant monster and is instantly killed");
                 health = 0;
                 break;
+            case "Combat":
+                System.out.println("The beast cleaves you with its weapon, ending your life");
+                health = 0;
+                break;
             default:
                 break;
         }

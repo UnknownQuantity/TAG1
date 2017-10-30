@@ -56,6 +56,10 @@ class RoomList extends TAG1 {
                 util.currentInventory();
                 start('-');
                 break;
+            case "st":
+                util.stats();
+                start('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 start('-');
@@ -101,6 +105,10 @@ class RoomList extends TAG1 {
                 break;
             case "i":
                 util.currentInventory();
+                passage('-');
+                break;                
+            case "st":
+                util.stats();
                 passage('-');
                 break;
             default:
@@ -176,6 +184,10 @@ class RoomList extends TAG1 {
                 util.currentInventory();
                 storage1('-');
                 break;
+            case "st":
+                util.stats();
+                storage1('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 storage1('-');
@@ -221,6 +233,10 @@ class RoomList extends TAG1 {
                 break;
             case "i":
                 util.currentInventory();
+                passage3('-');
+                break;
+            case "st":
+                util.stats();
                 passage3('-');
                 break;
             default:
@@ -276,6 +292,10 @@ class RoomList extends TAG1 {
                 util.currentInventory();
                 bedroom('-');
                 break;
+            case "st":
+                util.stats();
+                bedroom('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 bedroom('-');
@@ -312,6 +332,10 @@ class RoomList extends TAG1 {
                 break;
             case "i":
                 util.currentInventory();
+                loo2('-');
+                break;
+            case "st":
+                util.stats();
                 loo2('-');
                 break;
             default:
@@ -351,6 +375,10 @@ class RoomList extends TAG1 {
                 break;
             case "i":
                 util.currentInventory();
+                deadEnd('-');
+                break;
+            case "st":
+                util.stats();
                 deadEnd('-');
                 break;
             default:
@@ -406,6 +434,10 @@ class RoomList extends TAG1 {
                 util.currentInventory();
                 corridor('-');
                 break;
+            case "st":
+                util.stats();
+                corridor('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 corridor('-');
@@ -451,6 +483,10 @@ class RoomList extends TAG1 {
                 break;
             case "i":
                 util.currentInventory();
+                passage2('-');
+                break;
+            case "st":
+                util.stats();
                 passage2('-');
                 break;
             default:
@@ -502,6 +538,10 @@ class RoomList extends TAG1 {
                 util.currentInventory();
                 loo('-');
                 break;
+            case "st":
+                util.stats();
+                loo('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 loo('-');
@@ -548,6 +588,10 @@ class RoomList extends TAG1 {
                 break;
             case "i":
                 util.currentInventory();
+                laboratory('-');
+                break;
+            case "st":
+                util.stats();
                 laboratory('-');
                 break;
             default:
@@ -603,6 +647,10 @@ class RoomList extends TAG1 {
             case "i":
                 util.currentInventory();
                 kitchen('-');
+                break;                
+            case "st":
+                util.stats();
+                kitchen('-');
                 break;
             default:
                 System.out.println("Invalid answer!");
@@ -656,6 +704,10 @@ class RoomList extends TAG1 {
                 util.currentInventory();
                 pantry('-');
                 break;
+            case "st":
+                util.stats();
+                pantry('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 pantry('-');
@@ -701,6 +753,10 @@ class RoomList extends TAG1 {
                 util.currentInventory();
                 hiddenCorridor('-');
                 break;
+            case "st":
+                util.stats();
+                hiddenCorridor('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 hiddenCorridor('-');
@@ -737,6 +793,10 @@ class RoomList extends TAG1 {
                 util.currentInventory();
                 roomOfRiches('-');
                 break;
+            case "st":
+                util.stats();
+                roomOfRiches('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 roomOfRiches('-');
@@ -747,7 +807,6 @@ class RoomList extends TAG1 {
 
     public void diningHall(char es) {
 
-        boolean monster = true;
         room.diningHall = true;
         room.kitchen = false;
         room.corridor2 = false;
@@ -757,7 +816,7 @@ class RoomList extends TAG1 {
             System.out.println(room.Description(16));
             room.roomVisited[16] = true;
             com.weakCombat();
-            monster = false;
+            game.evil.loot();
         }
 
         String dir;
@@ -779,6 +838,10 @@ class RoomList extends TAG1 {
                 break;
             case "i":
                 util.currentInventory();
+                diningHall('-');
+                break;
+            case "st":
+                util.stats();
                 diningHall('-');
                 break;
             default:
@@ -819,6 +882,10 @@ class RoomList extends TAG1 {
                 break;
             case "i":
                 util.currentInventory();
+                corridor2('-');
+                break;
+            case "st":
+                util.stats();
                 corridor2('-');
                 break;
             default:
@@ -864,6 +931,10 @@ class RoomList extends TAG1 {
                 util.currentInventory();
                 courtyard('-');
                 break;
+            case "st":
+                util.stats();
+                courtyard('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 courtyard('-');
@@ -903,6 +974,10 @@ class RoomList extends TAG1 {
                 break;
             case "i":
                 util.currentInventory();
+                hall('-');
+                break;
+            case "st":
+                util.stats();
                 hall('-');
                 break;
             default:

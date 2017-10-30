@@ -14,6 +14,7 @@ public class Utility extends TAG1 {
         System.out.println("for help type: h");
         System.out.println("to go north type: n");        
         System.out.println("to check inventory type: i");
+        System.out.println("to view your stats type: st");
         System.out.println("to go south type: s");
         System.out.println("to go east type: e");
         System.out.println("to go west type: w");
@@ -44,5 +45,10 @@ public class Utility extends TAG1 {
 
         System.out.println(game.player.current_Inventory);
         System.out.println("Current gold: " + game.player.getGold());
+    }
+    
+    public void stats() {
+        System.out.println("current gold: " + game.player.getGold());
+        System.out.println("current health: " + game.player.getHealth());
     }
 }

@@ -6,6 +6,10 @@ public class Enemy extends TAG1 {
     private int playerHealth, monsterHealth, damage, hitChance;
     private int weakMHealth = 30;
     private int weakMDamage = 5;
+    private int strongMHealth = 50;
+    private int strongMDamage = 15;
+    private int mightyMHealth = 100;
+    private int mightyMDamage = 25;
 
     private boolean hound, attack = false;
     private long lastTurn = System.currentTimeMillis();
@@ -38,48 +42,63 @@ public class Enemy extends TAG1 {
 
         hitChance = (int) (10 * Math.random()) + 1; 
         
-        return hitChance >= 7;        
+        return hitChance >= 7;    
     }
 
-    public void strongMinotaur() {
-
-        monsterHealth = 50;
-        damage = 15;
+    public boolean strongMinotaurAttack() {
+        
         hitChance = (int) (10 * Math.random()) + 1;
-        while(monsterHealth > 0) {
-        if (hitChance >= 4) {
-            attack = true;
-        } else {
-            attack = false;
-        }
-        }
-        if (monsterHealth <= 0)
-            loot();
+        
+        return hitChance >= 4;
+        
     }
 
-    public void mightyMinotaur() {
+    public boolean mightyMinotaurAttack() {
 
-        monsterHealth = 100;
-        damage = 25;
         hitChance = (int) (10 * Math.random()) + 1;
-        while (monsterHealth > 0) {
-        if (hitChance >= 2) {
-            attack = true;
-        } else {
-            attack = false;
-        }
-        }
-        if (monsterHealth <= 0)
-            loot();
+        
+        return hitChance >= 2;
+    }
+
+    public int getStrongMHealth() {
+        return strongMHealth;
+    }
+
+    public void setStrongMHealth(int strongMHealth) {
+        this.strongMHealth = strongMHealth;
+    }
+
+    public int getStrongMDamage() {
+        return strongMDamage;
+    }
+
+    public void setStrongMDamage(int strongMDamage) {
+        this.strongMDamage = strongMDamage;
+    }
+
+    public int getMightyMHealth() {
+        return mightyMHealth;
+    }
+
+    public void setMightyMHealth(int mightyMHealth) {
+        this.mightyMHealth = mightyMHealth;
+    }
+
+    public int getMightyMDamage() {
+        return mightyMDamage;
+    }
+
+    public void setMightyMDamage(int mightyMDamage) {
+        this.mightyMDamage = mightyMDamage;
     }
 
     public int loot() {
         
         System.out.println("Do you want to loot the corpse?");
         String choice = game.scan.next().toLowerCase();        
-        if (choice.equals("y"));
+        if (choice.equals("y")) {
         int drop = (int) (10 * Math.random()) + 1;
-        
+        System.out.println(drop);
         switch(drop) {
             case 1:
                 System.out.println("You've found a Sword!");
@@ -103,10 +122,17 @@ public class Enemy extends TAG1 {
                 break;
             default:
                 System.out.println("The corpse was empty");
-                break;
+                break;                
         }
-        
         return drop;
+        }
+        else if (choice.equals("n"))
+            System.out.println("You leave the corpse alone and it turns to ash!");
+        else {
+            System.out.println("invalid answer!");
+            loot();
+        }
+        return 0;
     }
     
     public int getWeakMHealth() {
