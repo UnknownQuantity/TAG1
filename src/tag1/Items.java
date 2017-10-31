@@ -128,7 +128,7 @@ public class Items extends TAG1 implements Item {
 
     public int sword() {
         int pick = 0;
-        item = pickUpItem("Sword", '+');
+        item = pickUpItem("sword", '+');
         if (item == 1) {
             pick = 1;
         }
@@ -138,7 +138,7 @@ public class Items extends TAG1 implements Item {
 
     public int club() {
         int pick = 0;
-        item = pickUpItem("Club", '+');
+        item = pickUpItem("club", '+');
         if (item == 1) {
             pick = 1;
         }

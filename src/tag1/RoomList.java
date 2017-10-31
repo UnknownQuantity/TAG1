@@ -29,9 +29,6 @@ class RoomList extends TAG1 {
     //******************Room-methods.start******************\\
     public void start(char es) throws IOException{
 
-        room.start = true;
-        room.passage = false;
-
         System.out.println("\u001B[31mStart");
         if (es == '+' && room.roomVisited[0] == false) {
             room.setDesc(room.Description(0));
@@ -71,11 +68,6 @@ class RoomList extends TAG1 {
 
     public void passage(char es) throws IOException{
 
-        room.passage = true;
-        room.start = false;
-        room.corridor = false;
-        room.storage1 = false;
-
         System.out.println("\u001B[31mPassage");
         if (es == '+' && room.roomVisited[1] == false) {
             System.out.println(room.Description(1));
@@ -86,6 +78,7 @@ class RoomList extends TAG1 {
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
+                room.roomPassage = true;
             } else if (!"n".equals(search) && !"y".equals(search)) {
                 System.out.println("Invalid Answer!");
                 passage('-');
@@ -151,10 +144,6 @@ class RoomList extends TAG1 {
 
     public void storage1(char es) throws IOException {
 
-        room.storage1 = true;
-        room.passage3 = false;
-        room.passage = false;
-
         System.out.println("\u001B[31mStorage1");
         if (es == '+' && room.roomVisited[3] == false) {
             room.roomVisited[3] = true;
@@ -208,12 +197,6 @@ class RoomList extends TAG1 {
 
     public void passage3(char es) throws IOException {
 
-        room.passage3 = true;
-        room.bedroom = false;
-        room.deadEnd = false;
-        room.storage1 = false;
-        room.hall = false;
-
         System.out.println("\u001B[31mPassage3");
         if (es == '+' && room.roomVisited[4] == false) {
             System.out.println(room.Description(4));
@@ -224,6 +207,7 @@ class RoomList extends TAG1 {
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
+                room.roomPassage3 = true;
             } else if (!"n".equals(search) && !"y".equals(search)) {
                 System.out.println("Invalid Answer!");
                 passage3('-');
@@ -268,11 +252,7 @@ class RoomList extends TAG1 {
     } //4
 
     public void bedroom(char es) throws IOException {
-
-        room.bedroom = true;
-        room.loo2 = false;
-        room.passage3 = false;
-
+        
         int derp = 0;
         System.out.println("\u001B[31mBedroom");
         if (es == '+' && room.roomVisited[5] == false) {
@@ -326,9 +306,6 @@ class RoomList extends TAG1 {
 
     public void loo2(char es) throws IOException {
 
-        room.loo2 = true;
-        room.bedroom = false;
-
         System.out.println("\u001B[31mLoo2");
         if (es == '+' && room.roomVisited[6] == false) {
             System.out.println(room.Description(6));
@@ -341,6 +318,7 @@ class RoomList extends TAG1 {
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
+                room.roomLoo2 = true;
             } else if (!"n".equals(search) && !"y".equals(search)) {
                 System.out.println("Invalid Answer!");
                 loo2('-');
@@ -380,9 +358,6 @@ class RoomList extends TAG1 {
 
     public void deadEnd(char es) throws IOException {
 
-        room.deadEnd = true;
-        room.passage3 = false;
-
         System.out.println("\u001B[31mDeadEnd");
         if (es == '+' && room.roomVisited[7] == false) {
             System.out.println(room.Description(7));
@@ -396,6 +371,7 @@ class RoomList extends TAG1 {
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
+                room.roomDeadEnd = true;
             } else if (!"n".equals(search) && !"y".equals(search)) {
                 System.out.println("Invalid Answer!");
                 deadEnd('-');
@@ -433,10 +409,6 @@ class RoomList extends TAG1 {
     } //7
 
     public void corridor(char es) throws IOException {
-
-        room.corridor = true;
-        room.passage = false;
-        room.passage2 = false;
 
         System.out.println("\u001B[31mCorridor");
         if (es == '+' && room.roomVisited[8] == false) {
@@ -490,12 +462,6 @@ class RoomList extends TAG1 {
 
     public void passage2(char es) throws IOException {
 
-        room.passage2 = true;
-        room.laboratory = false;
-        room.loo = false;
-        room.kitchen = false;
-        room.corridor = false;
-
         System.out.println("\u001B[31mPassage2");
         if (es == '+' && room.roomVisited[9] == false) {
             System.out.println(room.Description(9));
@@ -506,6 +472,7 @@ class RoomList extends TAG1 {
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
+                room.roomPassage2 = true;
             } else if (!"n".equals(search) && !"y".equals(search)) {
                 System.out.println("Invalid Answer!");
                 passage2('-');
@@ -550,9 +517,6 @@ class RoomList extends TAG1 {
     } //9
 
     public void loo(char es) throws IOException{
-
-        room.loo = true;
-        room.passage2 = false;
 
         System.out.println("\u001B[31mLoo");
         if (es == '+' && room.roomVisited[10] == false) {
@@ -604,9 +568,6 @@ class RoomList extends TAG1 {
 
     public void laboratory(char es) throws IOException{
 
-        room.laboratory = true;
-        room.passage2 = false;
-
         System.out.println("\u001B[31mLaboratory");
         if (es == '+' && room.roomVisited[11] == false) {
             System.out.println(room.Description(11));
@@ -655,11 +616,6 @@ class RoomList extends TAG1 {
     } //11
 
     public void kitchen(char es) throws IOException {
-
-        room.kitchen = true;
-        room.passage2 = false;
-        room.pantry = false;
-        room.diningHall = false;
 
         System.out.println("\u001B[31mKitchen");
         if (es == '+' && room.roomVisited[12] == false) {
@@ -714,10 +670,6 @@ class RoomList extends TAG1 {
 
     public void pantry(char es) throws IOException {
 
-        room.pantry = true;
-        room.hiddenCorridor = false;
-        room.kitchen = false;
-
         System.out.println("\u001B[31mPantry");
         if (es == '+' && room.roomVisited[13] == false) {
             System.out.println(room.Description(13));
@@ -761,6 +713,14 @@ class RoomList extends TAG1 {
                 util.stats();
                 pantry('-');
                 break;
+            case "eq":
+                game.player.weaponEquip();
+                pantry('-');
+                break;
+            case "wo":
+                util.worn();
+                pantry('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 pantry('-');
@@ -770,10 +730,6 @@ class RoomList extends TAG1 {
     } //13
 
     public void hiddenCorridor(char es) throws IOException {
-
-        room.hiddenCorridor = true;
-        room.roomOfRiches = false;
-        room.pantry = false;
 
         System.out.println("\u001B[31mHiddenCorridor");
         if (es == '+' && room.roomVisited[14] == false) {
@@ -791,6 +747,7 @@ class RoomList extends TAG1 {
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
+                room.roomHiddenCorridor = true;
                 } else if (!"n".equals(search) && !"y".equals(search)) {
                     System.out.println("Invalid Answer!");
                     hiddenCorridor('-');
@@ -828,9 +785,6 @@ class RoomList extends TAG1 {
     } //14
 
     public void roomOfRiches(char es) throws IOException {
-
-        room.roomOfRiches = true;
-        room.hiddenCorridor = false;
 
         System.out.println("\u001B[31mRoomOfRiches");
         if (es == '+' && room.roomVisited[15] == false) {
@@ -871,10 +825,6 @@ class RoomList extends TAG1 {
 
     public void diningHall(char es) throws IOException {
 
-        room.diningHall = true;
-        room.kitchen = false;
-        room.corridor2 = false;
-
         System.out.println("\u001B[31mDiningHall");
         if (es == '+' && room.roomVisited[16] == false) {
             System.out.println(room.Description(16));
@@ -887,6 +837,7 @@ class RoomList extends TAG1 {
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
+                room.roomDiningHall = true;
                 } else if (!"n".equals(search) && !"y".equals(search)) {
                     System.out.println("Invalid Answer!");
                     diningHall('-');
@@ -928,10 +879,6 @@ class RoomList extends TAG1 {
 
     public void corridor2(char es) throws IOException {
 
-        room.corridor2 = true;
-        room.courtyard = false;
-        room.diningHall = false;
-
         System.out.println("\u001B[31mCorridor2");
         if (es == '+' && room.roomVisited[17] == false) {
             System.out.println(room.Description(17));
@@ -942,6 +889,7 @@ class RoomList extends TAG1 {
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
+                room.roomCorridor2 = true;
                 } else if (!"n".equals(search) && !"y".equals(search)) {
                     System.out.println("Invalid Answer!");
                     corridor2('-');
@@ -981,10 +929,6 @@ class RoomList extends TAG1 {
     } //17
 
     public void courtyard(char es) throws IOException {
-
-        room.courtyard = true;
-        room.hall = false;
-        room.corridor2 = false;
 
         System.out.println("\u001B[31mCourtyard");
         if (es == '+' && room.roomVisited[18] == false) {
@@ -1041,11 +985,6 @@ class RoomList extends TAG1 {
 
     public void hall(char es) throws IOException {
 
-        room.hall = true;
-        room.courtyard = false;
-        room.guardRoom = false;
-        room.passage3 = false;
-
         System.out.println("\u001B[31mHall");
         if (es == '+' && room.roomVisited[19] == false) {
             System.out.println(room.Description(19));
@@ -1056,6 +995,7 @@ class RoomList extends TAG1 {
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
+                room.roomHall = true;
                 } else if (!"n".equals(search) && !"y".equals(search)) {
                     System.out.println("Invalid Answer!");
                     hall('-');
@@ -1095,9 +1035,6 @@ class RoomList extends TAG1 {
     } //19
 
     public void guardRoom(char es) throws IOException {
-
-        room.guardRoom = true;
-        room.hall = false;
 
         System.out.println("\u001B[31mGuardRoom");
         if (es == '+' && room.roomVisited[20] == false) {

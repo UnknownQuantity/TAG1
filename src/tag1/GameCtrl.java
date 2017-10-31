@@ -1,6 +1,6 @@
 package tag1;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class GameCtrl extends RoomList {
@@ -20,7 +20,7 @@ public class GameCtrl extends RoomList {
     }
 
     //******************gameCtrl-Varibles.end******************\\
-    public void gameCtrl() {
+    public void gameCtrl() throws IOException {
 
         System.out.println("Hello, please enter your name");
         String name = scan.next();

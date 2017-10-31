@@ -10,14 +10,17 @@ public class Player {
     private int gold = 0;
     private int armor = 0; //WIP
     private int strength = 5;
-    private int baseDamage = 15;
-    private int currentDamage = 15;//WIP end
+    private final int baseDamage = 15;
+    private int currentDamage = baseDamage;//WIP end
     private int inventory_space = 10;
-    private final static Scanner scan = new Scanner(System.in);
+    private final static Scanner scan = new Scanner(System.in);    
+    boolean weap1 = false;
+    boolean weap2 = false;
     private String name;
+    private Utility util = new Utility();
     ArrayList small_Inventory = new ArrayList(inventory_space);
     ArrayList current_Inventory = new ArrayList(small_Inventory);
-    ArrayList worm_Items = new ArrayList(3);
+    ArrayList<String> worn_Items = new ArrayList<>(3);    
 
     //******************player-Varibles.end******************\\
     //******************player-gamplay-methods.start******************\\
@@ -149,6 +152,64 @@ public class Player {
 
         return attack;
 
+    }
+    
+    public void weaponEquip() {
+       util.currentInventory();
+        System.out.println("Do you want to equip a weapon?");
+        String choice = scan.nextLine().toLowerCase();
+        if (choice.equals("y")) {
+            System.out.println("which item?");
+            String choice2 = scan.nextLine().toLowerCase();
+            if (choice2.equals("sword")) {
+                if (current_Inventory.contains("sword")) {
+                    if(weap1 && weap2) {
+                        System.out.println("You've already equipped 2 weapons");                        
+                    }
+                    else if (weap1 && !weap2) {                        
+                        worn_Items.add("sword");
+                        currentDamage += 15;
+                        weap2 = true;
+                        current_Inventory.remove("sword");
+                    }
+                    else if (!weap1 && weap2) {
+                        worn_Items.add("sword");
+                        currentDamage +=  15;
+                        weap1 = true;
+                        current_Inventory.remove("sword");
+                    }        
+                }
+                else if (!current_Inventory.contains("sword")) {
+                    System.out.println("You dont have a sword");
+                }
+            }
+            else if (choice2.equals("club")) {
+                if (current_Inventory.contains("club")) {
+                    if (current_Inventory.contains("club")) {
+                    if(weap1 && weap2) {
+                        System.out.println("You've already equipped 2 weapons");                        
+                    }
+                    else if (weap1 && !weap2) {
+                        worn_Items.add("club");
+                        currentDamage = currentDamage + 5;
+                        weap2 = true;
+                    }
+                    else if (!weap1 && weap2) {
+                        worn_Items.add("club");
+                        currentDamage = currentDamage + 5;
+                        weap1 = true;
+                    }        
+                }
+                else if (!current_Inventory.contains("club")) {
+                    System.out.println("You dont have a club");
+                }
+                }
+            }
+        }
+        else if (!choice.equals("y") && !choice.equals("n")) {
+            System.out.println("Invalid command!");
+            weaponEquip();
+        }
     }
 
     //******************player-gamplay-methods.end******************\\

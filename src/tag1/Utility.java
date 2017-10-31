@@ -50,5 +50,10 @@ public class Utility extends TAG1 {
     public void stats() {
         System.out.println("current gold: " + game.player.getGold());
         System.out.println("current health: " + game.player.getHealth());
+        System.out.println("current damage: " + game.player.getDamage());
+    }
+    
+    public void worn() {
+        System.out.println(game.player.worn_Items);
     }
 }
