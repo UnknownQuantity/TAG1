@@ -20,9 +20,19 @@ public class Combat extends Enemy {
                     System.out.println("You swing at the monster and hits it!");
                     weakMHealth -= pDamage;
                     System.out.println("The monsters current health: " + weakMHealth);
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = false;
                 } else {
                     System.out.println("You swing at the monster but misses!");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = false;
                 }
 
@@ -40,9 +50,19 @@ public class Combat extends Enemy {
                     System.out.println("the monster attack you and hits!");
                     game.player.setHealth(pHealth -= weakMDamage);
                     System.out.println("Your current health: " + pHealth);
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = true;
                 } else {
                     System.out.println("The monster attack you but misses!");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = true;
                 }
 
@@ -76,9 +96,19 @@ public class Combat extends Enemy {
                     System.out.println("You swing at the monster and hits it!");
                     strongMHealth -= pDamage;
                     System.out.println("The monsters current health: " + strongMHealth);
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = false;
                 } else {
                     System.out.println("You swing at the monster but misses!");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = false;
                 }
 
@@ -96,9 +126,19 @@ public class Combat extends Enemy {
                     System.out.println("the monster attack you and hits!");
                     pHealth -= strongMDamage;
                     System.out.println("Your current health: " + pHealth);
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = true;
                 } else {
                     System.out.println("The monster attack you but misses!");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = true;
                 }
 
@@ -132,9 +172,19 @@ public class Combat extends Enemy {
                     System.out.println("You swing at the monster and hits it!");
                     mightyMHealth -= pDamage;
                     System.out.println("The monsters current health: " + mightyMHealth);
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = false;
                 } else {
                     System.out.println("You swing at the monster but misses!");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = false;
                 }
 
@@ -147,14 +197,25 @@ public class Combat extends Enemy {
                 }
 
             } else if (attackPhase == false) {
-                boolean attack = game.evil.strongMinotaurAttack();
+                boolean attack = game.evil.mightyMinotaurAttack();
                 if (attack == true) {
                     System.out.println("the monster attack you and hits!");
                     pHealth -= mightyMDamage;
                     System.out.println("Your current health: " + pHealth);
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = true;
+
                 } else {
                     System.out.println("The monster attack you but misses!");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                     attackPhase = true;
                 }
 
