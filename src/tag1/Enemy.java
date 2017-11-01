@@ -1,9 +1,8 @@
 package tag1;
 
-// not yet implemented
 public class Enemy extends TAG1 {
 
-    private int playerHealth, hitChance;
+    private int hitChance;
     private int weakMHealth = 30;
     private int weakMDamage = 5;
     private int strongMHealth = 50;

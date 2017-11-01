@@ -1,6 +1,5 @@
 package tag1;
 
-// implement get/set til rooms
 import java.util.*;
 
 public class Rooms {

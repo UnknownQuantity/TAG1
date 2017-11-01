@@ -1,5 +1,5 @@
 package tag1;
-//ændret 15:30
+
 public class Items extends TAG1 implements Item {
 
     private String choice;
