@@ -42,7 +42,7 @@ public class Highscore extends TAG1 {
             bw.write(content);
             bw.newLine();
             bw.close();
-            sort.sorter();
+            sort.sorter("Scoreboard.txt", "ScoreboardFinal.txt");
 
         } catch (IOException e) {
             System.out.println(e);

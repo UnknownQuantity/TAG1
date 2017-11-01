@@ -1,12 +1,8 @@
-[100] points scored by player: qqqqqqqq
+[100] points scored by player: wwww
 
-[085] points scored by player: qqqq
+[105] points scored by player: qqqqqqqq
 
-[106] points scored by player: qqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+[101] points scored by player: n
 
-[100] points scored by player: aaa
-
-[100] points scored by player: qqq
-
-[201] points scored by player: qqq
+[085] points scored by player: n
 
