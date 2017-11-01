@@ -10,7 +10,7 @@ public class Combat extends Enemy {
         int weakMDamage = game.evil.getWeakMDamage();
         boolean attackPhase = true;
         boolean alive = true;
-
+        
         System.out.println("You encounter a weak minotaur, it roars when it see you and charges to attack!");
         while (alive == true) {
 
@@ -94,7 +94,7 @@ public class Combat extends Enemy {
                 boolean attack = game.player.playerCombat();
                 if (attack == true) {
                     System.out.println("You swing at the monster and hits it!");
-                    game.player.setHealth(pHealth -= strongMDamage);
+                    strongMHealth -= pDamage;
                     System.out.println("The monsters current health: " + strongMHealth);
                     try {
                         Thread.sleep(2000);
@@ -124,7 +124,7 @@ public class Combat extends Enemy {
                 boolean attack = game.evil.strongMinotaurAttack();
                 if (attack == true) {
                     System.out.println("the monster attack you and hits!");
-                    pHealth -= strongMDamage;
+                    game.player.setHealth(pHealth -= strongMDamage);
                     System.out.println("Your current health: " + pHealth);
                     try {
                         Thread.sleep(2000);
@@ -170,7 +170,7 @@ public class Combat extends Enemy {
                 boolean attack = game.player.playerCombat();
                 if (attack == true) {
                     System.out.println("You swing at the monster and hits it!");
-                    game.player.setHealth(pHealth -= mightyMDamage);
+                    mightyMDamage -= pDamage;
                     System.out.println("The monsters current health: " + mightyMHealth);
                     try {
                         Thread.sleep(2000);
@@ -200,7 +200,7 @@ public class Combat extends Enemy {
                 boolean attack = game.evil.mightyMinotaurAttack();
                 if (attack == true) {
                     System.out.println("the monster attack you and hits!");
-                    pHealth -= mightyMDamage;
+                    game.player.setHealth(pHealth -= mightyMDamage);
                     System.out.println("Your current health: " + pHealth);
                     try {
                         Thread.sleep(2000);

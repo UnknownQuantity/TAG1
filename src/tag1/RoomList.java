@@ -403,7 +403,7 @@ class RoomList extends TAG1 {
             System.out.println(room.Description(7));
             room.roomVisited[7] = true;
         }
-        if (areIn == false) { //kig på senere
+        if (areIn == false) {
             evil.hound();
         }
         if (room.roomDeadEnd == false) {
@@ -1187,8 +1187,8 @@ class RoomList extends TAG1 {
         if (es == '+' && room.roomVisited[20] == false) {
             System.out.println(room.Description(20));
             room.roomVisited[20] = true;
-        }
-        game.player.health("Guards");
+        }        
+            evil.guards();
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {

@@ -40,14 +40,7 @@ public class Player {
                 break;
             case "Death":
                 health = 0;
-                break;
-            case "Guards":
-                System.out.println("You've been beaten up, and is thrown from the room. You lose 50 health");
-                health -= 50;
-                System.out.println("The guards also steal all your gold!");
-                System.out.println("Your current health is now " + health);
-                gold = 0;
-                break;
+                break;          
             case "Explosion":
                 System.out.println("While searching the room, you accidentaly knock over a vial and a large explosion occurs. You lose 75 health");
                 health -= 75;
@@ -71,19 +64,7 @@ public class Player {
                 System.out.println("You [Stood in the Fire]!, you lose 10 health");
                 health -= 10;
                 System.out.println("Your current health is now " + health);
-                break;
-            case "Hound_Sleep":
-                System.out.println("The hound wakes up and jumps to attack you, it's teeth sinks into your arm and you lose 15 health");
-                System.out.println("The hound loses interest and leaves you alone");
-                health -= 15;
-                System.out.println("Your current health is now " + health);
-                break;
-            case "Hound_Wake":
-                System.out.println("The hound sees you immediately and once again jump to attack, you lose 15 health");
-                System.out.println("The hound loses interest and leaves you alone");
-                health -= 15;
-                System.out.println("Your current health is now " + health);
-                break;
+                break;            
             case "Healing_Potion":
                 System.out.println("You find a Healing potion and chug it down. Restored 10 health");
                 health += 10;
