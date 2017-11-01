@@ -770,6 +770,7 @@ class RoomList extends TAG1 {
                 int pick = item.sword();
                 if (pick == 1) {
                     room.roomPantry = true;
+                    System.out.println("Once you pick up the sword a hidden corridor is revealed to the north!");
                 }
             } else if (!"n".equals(search) && !"y".equals(search)) {
                 System.out.println("Invalid Answer!");
@@ -781,8 +782,12 @@ class RoomList extends TAG1 {
         dir = game.scan.next().toLowerCase();
         switch (dir) {
             case "n":
+                if(room.roomPantry == true)
                 hiddenCorridor('+');
-                break;
+                else {
+                    System.out.println("nothing seems to be there");
+                    pantry('-');
+                break; }
             case "e":
                 kitchen('+');
                 break;

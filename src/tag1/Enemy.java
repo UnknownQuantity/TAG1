@@ -3,7 +3,7 @@ package tag1;
 // not yet implemented
 public class Enemy extends TAG1 {
 
-    private int playerHealth, monsterHealth, damage, hitChance;
+    private int playerHealth, hitChance;
     private int weakMHealth = 30;
     private int weakMDamage = 5;
     private int strongMHealth = 50;
@@ -11,8 +11,7 @@ public class Enemy extends TAG1 {
     private int mightyMHealth = 100;
     private int mightyMDamage = 25;
 
-    private boolean hound, attack = false;
-    private long lastTurn = System.currentTimeMillis();
+    private boolean hound = false;
 
     public void hound() {
 
@@ -59,39 +58,7 @@ public class Enemy extends TAG1 {
         
         return hitChance >= 2;
     }
-
-    public int getStrongMHealth() {
-        return strongMHealth;
-    }
-
-    public void setStrongMHealth(int strongMHealth) {
-        this.strongMHealth = strongMHealth;
-    }
-
-    public int getStrongMDamage() {
-        return strongMDamage;
-    }
-
-    public void setStrongMDamage(int strongMDamage) {
-        this.strongMDamage = strongMDamage;
-    }
-
-    public int getMightyMHealth() {
-        return mightyMHealth;
-    }
-
-    public void setMightyMHealth(int mightyMHealth) {
-        this.mightyMHealth = mightyMHealth;
-    }
-
-    public int getMightyMDamage() {
-        return mightyMDamage;
-    }
-
-    public void setMightyMDamage(int mightyMDamage) {
-        this.mightyMDamage = mightyMDamage;
-    }
-
+    
     public int loot() {
         
         System.out.println("Do you want to loot the corpse?");
@@ -133,6 +100,38 @@ public class Enemy extends TAG1 {
             loot();
         }
         return 0;
+    }
+
+    public int getStrongMHealth() {
+        return strongMHealth;
+    }
+
+    public void setStrongMHealth(int strongMHealth) {
+        this.strongMHealth = strongMHealth;
+    }
+
+    public int getStrongMDamage() {
+        return strongMDamage;
+    }
+
+    public void setStrongMDamage(int strongMDamage) {
+        this.strongMDamage = strongMDamage;
+    }
+
+    public int getMightyMHealth() {
+        return mightyMHealth;
+    }
+
+    public void setMightyMHealth(int mightyMHealth) {
+        this.mightyMHealth = mightyMHealth;
+    }
+
+    public int getMightyMDamage() {
+        return mightyMDamage;
+    }
+
+    public void setMightyMDamage(int mightyMDamage) {
+        this.mightyMDamage = mightyMDamage;
     }
     
     public int getWeakMHealth() {

@@ -94,7 +94,7 @@ public class Combat extends Enemy {
                 boolean attack = game.player.playerCombat();
                 if (attack == true) {
                     System.out.println("You swing at the monster and hits it!");
-                    strongMHealth -= pDamage;
+                    game.player.setHealth(pHealth -= strongMDamage);
                     System.out.println("The monsters current health: " + strongMHealth);
                     try {
                         Thread.sleep(2000);
@@ -170,7 +170,7 @@ public class Combat extends Enemy {
                 boolean attack = game.player.playerCombat();
                 if (attack == true) {
                     System.out.println("You swing at the monster and hits it!");
-                    mightyMHealth -= pDamage;
+                    game.player.setHealth(pHealth -= mightyMDamage);
                     System.out.println("The monsters current health: " + mightyMHealth);
                     try {
                         Thread.sleep(2000);

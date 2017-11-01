@@ -111,21 +111,6 @@ public class Items extends TAG1 implements Item {
         return pick;
     }
 
-    public void cloth_Armor() {
-        pickUpItem("Cloth Armor", '+');
-        //armor + 10
-    }
-
-    public void leather_Armor() {
-        pickUpItem("leather Armor", '+');
-        //armor + 25
-    }
-
-    public void plate_Armor() {
-        pickUpItem("Plate Armor", '+');
-        //armor 0+50
-    }
-
     public int sword() {
         int pick = 0;
         item = pickUpItem("sword", '+');
@@ -143,41 +128,23 @@ public class Items extends TAG1 implements Item {
             pick = 1;
         }
         return pick;
-        //damage + 10
     }
-
-    public void axe() {
-        pickUpItem("Axe", '+');
-        //damage + 20
-    }
-
-    public void fire_Bomb() {
-        pickUpItem("fire bomb", '+');
-        //damage +30
-    }
-
-    public void magical_Orb() {
-        pickUpItem("magical orb", '+');
-        //damage +50
-    }
-
-    public void torch() {
-        pickUpItem("torch", '+');
-        //damage +15
-    }
-
+    
     public void small_Bag() {
+        
         pickUpItem("small bag", '+');
         game.player.inventory_Expand("small bag");
     }
 
     public void large_bag() {
+        
         pickUpItem("large bag", '+');
         game.player.inventory_Expand("large bag");
     }
 
     @Override
     public int pickUpGold(String item, char es) {
+        
         int pick = 0;
         if (es == '+') {
             System.out.println("You've found: " + item);
@@ -201,6 +168,7 @@ public class Items extends TAG1 implements Item {
 
     @Override
     public int pickUpItem(String item, char es) {
+        
         int pick = 0;
         if (es == '+') {
             System.out.println("You've found: " + item);
@@ -225,6 +193,7 @@ public class Items extends TAG1 implements Item {
 
     @Override
     public int pickUpPotion(String item, char es) {
+        
         int pick = 0;
         if (es == '+') {
             System.out.println("You've found: " + item);
