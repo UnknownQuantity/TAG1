@@ -8,19 +8,14 @@ public class Player {
     //******************player-Varibles.start******************\\
     private int health = 100;
     private int gold = 0;
-    private int armor = 0; //WIP
-    private int strength = 5;
-    private final int baseDamage = 15;
-    private int currentDamage = baseDamage;//WIP end
+    private int currentDamage = 15;
     private int inventory_space = 10;
-    private final static Scanner scan = new Scanner(System.in);    
-    boolean weap1 = false;
-    boolean weap2 = false;
+    private final static Scanner scan = new Scanner(System.in);
     private String name;
     private Utility util = new Utility();
     ArrayList small_Inventory = new ArrayList(inventory_space);
     ArrayList current_Inventory = new ArrayList(small_Inventory);
-    ArrayList<String> worn_Items = new ArrayList<>(3);    
+    ArrayList<String> worn_Items = new ArrayList<>(3);
 
     //******************player-Varibles.end******************\\
     //******************player-gamplay-methods.start******************\\
@@ -29,7 +24,7 @@ public class Player {
         System.out.println("Hello there " + name);
         System.out.println("At the start of you adventure your health is: " + health + "\nBeware of the dangers in the maze!\nYou're able to search every room you enter by simple typing 's'.");
     }
-    
+
     public int health(String modi) {
 
         switch (modi) {
@@ -118,6 +113,34 @@ public class Player {
         return health;
     }
 
+    public void combatStats(String weapon) {
+
+        switch (weapon) {
+            case "sword":
+                if (current_Inventory.contains("sword")) {
+                    worn_Items.add("sword");
+                    currentDamage += 15;
+                    current_Inventory.remove("sword");
+                } else if (!current_Inventory.contains("sword")) {
+                    System.out.println("You dont have a sword");
+                }
+                break;
+            case "club":
+                if (current_Inventory.contains("club")) {
+                    worn_Items.add("club");
+                    currentDamage += 5;
+                    current_Inventory.remove("club");
+                } else if (!current_Inventory.contains("club")) {
+                    System.out.println("You dont have a club");
+                }
+                break;
+            case "sword-":
+                
+            default:
+                break;
+        }
+    }
+
     public void inventory_Expand(String bag) {
 
         if (bag.equals("small bag")) {
@@ -140,7 +163,7 @@ public class Player {
 
     public void inventoryAdd(String item) {
         current_Inventory.add(item);
-        
+
     }
 
     public boolean playerCombat() {
@@ -153,63 +176,23 @@ public class Player {
         return attack;
 
     }
-    
+
     public void weaponEquip() {
-       util.currentInventory();
+
+        util.currentInventory();
         System.out.println("Do you want to equip a weapon?");
         String choice = scan.nextLine().toLowerCase();
         if (choice.equals("y")) {
-            System.out.println("which item?");
-            String choice2 = scan.nextLine().toLowerCase();
-            if (choice2.equals("sword")) {
-                if (current_Inventory.contains("sword")) {
-                    if(weap1 && weap2) {
-                        System.out.println("You've already equipped 2 weapons");                        
-                    }
-                    else if (weap1 && !weap2) {                        
-                        worn_Items.add("sword");
-                        currentDamage += 15;
-                        weap2 = true;
-                        current_Inventory.remove("sword");
-                    }
-                    else if (!weap1 && weap2) {
-                        worn_Items.add("sword");
-                        currentDamage +=  15;
-                        weap1 = true;
-                        current_Inventory.remove("sword");
-                    }        
-                }
-                else if (!current_Inventory.contains("sword")) {
-                    System.out.println("You dont have a sword");
-                }
-            }
-            else if (choice2.equals("club")) {
-                if (current_Inventory.contains("club")) {
-                    if (current_Inventory.contains("club")) {
-                    if(weap1 && weap2) {
-                        System.out.println("You've already equipped 2 weapons");                        
-                    }
-                    else if (weap1 && !weap2) {
-                        worn_Items.add("club");
-                        currentDamage = currentDamage + 5;
-                        weap2 = true;
-                    }
-                    else if (!weap1 && weap2) {
-                        worn_Items.add("club");
-                        currentDamage = currentDamage + 5;
-                        weap1 = true;
-                    }        
-                }
-                else if (!current_Inventory.contains("club")) {
-                    System.out.println("You dont have a club");
-                }
-                }
-            }
-        }
-        else if (!choice.equals("y") && !choice.equals("n")) {
+            System.out.println("which weapon?");
+            combatStats(scan.nextLine().toLowerCase());
+        } else if (!choice.equals("y") && !choice.equals("n")) {
             System.out.println("Invalid command!");
             weaponEquip();
         }
+    }
+    
+    public void weaponUnequip() {
+        
     }
 
     //******************player-gamplay-methods.end******************\\
@@ -220,14 +203,6 @@ public class Player {
 
     public int getHealth() {
         return health;
-    }
-
-    public int getArmor() {
-        return armor;
-    }
-
-    public int getStrength() {
-        return strength;
     }
 
     public int getDamage() {
@@ -244,14 +219,6 @@ public class Player {
 
     public void setHealth(int health) {
         this.health = health;
-    }
-
-    public void setArmor(int armor) {
-        this.armor = armor;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
     }
 
     public void setDamage(int damage) {

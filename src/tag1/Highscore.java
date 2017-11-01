@@ -32,7 +32,7 @@ public class Highscore extends TAG1 {
             scoreboard.add(result);
         }
         try {
-            String content = scoreboard + " points " + "Player " + pName + " scored " + scoreboard + " points.\n";
+            String content = scoreboard + " points scored by player: " + pName + "\n";
 
             File file = new File("Scoreboard.txt");
 

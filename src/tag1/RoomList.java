@@ -27,7 +27,7 @@ class RoomList extends TAG1 {
     }
 
     //******************Room-methods.start******************\\
-    public void start(char es) throws IOException{
+    public void start(char es) throws IOException {
 
         System.out.println("\u001B[31mStart");
         if (es == '+' && room.roomVisited[0] == false) {
@@ -58,6 +58,14 @@ class RoomList extends TAG1 {
                 util.stats();
                 start('-');
                 break;
+            case "eq":
+                game.player.weaponEquip();
+                start('-');
+                break;
+            case "wo":
+                util.worn();
+                start('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 start('-');
@@ -66,7 +74,7 @@ class RoomList extends TAG1 {
         }
     } //0
 
-    public void passage(char es) throws IOException{
+    public void passage(char es) throws IOException {
 
         System.out.println("\u001B[31mPassage");
         if (es == '+' && room.roomVisited[1] == false) {
@@ -113,6 +121,14 @@ class RoomList extends TAG1 {
                 break;
             case "st":
                 util.stats();
+                passage('-');
+                break;
+            case "eq":
+                game.player.weaponEquip();
+                passage('-');
+                break;
+            case "wo":
+                util.worn();
                 passage('-');
                 break;
             default:
@@ -188,6 +204,14 @@ class RoomList extends TAG1 {
                 util.stats();
                 storage1('-');
                 break;
+            case "eq":
+                game.player.weaponEquip();
+                storage1('-');
+                break;
+            case "wo":
+                util.worn();
+                storage1('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 storage1('-');
@@ -252,7 +276,7 @@ class RoomList extends TAG1 {
     } //4
 
     public void bedroom(char es) throws IOException {
-        
+
         int derp = 0;
         System.out.println("\u001B[31mBedroom");
         if (es == '+' && room.roomVisited[5] == false) {
@@ -295,6 +319,14 @@ class RoomList extends TAG1 {
                 break;
             case "st":
                 util.stats();
+                bedroom('-');
+                break;
+            case "eq":
+                game.player.weaponEquip();
+                bedroom('-');
+                break;
+            case "wo":
+                util.worn();
                 bedroom('-');
                 break;
             default:
@@ -349,6 +381,14 @@ class RoomList extends TAG1 {
                 util.stats();
                 loo2('-');
                 break;
+            case "eq":
+                game.player.weaponEquip();
+                loo2('-');
+                break;
+            case "wo":
+                util.worn();
+                loo2('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 loo2('-');
@@ -398,6 +438,14 @@ class RoomList extends TAG1 {
                 break;
             case "st":
                 util.stats();
+                deadEnd('-');
+                break;
+            case "eq":
+                game.player.weaponEquip();
+                deadEnd('-');
+                break;
+            case "wo":
+                util.worn();
                 deadEnd('-');
                 break;
             default:
@@ -451,6 +499,14 @@ class RoomList extends TAG1 {
                 break;
             case "st":
                 util.stats();
+                corridor('-');
+                break;
+            case "eq":
+                game.player.weaponEquip();
+                corridor('-');
+                break;
+            case "wo":
+                util.worn();
                 corridor('-');
                 break;
             default:
@@ -509,6 +565,14 @@ class RoomList extends TAG1 {
                 util.stats();
                 passage2('-');
                 break;
+            case "eq":
+                game.player.weaponEquip();
+                passage2('-');
+                break;
+            case "wo":
+                util.worn();
+                passage2('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 passage2('-');
@@ -516,7 +580,7 @@ class RoomList extends TAG1 {
         }
     } //9
 
-    public void loo(char es) throws IOException{
+    public void loo(char es) throws IOException {
 
         System.out.println("\u001B[31mLoo");
         if (es == '+' && room.roomVisited[10] == false) {
@@ -559,6 +623,14 @@ class RoomList extends TAG1 {
                 util.stats();
                 loo('-');
                 break;
+            case "eq":
+                game.player.weaponEquip();
+                loo('-');
+                break;
+            case "wo":
+                util.worn();
+                loo('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 loo('-');
@@ -566,7 +638,7 @@ class RoomList extends TAG1 {
         }
     }//10
 
-    public void laboratory(char es) throws IOException{
+    public void laboratory(char es) throws IOException {
 
         System.out.println("\u001B[31mLaboratory");
         if (es == '+' && room.roomVisited[11] == false) {
@@ -606,6 +678,14 @@ class RoomList extends TAG1 {
                 break;
             case "st":
                 util.stats();
+                laboratory('-');
+                break;
+            case "eq":
+                game.player.weaponEquip();
+                laboratory('-');
+                break;
+            case "wo":
+                util.worn();
                 laboratory('-');
                 break;
             default:
@@ -659,6 +739,14 @@ class RoomList extends TAG1 {
                 break;
             case "st":
                 util.stats();
+                kitchen('-');
+                break;
+            case "eq":
+                game.player.weaponEquip();
+                kitchen('-');
+                break;
+            case "wo":
+                util.worn();
                 kitchen('-');
                 break;
             default:
@@ -741,18 +829,18 @@ class RoomList extends TAG1 {
         }
 
         room.roomVisited[14] = true;
-        
-                if (room.roomHiddenCorridor == false) {
+
+        if (room.roomHiddenCorridor == false) {
             System.out.println("wanna search the room? y/n");
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
                 room.roomHiddenCorridor = true;
-                } else if (!"n".equals(search) && !"y".equals(search)) {
-                    System.out.println("Invalid Answer!");
-                    hiddenCorridor('-');
-                }
-            } 
+            } else if (!"n".equals(search) && !"y".equals(search)) {
+                System.out.println("Invalid Answer!");
+                hiddenCorridor('-');
+            }
+        }
         System.out.println("What do you want to do?");
         dir = game.scan.next().toLowerCase();
         switch (dir) {
@@ -777,6 +865,14 @@ class RoomList extends TAG1 {
                 util.stats();
                 hiddenCorridor('-');
                 break;
+            case "eq":
+                game.player.weaponEquip();
+                hiddenCorridor('-');
+                break;
+            case "wo":
+                util.worn();
+                hiddenCorridor('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 hiddenCorridor('-');
@@ -790,8 +886,10 @@ class RoomList extends TAG1 {
         if (es == '+' && room.roomVisited[15] == false) {
             System.out.println(room.Description(15));
             room.roomVisited[15] = true;
+            com.strongCombat();
+            game.evil.loot();
         }
-        
+
         String dir;
         item.treasure();
         System.out.println("What do you want to do?");
@@ -815,6 +913,14 @@ class RoomList extends TAG1 {
                 util.stats();
                 roomOfRiches('-');
                 break;
+            case "eq":
+                game.player.weaponEquip();
+                roomOfRiches('-');
+                break;
+            case "wo":
+                util.worn();
+                roomOfRiches('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 roomOfRiches('-');
@@ -831,18 +937,18 @@ class RoomList extends TAG1 {
             room.roomVisited[16] = true;
             com.weakCombat();
             game.evil.loot();
-        } 
+        }
         if (room.roomDiningHall == false) {
             System.out.println("wanna search the room? y/n");
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
                 room.roomDiningHall = true;
-                } else if (!"n".equals(search) && !"y".equals(search)) {
-                    System.out.println("Invalid Answer!");
-                    diningHall('-');
-                }
-            } 
+            } else if (!"n".equals(search) && !"y".equals(search)) {
+                System.out.println("Invalid Answer!");
+                diningHall('-');
+            }
+        }
 
         String dir;
         System.out.println("What do you want to do?");
@@ -869,6 +975,14 @@ class RoomList extends TAG1 {
                 util.stats();
                 diningHall('-');
                 break;
+            case "eq":
+                game.player.weaponEquip();
+                diningHall('-');
+                break;
+            case "wo":
+                util.worn();
+                diningHall('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 diningHall('-');
@@ -884,49 +998,59 @@ class RoomList extends TAG1 {
             System.out.println(room.Description(17));
             room.roomVisited[17] = true;
         }
-                if (room.roomCorridor2 == false) {
+        if (room.roomCorridor2 == false) {
             System.out.println("wanna search the room? y/n");
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
-                System.out.println("You search the room but nothing special gets your attention");
-                room.roomCorridor2 = true;
+                int pick = item.greater_Potion();
+                if (pick == 1) {
+                    room.roomCorridor2 = true;
                 } else if (!"n".equals(search) && !"y".equals(search)) {
                     System.out.println("Invalid Answer!");
                     corridor2('-');
                 }
-            } 
-        String dir;
-        System.out.println("What do you want to do?");
-        dir = game.scan.next().toLowerCase();
-        switch (dir) {
-            case "s":
-                diningHall('+');
-                break;
-            case "e":
-                courtyard('+');
-                break;
-            case "q":
-                util.quit();
-                break;
-            case "h":
-                util.help();
-                corridor2('-');
-                break;
-            case "i":
-                util.currentInventory();
-                corridor2('-');
-                break;
-            case "st":
-                util.stats();
-                corridor2('-');
-                break;
-            default:
-                System.out.println("Invalid answer!");
-                corridor2('-');
-                break;
-        }
+            }
+            String dir;
+            System.out.println("What do you want to do?");
+            dir = game.scan.next().toLowerCase();
+            switch (dir) {
+                case "s":
+                    diningHall('+');
+                    break;
+                case "e":
+                    courtyard('+');
+                    break;
+                case "q":
+                    util.quit();
+                    break;
+                case "h":
+                    util.help();
+                    corridor2('-');
+                    break;
+                case "i":
+                    util.currentInventory();
+                    corridor2('-');
+                    break;
+                case "st":
+                    util.stats();
+                    corridor2('-');
+                    break;
+                case "eq":
+                    game.player.weaponEquip();
+                    corridor2('-');
+                    break;
+                case "wo":
+                    util.worn();
+                    corridor2('-');
+                    break;
+                default:
+                    System.out.println("Invalid answer!");
+                    corridor2('-');
+                    break;
+            }
 
-    } //17
+        }
+    }//17
 
     public void courtyard(char es) throws IOException {
 
@@ -937,17 +1061,17 @@ class RoomList extends TAG1 {
             com.mightyCombat();
             game.evil.loot();
         }
-                if (room.roomCourtyard == false) {
+        if (room.roomCourtyard == false) {
             System.out.println("wanna search the room? y/n");
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
                 room.roomCourtyard = true;
-                } else if (!"n".equals(search) && !"y".equals(search)) {
-                    System.out.println("Invalid Answer!");
-                    courtyard('-');
-                }
-            } 
+            } else if (!"n".equals(search) && !"y".equals(search)) {
+                System.out.println("Invalid Answer!");
+                courtyard('-');
+            }
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = game.scan.next().toLowerCase();
@@ -976,6 +1100,14 @@ class RoomList extends TAG1 {
                 util.stats();
                 courtyard('-');
                 break;
+            case "eq":
+                game.player.weaponEquip();
+                courtyard('-');
+                break;
+            case "wo":
+                util.worn();
+                courtyard('-');
+                break;
             default:
                 System.out.println("Invalid answer!");
                 courtyard('-');
@@ -989,18 +1121,20 @@ class RoomList extends TAG1 {
         if (es == '+' && room.roomVisited[19] == false) {
             System.out.println(room.Description(19));
             room.roomVisited[19] = true;
+            com.strongCombat();
+            game.evil.loot();
         }
-                if (room.roomHall == false) {
+        if (room.roomHall == false) {
             System.out.println("wanna search the room? y/n");
             search = game.scan.next().toLowerCase();
             if (search.equals("y")) {
                 System.out.println("You search the room but nothing special gets your attention");
                 room.roomHall = true;
-                } else if (!"n".equals(search) && !"y".equals(search)) {
-                    System.out.println("Invalid Answer!");
-                    hall('-');
-                }
-            } 
+            } else if (!"n".equals(search) && !"y".equals(search)) {
+                System.out.println("Invalid Answer!");
+                hall('-');
+            }
+        }
         String dir;
         System.out.println("What do you want to do?");
         dir = game.scan.next().toLowerCase();
@@ -1025,6 +1159,14 @@ class RoomList extends TAG1 {
                 break;
             case "st":
                 util.stats();
+                hall('-');
+                break;
+            case "eq":
+                game.player.weaponEquip();
+                hall('-');
+                break;
+            case "wo":
+                util.worn();
                 hall('-');
                 break;
             default:
@@ -1062,7 +1204,6 @@ class RoomList extends TAG1 {
     } //22
 
     //******************Room-methods.end******************\\
-    
     public boolean isAreIn() {
         return areIn;
     }

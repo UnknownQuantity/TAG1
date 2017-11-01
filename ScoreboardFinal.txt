@@ -1,19 +1,29 @@
-[106] points Player qqq scored [106] points.
+[100] points scored by player: qqqqqqqq
 
-[106] points Player qqq scored [106] points.
-[085] points Player yyy scored [085] points.
-
-
-[106] points Player qqq scored [106] points.
-[105] points Player nnn scored [105] points.
-[085] points Player yyy scored [085] points.
+[100] points scored by player: qqqqqqqq
+[085] points scored by player: qqqq
 
 
+[106] points scored by player: qqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+[100] points scored by player: qqqqqqqq
+[085] points scored by player: qqqq
 
-[106] points Player qqq scored [106] points.
-[105] points Player nnn scored [105] points.
-[085] points Player yyy scored [085] points.
-[050] points Player n scored [050] points.
+
+
+[106] points scored by player: qqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+[100] points scored by player: qqqqqqqq
+[100] points scored by player: aaa
+[085] points scored by player: qqqq
+
+
+
+
+[106] points scored by player: qqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+[100] points scored by player: qqqqqqqq
+[100] points scored by player: qqq
+[100] points scored by player: aaa
+[085] points scored by player: qqqq
+
 
 
 

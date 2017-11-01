@@ -10,18 +10,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Sorter {
-    
+
     public void sorter() {
-              
+
         File file = new File("Scoreboard.txt");
-        File file2 = new File("ScoreboardFinal.txt");     
+        File file2 = new File("ScoreboardFinal.txt");
 
         BufferedReader reader = null;
 
         BufferedWriter writer = null;
 
         ArrayList<String> lines = new ArrayList<>();
-
         try {
 
             reader = new BufferedReader(new FileReader(file));
@@ -35,7 +34,6 @@ public class Sorter {
 
             Collections.sort(lines);
             Collections.reverse(lines);
-            
 
             writer = new BufferedWriter(new FileWriter(file2.getAbsoluteFile(), true));
 
@@ -57,5 +55,5 @@ public class Sorter {
         }
 
     }
-    
+
 }
