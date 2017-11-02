@@ -5,8 +5,6 @@ public class Items extends TAG1 implements Item {
     private String choice;
     private int health;
     private int gold;
-    private int armor;
-    private int damage;
     private int coin;
     private int potion;
     private int item;
@@ -130,18 +128,6 @@ public class Items extends TAG1 implements Item {
         return pick;
     }
     
-    public void small_Bag() {
-        
-        pickUpItem("small bag", '+');
-        game.player.inventory_Expand("small bag");
-    }
-
-    public void large_bag() {
-        
-        pickUpItem("large bag", '+');
-        game.player.inventory_Expand("large bag");
-    }
-
     @Override
     public int pickUpGold(String item, char es) {
         
@@ -152,15 +138,19 @@ public class Items extends TAG1 implements Item {
         if (es == '+' || es == '-') {
             System.out.println("Do you want to pick it up?");
             choice = game.scan.next();
-            if (choice.equals("y")) {
-                System.out.println("You've picked up " + item);
-                return pick = 1;
-            } else if (choice.equals("n")) {
-                System.out.println("You leave " + item + " on the groud");
-                return pick = 0;
-            } else {
-                System.out.println("Invalid choice!");
-                pickUpGold(item, '-');
+            switch (choice) {
+                case "y":
+                    System.out.println("You've picked up " + item);
+                     pick = 1;
+                     break;
+                case "n":
+                    System.out.println("You leave " + item + " on the groud");
+                    pick = 0;
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+                    pickUpGold(item, '-');
+                    break;
             }
         }
         return pick;
@@ -176,16 +166,20 @@ public class Items extends TAG1 implements Item {
         if (es == '+' || es == '-') {
             System.out.println("Do you want to pick up the item?");
             choice = game.scan.next();
-            if (choice.equals("y")) {
-                System.out.println("You've picked up " + item);
-                game.player.inventoryAdd(item);
-                return pick = 1;
-            } else if (choice.equals("n")) {
-                System.out.println("You leave " + item + " on the groud");
-                return pick = 0;
-            } else {
-                System.out.println("Invalid choice!");
-                pickUpItem(item, '-');
+            switch (choice) {
+                case "y":
+                    System.out.println("You've picked up " + item);
+                    game.player.inventoryAdd(item);
+                    pick = 1;
+                    break;
+                case "n":
+                    System.out.println("You leave " + item + " on the groud");
+                    pick = 0;
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+                    pickUpItem(item, '-');
+                    break;
             }
         }
         return pick;
@@ -201,15 +195,19 @@ public class Items extends TAG1 implements Item {
         if (es == '+' || es == '-') {
             System.out.println("Do you want to pick it up?");
             choice = game.scan.next();
-            if (choice.equals("y")) {
-                System.out.println("You've picked up " + item);
-                return pick = 1;
-            } else if (choice.equals("n")) {
-                System.out.println("You leave " + item + " on the gound");
-                return pick;
-            } else {
-                System.out.println("Invalid choice!");
-                pickUpItem(item, '-');
+            switch (choice) {
+                case "y":
+                    System.out.println("You've picked up " + item);
+                    pick = 1;
+                    break;
+                case "n":
+                    System.out.println("You leave " + item + " on the gound");
+                    pick = 0;
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+                    pickUpItem(item, '-');
+                    break;
             }
         }
         return pick;

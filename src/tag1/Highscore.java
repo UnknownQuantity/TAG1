@@ -21,7 +21,7 @@ public class Highscore extends TAG1 {
         finalGP = game.player.getGold();
         pName = game.player.getName();
         score = finalGP + finalHP;
-        String result = "";
+        String result;
         if (score > 99 && score <= 999) {
             scoreboard.add(score.toString());
         } else if (score < 100) {

@@ -10,11 +10,8 @@ class RoomList extends TAG1 {
     Items item;
     Combat com;
     public final Enemy evil;
-    private final boolean hound = false;
     private boolean areIn = false;
     private String search;
-    private String rerun = "";
-    private final String desc = "";
     private final String[] args = {};
     ArrayList<RoomList> rooms;
 
@@ -145,16 +142,7 @@ class RoomList extends TAG1 {
             System.out.println(room.Description(2));
             room.roomVisited[2] = true;
             game.player.health("Death");
-        }
-        System.out.println("Do you want to try again? y/n");  //respawn
-        rerun = game.scan.next();
-        if ("y".equals(rerun)) {
-            TAG1.main(args);
-        } else if ("n".equals(rerun)) {
-            util.gameEnd();
-        } else {
-            death('-');
-        }
+        }    
 
     } //2
 

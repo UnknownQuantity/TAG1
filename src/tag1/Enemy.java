@@ -9,8 +9,8 @@ public class Enemy extends TAG1 {
     private int strongMDamage = 15;
     private int mightyMHealth = 100;
     private int mightyMDamage = 25;
-    private int houndDamage = 15;
-    private int guardDamage = 50;
+    private final int houndDamage = 15;
+    private final int guardDamage = 50;
 
     private boolean hound = false;
 

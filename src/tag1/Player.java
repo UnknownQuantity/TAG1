@@ -9,10 +9,10 @@ public class Player {
     private int health = 100;
     private int gold = 0;
     private int currentDamage = 15;
-    private int inventory_space = 10;
+    private final int inventory_space = 10;
     private final static Scanner scan = new Scanner(System.in);
     private String name;
-    private Utility util = new Utility();
+    private final Utility util = new Utility();
     ArrayList small_Inventory = new ArrayList(inventory_space);
     ArrayList current_Inventory = new ArrayList(small_Inventory);
     ArrayList<String> worn_Items = new ArrayList<>(3);
@@ -120,26 +120,6 @@ public class Player {
             default:
                 break;
         }
-    }
-
-    public void inventory_Expand(String bag) {
-
-        if (bag.equals("small bag")) {
-            inventory_space = 15;
-            ArrayList medium_Inventory = new ArrayList(inventory_space);
-            ArrayList tmp = new ArrayList(current_Inventory);
-            tmp = current_Inventory;
-            current_Inventory = medium_Inventory;
-            current_Inventory = tmp;
-        } else if (bag.equals("large bag")) {
-            inventory_space = 20;
-            ArrayList large_Inventory = new ArrayList(inventory_space);
-            ArrayList tmp = new ArrayList(current_Inventory);
-            tmp = current_Inventory;
-            current_Inventory = large_Inventory;
-            current_Inventory = tmp;
-        }
-
     }
 
     public void inventoryAdd(String item) {
